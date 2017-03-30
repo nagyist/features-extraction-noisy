@@ -1,0 +1,9 @@
+to run no_flk_exp set the cfg.DATASET to "dbp3120_noflk" and use the standard experiments.
+
+NB: to generate the dataset without flickr image I started from the dbp3120 folder dataset, removed all the flickr
+images with: rm */flickr*
+or with the find command (if rm return an error).
+
+Then split dataset as normal, duplicate seed, and then extract features.
+The file 1.5_seed_google_dataset.py is unused (an exception stop the process while splitting.. probably a bug in
+ImageDataset class split procedure or other..)
