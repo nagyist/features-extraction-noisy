@@ -1,7 +1,6 @@
-import cfg
+from cfg import cfg
 import common
 from common import dataset_path
-from cfg import init
 from imdataset import ImageDataset
 from imdataset.ImageDataset import SplitOptions
 
@@ -15,11 +14,19 @@ else:
     split_options = [SplitOptions("google", 0.25)]  # FOR DATASET WITHOUT FLICKR
     exclude_file_starting_with = ["seed"]
 
-dataset = cfg.DATASET
-
 def main():
     cfg.init()
+    exp_split_dataset()
 
+
+
+
+
+
+
+
+def exp_split_dataset():
+    dataset = cfg.DATASET
     for crop_size, crop_size_stamp in zip(cfg.ALL_CROP_SIZE, cfg.ALL_CROP_SIZE_STAMP):
         crop = crop_size['crop']
         size = crop_size['size']
@@ -31,8 +38,6 @@ def main():
 
     print("")
     print("All done.")
-
-
 
 
 def split_dataset_helper(dataset_path,  # type: basestring

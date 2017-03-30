@@ -1,4 +1,4 @@
-import cfg
+from cfg import cfg
 import common
 from common import dataset_fname
 from imdataset import ImageDataset
@@ -11,11 +11,14 @@ if cfg.USE_TOY_DATASET:
 else:
     FNAME_START_WITH = "seed"
 
-dataset = cfg.DATASET
 
 def main():
     cfg.init()
+    exp_duplicate_seed()
 
+
+def exp_duplicate_seed():
+    dataset = cfg.DATASET
     for crop_size, crop_size_stamp in zip(cfg.ALL_CROP_SIZE, cfg.ALL_CROP_SIZE_STAMP):
         crop = crop_size['crop']
         size = crop_size['size']
@@ -24,15 +27,12 @@ def main():
         train_path = common.dataset_path(dataset + '_train', crop, size)
         train_path_ds = common.dataset_path(dataset + '_train_ds', crop, size)
 
-
-
         print("")
         print("")
         print("Duplicate seed on:")
         print("Training Set: " + train_path)
         print("")
         print("Out Training Set: " + train_path_ds)
-
 
         trainingset = ImageDataset()
         print("loading hdf5 training set: {}".format(train_path))

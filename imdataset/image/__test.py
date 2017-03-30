@@ -2,7 +2,7 @@ from scipy.misc import imshow
 
 import imdataset
 
-current_path = "/mnt/das4-fs4/var/scratch/rdchiaro/features-extraction/dataset/dataset_dbpedia_3120/" \
+current_path = "/mnt/das4-fs4/var/scratch/rdchiaro/E2_features-extraction/dataset/dataset_dbpedia_3120/" \
                "http:^^dbpedia.org^resource^1952_in_fine_arts_of_the_Soviet_Union"
 
 im_paths = imdataset.path.lsim(current_path, absolute_path=True, img_skip=0, img_limit=-1)

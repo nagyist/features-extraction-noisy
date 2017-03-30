@@ -50,7 +50,7 @@ def main(args):
 
 
         shallow_path = cfg.SHALLOW_PATH + "shallow_AB__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.best.h5"
-        LF.load_weights(shallow_path, by_name=True)
+        LF.load(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "AB best", testset_name, "test_results.csv", detailed_csv=True)
 
@@ -60,13 +60,13 @@ def main(args):
         # write_net_score(score, "AB last", testset_name, "test_results.csv", detailed_csv=True)
 
         shallow_path = cfg.SHALLOW_PATH + "shallow_AB__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.05.h5"
-        LF.load_weights(shallow_path, by_name=True)
+        LF.load(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "AB 5", testset_name, "test_results.csv", detailed_csv=True)
 
 
         shallow_path = cfg.SHALLOW_PATH + "shallow_AB__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.10.h5"
-        LF.load_weights(shallow_path, by_name=True)
+        LF.load(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "AB 10", testset_name, "test_results.csv", detailed_csv=True)
 
@@ -76,7 +76,7 @@ def main(args):
 
         for lfi in lf_index:
             shallow_path = cfg.SHALLOW_PATH + "shallow_OL_FT_AB__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.{}.h5".format(lfi)
-            LF.load_weights(shallow_path, by_name=True)
+            LF.load(shallow_path, by_name=True)
             score = test_net(LF, testset)
             write_net_score(score, "OL AB " + lfi, testset_name, "test_results.csv", detailed_csv=True)
 
@@ -89,23 +89,23 @@ def main(args):
 
 
         shallow_path = cfg.SHALLOW_PATH + "shallow_H8K__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.best.h5"
-        LF.load_weights(shallow_path, by_name=True)
+        LF.load(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "H8K best", testset_name, "test_results.csv", detailed_csv=True)
 
         shallow_path = cfg.SHALLOW_PATH + "shallow_H8K__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.last.h5"
-        LF.load_weights(shallow_path, by_name=True)
+        LF.load(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "H8K last", testset_name, "test_results.csv", detailed_csv=True)
 
         shallow_path = cfg.SHALLOW_PATH + "shallow_H8K__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.05.h5"
-        LF.load_weights(shallow_path, by_name=True)
+        LF.load(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "H8K 5", testset_name, "test_results.csv", detailed_csv=True)
 
 
         shallow_path = cfg.SHALLOW_PATH + "shallow_H8K__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.10.h5"
-        LF.load_weights(shallow_path, by_name=True)
+        LF.load(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "H8K 10", testset_name, "test_results.csv", detailed_csv=True)
 
@@ -115,7 +115,7 @@ def main(args):
 
         for lfi in lf_index:
             shallow_path = cfg.SHALLOW_PATH + "shallow_LF_FT_H8K__feat_dbp3120_train_ds_outl__resnet50__avg_pool.weights.{}.h5".format(lfi)
-            LF.load_weights(shallow_path, by_name=True)
+            LF.load(shallow_path, by_name=True)
             score = test_net(LF, testset)
             write_net_score(score, "LF H8K " + lfi, testset_name, "test_results.csv", detailed_csv=True)
 

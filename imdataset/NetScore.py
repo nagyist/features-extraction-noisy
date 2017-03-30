@@ -21,14 +21,21 @@ class NetScore():
         per_class_counter = np.zeros([testset.labelsize, ])
         at_least_one_in_class = np.zeros([testset.labelsize, ])
 
+        top5_args_array = np.zeros([testset.labelsize, 5])
+        top5_probs_array = np.zeros([testset.labelsize, 5])
+
         for i, prediction in enumerate(predictions):
             true_label = testset.getLabelInt(i)
-            top_5_args = prediction.argsort()[-5:][::-1]
+            top5_args = prediction.argsort()[-5:][::-1]
+            top5_probs = prediction[top5_args]
+            top5_args_array.append(top5_args)
+            top5_probs_array.append(top5_probs)
+
             arg_max = np.argmax(prediction)
 
             per_class_counter[true_label] += 1
             at_least_one_in_class[true_label] = 1
-            if true_label in top_5_args:
+            if true_label in top5_args:
                 per_class_top_5[true_label] += 1
                 global_top_5 += 1
             if arg_max == true_label:
@@ -85,7 +92,8 @@ class NetScore():
         self.perclass_examples = per_class_counter
         self.examples = int(np.sum(per_class_counter))
 
-
+        self.top5_classes_per_class = top5_args_array
+        self.top5_probs_per_class = top5_probs_array
 
     def print_global(self):
         print("\n\n")

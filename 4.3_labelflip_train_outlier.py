@@ -79,7 +79,7 @@ def main(args):
 
         from nets import new_model
         OL = new_model(in_shape, out_shape, outl=True, outl_alpha=0.00001)
-        OL.load_weights(shallow_path + '.weights.10.h5',by_name=True)
+        OL.load(shallow_path + '.weights.10.h5', by_name=True)
         optimizer = SGD(lr=0.0001, momentum=0.9, decay=1e-6, nesterov=True)
         addestra(OL, "OL_FT_AB", optimizer, epochs=100, callbacks=callbacks, chk_period=1)
 
@@ -98,7 +98,7 @@ def main(args):
         callbacks = [early_stopping, reduceLR]
 
         LF = new_model(in_shape, out_shape, hiddens=[Hidden(8000, 0.5)],  outl=True, outl_alpha=0.001)
-        LF.load_weights(shallow_path + '.weights.10.h5', by_name=True)
+        LF.load(shallow_path + '.weights.10.h5', by_name=True)
         optimizer = SGD(lr=0.001, momentum=0.9, decay=1e-6, nesterov=True)
         addestra(LF, "LF_FT_H8K", optimizer, epochs=100, callbacks=callbacks, chk_period=1)
 

@@ -21,7 +21,13 @@ def shallow_name(shallow_name, dataset_name, feat_net, ext=False):
     return ret
 
 def shallow_path(shallow_net_name, dataset_name, feat_net, ext=True):
-    return os.path.join(cfg.SHALLOW_PATH, shallow_name(shallow_net_name, dataset_name, feat_net, ext))
+    folder = shallow_folder_path(shallow_net_name, dataset_name, feat_net)
+    if not os.path.isdir(folder):
+        os.mkdir(folder)
+    return os.path.join(folder, shallow_name(shallow_net_name, dataset_name, feat_net, ext))
+
+def shallow_folder_path(shallow_net_name, dataset_name, feat_net):
+    return os.path.join(cfg.SHALLOW_PATH, shallow_name(shallow_net_name, dataset_name, feat_net, False))
 
 
 # EXTRACTED FEATURE DATASET
