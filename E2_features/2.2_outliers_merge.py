@@ -1,10 +1,9 @@
-from cfg import cfg
-from featext import features_extraction_helper
-import common
+from config import cfg, common
 from imdataset import ImageDataset
 
-BATCH = 64
 
+
+BATCH = 64
 
 def main():
     cfg.init()
@@ -12,11 +11,13 @@ def main():
 
 
 
+
+
 def exp_outlier_merge(sub_dataset=['_train', '_valid', '_test'], outlier_dataset_name='outliers'):
 
-    datasets = [cfg.DATASET + sd for sd in sub_dataset]
+    datasets = [cfg.dataset + sd for sd in sub_dataset]
 
-    for feat_net in cfg.NETS:
+    for feat_net in cfg.nets:
 
         outliers_dataset = common.feat_dataset(outlier_dataset_name, feat_net)
 

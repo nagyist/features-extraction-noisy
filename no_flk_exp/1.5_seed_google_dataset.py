@@ -1,6 +1,5 @@
-import cfg
-import common
-from common import dataset_fname
+import config
+from config import common
 from imdataset import ImageDataset
 
 
@@ -8,7 +7,7 @@ from imdataset import ImageDataset
 # PARAMS
 from imdataset.ImageDataset import SplitOptions
 
-if cfg.USE_TOY_DATASET:
+if config.USE_TOY_DATASET:
     FNAME_START_WITH = ["0001"]
     FNAME_END = []
 else:
@@ -18,15 +17,15 @@ else:
 
 
 def main():
-    cfg.init()
+    config.init()
 
-    for crop_size, crop_size_stamp in zip(cfg.ALL_CROP_SIZE, cfg.ALL_CROP_SIZE_STAMP):
+    for crop_size, crop_size_stamp in zip(config.ALL_CROP_SIZE, config.ALL_CROP_SIZE_STAMP):
         crop = crop_size['crop']
         size = crop_size['size']
 
-        dataset_path = common.dataset_path(cfg.DATASET, crop, size)
-        out_validset_path =  common.dataset_path(cfg.DATASET + '_sg_valid', crop, size)
-        out_trainset_path =  common.dataset_path(cfg.DATASET + '_sg_train', crop, size)
+        dataset_path = common.dataset_path(config.DATASET, crop, size)
+        out_validset_path =  common.dataset_path(config.DATASET + '_sg_valid', crop, size)
+        out_trainset_path =  common.dataset_path(config.DATASET + '_sg_train', crop, size)
 
 
         print("")

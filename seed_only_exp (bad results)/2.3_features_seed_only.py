@@ -1,9 +1,8 @@
-import cfg
+import config
+from config import common
 from featext import features_extraction_helper
-import common
 
-
-NETS = cfg.NETS
+NETS = config.NETS
 #NETS = ["inception_v3", "vgg16", "vgg19"]
 
 
@@ -12,14 +11,14 @@ BATCH = 64
 
 
 def main():
-    cfg.init()
+    config.init()
 
     print NETS
     for feat_net in NETS:
-        crop, size = cfg.crop_size(net=feat_net)
+        crop, size = config.crop_size(net=feat_net)
 
-        train_name = cfg.DATASET + "_so"
-        test_name = cfg.DATASET + '_so_test'
+        train_name = config.DATASET + "_so"
+        test_name = config.DATASET + '_so_test'
 
 
         DATASETS = [train_name, test_name]

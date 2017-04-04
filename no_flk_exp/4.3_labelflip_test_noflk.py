@@ -1,13 +1,11 @@
-
 import sys
-from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
+
 from keras.layers import Flatten, Dense, Dropout, Activation
 from keras.models import Sequential
-from keras.optimizers import SGD
-import cfg
-import common
+
+import config
 from Layers import LabelFlipNoise
-from imdataset import ImageDataset
+from config import common
 from test import test_net, write_net_score
 
 LOSS = 'categorical_crossentropy'
@@ -17,7 +15,7 @@ BATCH = 32
 
 
 def main(args):
-    cfg.init()
+    config.init()
 
 
 
@@ -33,7 +31,7 @@ def main(args):
 
     testset = common.feat_dataset(testset_name, feat_net)
 
-    in_shape = cfg.feat_shape_dict[feat_net]
+    in_shape = config.feat_shape_dict[feat_net]
     out_shape = testset.labelsize
 
 
@@ -44,54 +42,54 @@ def main(args):
         #shallow_path = common.shallow_path("LF_FT_A", trainset_name, feat_net, ext=False)
         LF = new_model(in_shape, out_shape)
 
-        # shallow_path = cfg.SHALLOW_PATH + "shallow_AB__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.best.h5"
+        # shallow_path = config.SHALLOW_PATH + "shallow_AB__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.best.h5"
         # LF.load_weights(shallow_path, by_name=True)
         # score = test_net(LF, testset)
         # write_net_score(score, "AB best", testset_name, "test_results.csv", detailed_csv=True)
         #
-        # shallow_path = cfg.SHALLOW_PATH + "shallow_AB__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.last.h5"
+        # shallow_path = config.SHALLOW_PATH + "shallow_AB__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.last.h5"
         # LF.load_weights(shallow_path, by_name=True)
         # score = test_net(LF, testset)
         # write_net_score(score, "AB last", testset_name, "test_results.csv", detailed_csv=True)
 
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.best.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.best.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "A best (5ep)", testset_name, "test_results.csv", detailed_csv=True)
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.last.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.last.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "A last (5ep)", testset_name, "test_results.csv", detailed_csv=True)
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.best.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.best.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "LF A best", testset_name, "test_results.csv", detailed_csv=True)
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.00.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.00.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "LF A 0", testset_name, "test_results.csv", detailed_csv=True)
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.01.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.01.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "LF A 1", testset_name, "test_results.csv", detailed_csv=True)
 
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.02.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.02.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "LF A 2", testset_name, "test_results.csv", detailed_csv=True)
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.03.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.03.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "LF A 3", testset_name, "test_results.csv", detailed_csv=True)
 
-        shallow_path = cfg.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.04.h5"
+        shallow_path = config.SHALLOW_PATH + "shallow_LF_FT_A__feat_dbp3120_noflk_train_ds__resnet50__avg_pool.weights.04.h5"
         LF.load_weights(shallow_path, by_name=True)
         score = test_net(LF, testset)
         write_net_score(score, "LF A 4", testset_name, "test_results.csv", detailed_csv=True)

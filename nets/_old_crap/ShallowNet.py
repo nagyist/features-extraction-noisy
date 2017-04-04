@@ -71,7 +71,7 @@ class ShallowNet():
 
     def save(self, dir_path=None):
         """save class as self.name.txt"""
-        path = self.model_fname+'.cfg'
+        path = self.model_fname+'.config'
         if dir_path is not None:
             path = os.path.join(dir_path, path)
         file = open(path,'w')
@@ -82,7 +82,7 @@ class ShallowNet():
 
     def load(self, model_fname, dir_path=None):
         """try load self.name.txt"""
-        path = model_fname+'.cfg'
+        path = model_fname+'.config'
         if dir_path is not None:
             path = os.path.join(dir_path, path)
         file = open(path,'r')

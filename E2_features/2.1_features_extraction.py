@@ -1,10 +1,5 @@
-from cfg import cfg
+from config import cfg, common
 from featext import features_extraction_helper
-import common
-
-
-
-
 
 BATCH = 64
 
@@ -20,12 +15,12 @@ def main():
 
 
 def exp_features_extraction(sub_dataset=['_train', '_valid', '_test']):
-    datasets = [cfg.DATASET + sd for sd in sub_dataset]
+    datasets = [cfg.dataset + sd for sd in sub_dataset]
 
-    print "Executing on nets: " + str(cfg.NETS)
+    print "Executing on nets: " + str(cfg.nets)
     print "Executing on datasets: " + str(datasets)
 
-    for feat_net in cfg.NETS:
+    for feat_net in cfg.nets:
         crop, size = cfg.crop_size(net=feat_net)
 
         print("|- Net: " + feat_net)

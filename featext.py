@@ -1,7 +1,7 @@
 import net_utils
 from argparse import ArgumentParser
 import sys
-import cfg
+import config
 from imdataset import ImageDataset
 
 
@@ -20,9 +20,9 @@ def features_extraction_helper(net, dataset_path, out_dataset_path, alternative_
         return
     printv("dataset loaded.")
 
-    model = cfg.trained_net_dict[net]()
+    model = config.trained_net_dict[net]()
     if alternative_out_layer is None:
-        alternative_out_layer = cfg.feature_layer_dict[net]
+        alternative_out_layer = config.feature_layer_dict[net]
     feature_vectors = net_utils.extract_features(model, dataset, alternative_out_layer, batch_size, verbose)
     feature_vectors.save_hdf5(out_dataset_path)
     printv("Feature extracted dataset saved in: " + out_dataset_path)
@@ -32,7 +32,7 @@ def features_extraction_helper(net, dataset_path, out_dataset_path, alternative_
 def main(argv):
 
     parser = ArgumentParser()
-    parser.add_argument('-n', "-net", action='store', dest='net', required=True, choices=cfg.NETS)
+    parser.add_argument('-n', "-net", action='store', dest='net', required=True, choices=config.NETS)
     parser.add_argument('-d', "-dataset", action='store', dest='dataset_path', required=True)
     parser.add_argument('-o', "-out", action='store', dest='out_dataset_path', required=True)
 
@@ -46,7 +46,7 @@ def main(argv):
     a = parser.parse_args()
 
 
-    cfg.init("FEATURES EXTRACTION", is_experiment=False , use_local=a.use_local)
+    config.init("FEATURES EXTRACTION", is_experiment=False, use_local=a.use_local)
 
 
     features_extraction_helper(a.net, a.dataset_path, a.out_dataset_path, a.alternative_out_layer, a.batch_size, a.verbose)

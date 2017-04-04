@@ -1,16 +1,13 @@
-
 import sys
+
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
 from keras.layers import Flatten, Dense, Dropout, Activation
 from keras.models import Sequential
 from keras.optimizers import SGD
-import cfg
-import common
+
+import config
 from Layers import LabelFlipNoise
-from imdataset import ImageDataset
-
-
-
+from config import common
 
 LOSS = 'categorical_crossentropy'
 METRIC = ['accuracy']
@@ -19,7 +16,7 @@ BATCH = 32
 
 
 def main(args):
-    cfg.init()
+    config.init()
 
 
 
@@ -30,20 +27,20 @@ def main(args):
 
 
 
-    if cfg.USE_TOY_DATASET:
-        trainset_name = cfg.DATASET + '_train'
+    if config.USE_TOY_DATASET:
+        trainset_name = config.DATASET + '_train'
         trainset = common.feat_dataset(trainset_name, feat_net)
         trainset.shuffle()
         valid_data = None
         valid_split = 0.3
     else:
-        trainset_name = cfg.DATASET + '_train_ds'
+        trainset_name = config.DATASET + '_train_ds'
         trainset = common.feat_dataset(trainset_name, feat_net)
-        validset = common.feat_dataset( cfg.DATASET + '_valid', feat_net)
+        validset = common.feat_dataset(config.DATASET + '_valid', feat_net)
         valid_data = (validset.data, validset.getLabelsVec())
         valid_split = 0
 
-    in_shape = cfg.feat_shape_dict[feat_net]
+    in_shape = config.feat_shape_dict[feat_net]
     out_shape = trainset.labelsize
 
 

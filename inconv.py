@@ -2,7 +2,7 @@ import os
 from argparse import ArgumentParser
 import sys
 
-import cfg
+import config
 from imdataset import imdir_label_to_hdf5_dataset
 
 
@@ -29,7 +29,7 @@ def input_conversion_help(folder_dataset_path, output_h5, crop, size, remove_emp
 #
 # def main(argv):
 #     parser = ArgumentParser()
-#     parser.add_argument('-n', "-net",     action='store', dest='net', required=False, choices=cfg.NETS)
+#     parser.add_argument('-n', "-net",     action='store', dest='net', required=False, choices=config.NETS)
 #     parser.add_argument('-c', '-crop', "--dataset", action='store', dest='crop',  required=False, type=int)
 #     parser.add_argument('-s','-size', "--dataset", action='store', dest='size',  required=False, type=int)
 #     parser.add_argument('-d', "-dataset", action='store', dest='dataset_path',  required=True, type=str)

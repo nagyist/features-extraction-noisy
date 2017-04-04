@@ -1,18 +1,17 @@
-from cfg import cfg
-import common
-from common import dataset_path
+from config import cfg, common
 from imdataset import ImageDataset
 from imdataset.ImageDataset import SplitOptions
 
-
 # EXPERIMENT PARAMETERS:
-if cfg.USE_TOY_DATASET:
+if cfg.use_toy_dataset:
     split_options = [SplitOptions("", 0.25)]
     exclude_file_starting_with = ["image"]
 else:
     #split_options = [SplitOptions("flickr", 0.25), SplitOptions("google", 0.3)]
     split_options = [SplitOptions("google", 0.25)]  # FOR DATASET WITHOUT FLICKR
     exclude_file_starting_with = ["seed"]
+
+
 
 def main():
     cfg.init()
@@ -26,8 +25,8 @@ def main():
 
 
 def exp_split_dataset():
-    dataset = cfg.DATASET
-    for crop_size, crop_size_stamp in zip(cfg.ALL_CROP_SIZE, cfg.ALL_CROP_SIZE_STAMP):
+    dataset = cfg.dataset
+    for crop_size in cfg.all_crop_size:
         crop = crop_size['crop']
         size = crop_size['size']
 

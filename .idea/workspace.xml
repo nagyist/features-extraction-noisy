@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d274d0f-1f5e-4f4c-8fd2-1f8db3f4e80b" name="Default" comment="" />
+    <list default="true" id="0d274d0f-1f5e-4f4c-8fd2-1f8db3f4e80b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E3_shallow/e1_shallow_train.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E3_shallow/e2_finetune_labelflip.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E3_shallow/e3_shallow_test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E3_shallow/f2_finetune_labelflip.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E3_shallow/f3_shallow_test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E4_shallow_features_clustering/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E4_shallow_features_clustering/e1_extract_features.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/common.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/config.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp2.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4.1_labelflip_train.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4.2_labelflip_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4.3_labelflip_train_outlier.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4.4_labelflip_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/E3_shallow/3.1_shallow_train.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/E3_shallow/3.2_finetune_labelflip.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/E3_shallow/3.3_shallow_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cfg/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cfg/cfg.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/common.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/image_dataset_hdf5.tmp (copy).tmp.h5" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1_data/1.1_convert_folder_to_dataset.py" afterPath="$PROJECT_DIR$/E1_data/1.1_convert_folder_to_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1_data/1.2_split_dataset.py" afterPath="$PROJECT_DIR$/E1_data/1.2_split_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py" afterPath="$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E2_features/2.1_features_extraction.py" afterPath="$PROJECT_DIR$/E2_features/2.1_features_extraction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E2_features/2.2_outliers_merge.py" afterPath="$PROJECT_DIR$/E2_features/2.2_outliers_merge.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/Shallow.py" afterPath="$PROJECT_DIR$/E3_shallow/Shallow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/featext.py" afterPath="$PROJECT_DIR$/featext.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/ImageDataset.py" afterPath="$PROJECT_DIR$/imdataset/ImageDataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/NetScore.py" afterPath="$PROJECT_DIR$/imdataset/NetScore.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inconv.py" afterPath="$PROJECT_DIR$/inconv.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelflip_A/4.1_labelflip_train.py" afterPath="$PROJECT_DIR$/labelflip_A/4.1_labelflip_train.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelflip_A/4.2_labelflip_test.py" afterPath="$PROJECT_DIR$/labelflip_A/4.2_labelflip_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nets/_old_crap/ShallowNet.py" afterPath="$PROJECT_DIR$/nets/_old_crap/ShallowNet.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/no_flk_exp/1.5_seed_google_dataset.py" afterPath="$PROJECT_DIR$/no_flk_exp/1.5_seed_google_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/no_flk_exp/4.3_labelflip_test_noflk.py" afterPath="$PROJECT_DIR$/no_flk_exp/4.3_labelflip_test_noflk.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/1.4_seed_only_dataset.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/1.4_seed_only_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/2.3_features_seed_only.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/2.3_features_seed_only.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/3.2_shallow_train_so.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/3.2_shallow_train_so.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/4.3_labelflip_train_so.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/4.3_labelflip_train_so.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/4.4_labelflip_test_so.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/4.4_labelflip_test_so.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,26 +60,32 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$1_2_split_dataset.coverage" NAME="1.2_split_dataset Coverage Results" MODIFIED="1490563989892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp2.coverage" NAME="exp2 Coverage Results" MODIFIED="1491242897605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$2_2_outliers_merge.coverage" NAME="2.2_outliers_merge Coverage Results" MODIFIED="1490871728020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/feature-extraction-noisy$1_1_convert_folder_to_dataset.coverage" NAME="1.1_convert_folder_to_dataset Coverage Results" MODIFIED="1490867377913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$1_1_convert_folder_to_dataset.coverage" NAME="1.1_convert_folder_to_dataset Coverage Results" MODIFIED="1490961325860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E1_data" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$3_1_shallow_train.coverage" NAME="3.1_shallow_train Coverage Results" MODIFIED="1490356888597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp.coverage" NAME="exp Coverage Results" MODIFIED="1491222987915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp5_shallow_train.coverage" NAME="exp5_shallow_train Coverage Results" MODIFIED="1490295696162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/3_shallow_classifier" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$clustering_test.coverage" NAME="clustering_test Coverage Results" MODIFIED="1491242877031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E4_shallow_features_clustering" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$convert_that_fcking_h5.coverage" NAME="convert_that_fcking_h5 Coverage Results" MODIFIED="1490649312752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$1_4_seed_only_dataset.coverage" NAME="1.4_seed_only_dataset Coverage Results" MODIFIED="1490462513023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$2_1_features_extraction.coverage" NAME="2.1_features_extraction Coverage Results" MODIFIED="1490867444458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$clustering_test_mydata.coverage" NAME="clustering_test_mydata Coverage Results" MODIFIED="1491245907515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E4_shallow_features_clustering" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="clustering_test_mydata.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="564">
+              <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+              <folding>
+                <element signature="e#278#329#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,52 +93,38 @@
       <file leaf-file-name="Shallow.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/E3_shallow/Shallow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2049">
-              <caret line="231" column="66" lean-forward="false" selection-start-line="231" selection-start-column="66" selection-end-line="231" selection-end-column="66" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3.3_shallow_test.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/E3_shallow/3.3_shallow_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+            <state relative-caret-position="450">
+              <caret line="54" column="26" lean-forward="true" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NetScore.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imdataset/NetScore.py">
+      <file leaf-file-name="e1_shallow_train.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E3_shallow/e1_shallow_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="699">
-              <caret line="95" column="33" lean-forward="false" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="33" />
+            <state relative-caret-position="255">
+              <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common.py">
+      <file leaf-file-name=".fuse_hidden0002cb5100000007" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/E3_shallow/.fuse_hidden0002cb5100000007">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="315">
+              <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="4.2_labelflip_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/4.2_labelflip_test.py">
+      <file leaf-file-name="hierarchy.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python2.7/dist-packages/scipy/cluster/hierarchy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="121" column="16" lean-forward="false" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
+            <state relative-caret-position="24945">
+              <caret line="1711" column="44" lean-forward="true" selection-start-line="1711" selection-start-column="44" selection-end-line="1711" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -112,40 +153,28 @@
       <find>dbp3120_train</find>
       <find>PRE_W</find>
       <find>init</find>
+      <find>use_to</find>
+      <find>use_toy</find>
+      <find>Cfg</find>
+      <find>self.valid</find>
+      <find>valid</find>
+      <find>arr</find>
+      <find>crop</find>
     </findStrings>
     <replaceStrings>
       <replace>dbp3120_noflk_train</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2.2_features_extraction_2.py" />
-        <option value="$PROJECT_DIR$/nets/__init__.py" />
-        <option value="$PROJECT_DIR$/3.2_shallow_train_2.py" />
-        <option value="$PROJECT_DIR$/3.2_shallow_train_only_seed.py" />
-        <option value="$PROJECT_DIR$/convert_that_fcking_h5.py" />
-        <option value="$PROJECT_DIR$/3.3_shallow_train_only_seed.py" />
-        <option value="$PROJECT_DIR$/imdataset/image/images.py" />
-        <option value="$PROJECT_DIR$/convert_bad_saved_h5_dataset.py" />
-        <option value="$PROJECT_DIR$/featext.py" />
-        <option value="$PROJECT_DIR$/imdataset/path/path.py" />
-        <option value="$PROJECT_DIR$/2.3_features_seed_only.py" />
-        <option value="$PROJECT_DIR$/4.1_labelflip_train_so.py" />
-        <option value="$PROJECT_DIR$/4.3_labelflip_train_so.py" />
-        <option value="$PROJECT_DIR$/1_task.sh" />
-        <option value="$PROJECT_DIR$/no_flk_exp/4.3_labelflip_test_noflk.py" />
-        <option value="$PROJECT_DIR$/no_flk_exp/todo.txt" />
-        <option value="$PROJECT_DIR$/4.4_labelflip_test_so.py" />
-        <option value="$PROJECT_DIR$/seed_only_exp (bad results)/4.4_labelflip_test_so.py" />
-        <option value="$PROJECT_DIR$/4.3_labelflip_test_noflk.py" />
-        <option value="$PROJECT_DIR$/3.2_shallow_train_so.py" />
-        <option value="$PROJECT_DIR$/4.2_labelflip_test.py" />
         <option value="$PROJECT_DIR$/4.1_labelflip_train.py" />
         <option value="$PROJECT_DIR$/seed_only_exp (bad results)/1.7_outlier_dataset.py" />
         <option value="$PROJECT_DIR$/1.7_outlier_dataset.py" />
         <option value="$PROJECT_DIR$/2.2_outliers_join.py" />
-        <option value="$PROJECT_DIR$/imdataset/ImageDataset.py" />
         <option value="$PROJECT_DIR$/Layers/OutlierNoise.py" />
         <option value="$PROJECT_DIR$/nets/shallow_net.py" />
         <option value="$PROJECT_DIR$/3.2_shallow_train_outlier.py" />
@@ -155,22 +184,44 @@
         <option value="$PROJECT_DIR$/4.3_labelflip_train_outlier.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/cfg.py" />
-        <option value="$PROJECT_DIR$/cfg/__init__.py" />
         <option value="$PROJECT_DIR$/1.2_split_dataset.py" />
         <option value="$PROJECT_DIR$/1.3_duplicate_seed.py" />
         <option value="$PROJECT_DIR$/2.1_features_extraction.py" />
         <option value="$PROJECT_DIR$/2.2_outliers_merge.py" />
         <option value="$PROJECT_DIR$/1.1_convert_folder_to_dataset.py" />
-        <option value="$PROJECT_DIR$/cfg/cfg.py" />
         <option value="$PROJECT_DIR$/3.1_shallow_train.py" />
         <option value="$PROJECT_DIR$/1_data/__init__.py" />
-        <option value="$PROJECT_DIR$/E3_shallow/3.1_shallow_train.py" />
-        <option value="$PROJECT_DIR$/E3_shallow/3.2_finetune_labelflip.py" />
         <option value="$PROJECT_DIR$/E1_data/__init__.py" />
+        <option value="$PROJECT_DIR$/cfg/cls.py" />
+        <option value="$PROJECT_DIR$/cfg/__init__.py" />
+        <option value="$PROJECT_DIR$/cfg/cfg.py" />
         <option value="$PROJECT_DIR$/common.py" />
-        <option value="$PROJECT_DIR$/imdataset/NetScore.py" />
-        <option value="$PROJECT_DIR$/E3_shallow/Shallow.py" />
+        <option value="$PROJECT_DIR$/config/__init__.py" />
+        <option value="$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py" />
+        <option value="$PROJECT_DIR$/E1_data/1.1_convert_folder_to_dataset.py" />
+        <option value="$PROJECT_DIR$/E1_data/1.2_split_dataset.py" />
+        <option value="$PROJECT_DIR$/E2_features/2.1_features_extraction.py" />
+        <option value="$PROJECT_DIR$/E2_features/2.2_outliers_merge.py" />
         <option value="$PROJECT_DIR$/E3_shallow/3.3_shallow_test.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/3.2_finetune_labelflip.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/3.1_shallow_train.py" />
+        <option value="$PROJECT_DIR$/config/config.py" />
+        <option value="$PROJECT_DIR$/imdataset/ImageDataset.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/e2_finetune_labelflip.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/e1_shallow_train.py" />
+        <option value="$PROJECT_DIR$/exp.py" />
+        <option value="$PROJECT_DIR$/imdataset/NetScore.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/e3_shallow_test.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/f1_shallow_train.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/f2_finetune_labelflip.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/f3_shallow_test.py" />
+        <option value="$PROJECT_DIR$/E4_shallow_features_clustering/__init__.py" />
+        <option value="$PROJECT_DIR$/exp2.py" />
+        <option value="$PROJECT_DIR$/config/common.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/Shallow.py" />
+        <option value="$PROJECT_DIR$/E4_shallow_features_clustering/e1_extract_features.py" />
+        <option value="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test.py" />
+        <option value="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py" />
       </list>
     </option>
   </component>
@@ -201,7 +252,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -230,32 +281,32 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dnn-feature-extraction" />
+    <property name="last_opened_file_path" value="$USER_HOME$/workspace/dbpedia-dataset" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/E3_shallow" />
       <recent name="$PROJECT_DIR$/features" />
       <recent name="$PROJECT_DIR$/1_data" />
       <recent name="$PROJECT_DIR$/cfg" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/E3_shallow" />
+      <recent name="$PROJECT_DIR$/E4_shallow_features_clustering" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/E3_shallow" />
       <recent name="$PROJECT_DIR$/labelflip_A" />
       <recent name="$PROJECT_DIR$/3_shallow_classifier" />
-      <recent name="$PROJECT_DIR$/1_prepare_dataset" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.2.2_outliers_merge">
-    <configuration default="false" name="2.1_features_extraction" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.clustering_test_mydata">
+    <configuration default="false" name="exp" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -268,12 +319,12 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="feature-extraction-noisy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/features/2.1_features_extraction.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="convert_that_fcking_h5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="exp2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -286,61 +337,43 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="feature-extraction-noisy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert_bad_saved_h5_dataset.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="1.1_convert_folder_to_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="clustering_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/E4_shallow_features_clustering" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="feature-extraction-noisy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_data/1.1_convert_folder_to_dataset.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="1.2_split_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="clustering_test_mydata" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/E4_shallow_features_clustering" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="feature-extraction-noisy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_data/1.2_split_dataset.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="2.2_outliers_merge" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="feature-extraction-noisy" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/features/2.2_outliers_merge.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -445,6 +478,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -564,20 +603,18 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.2.1_features_extraction" />
-      <item index="1" class="java.lang.String" itemvalue="Python.convert_that_fcking_h5" />
-      <item index="2" class="java.lang.String" itemvalue="Python.1.1_convert_folder_to_dataset" />
-      <item index="3" class="java.lang.String" itemvalue="Python.1.2_split_dataset" />
-      <item index="4" class="java.lang.String" itemvalue="Python.2.2_outliers_merge" />
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Python.exp" />
+      <item index="1" class="java.lang.String" itemvalue="Python.exp2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.clustering_test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.clustering_test_mydata" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.2.2_outliers_merge" />
-        <item index="1" class="java.lang.String" itemvalue="Python.2.1_features_extraction" />
-        <item index="2" class="java.lang.String" itemvalue="Python.1.1_convert_folder_to_dataset" />
-        <item index="3" class="java.lang.String" itemvalue="Python.convert_that_fcking_h5" />
-        <item index="4" class="java.lang.String" itemvalue="Python.1.2_split_dataset" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.clustering_test_mydata" />
+        <item index="1" class="java.lang.String" itemvalue="Python.exp2" />
+        <item index="2" class="java.lang.String" itemvalue="Python.clustering_test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.exp" />
       </list>
     </recent_temporary>
   </component>
@@ -596,26 +633,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="-1" width="1600" height="1201" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910246" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38259292" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1631913" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38203266" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910246" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41379312" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,19 +668,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/E1_data/1.2_split_dataset.py</url>
-          <line>62</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/convert_bad_saved_h5_dataset.py</url>
           <line>4</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/imdataset/path/path.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="96" />
+          <url>file://$PROJECT_DIR$/E3_shallow/Shallow.py</url>
+          <line>295</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py</url>
+          <line>137</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="153" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -656,170 +698,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="105" />
+      <option name="time" value="160" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/lib/python2.7/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="156" column="0" lean-forward="false" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/h5py/_hl/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="470" column="0" lean-forward="false" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2.2_features_extraction_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imdataset/image/images.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="145" column="4" lean-forward="false" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imdataset/path/path.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/convert_bad_saved_h5_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seed_only_exp (bad results)/1.4_seed_only_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seed_only_exp (bad results)/2.3_features_seed_only.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="32" column="58" lean-forward="true" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3.2_shallow_train_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3.3_shallow_train_only_seed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-660">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/callbacks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="706" column="8" lean-forward="false" selection-start-line="706" selection-start-column="8" selection-end-line="706" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seed_only_exp (bad results)/4.3_labelflip_train_so.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="46" column="63" lean-forward="false" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1_task.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="84" lean-forward="false" selection-start-line="5" selection-start-column="84" selection-end-line="5" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/no_flk_exp/1.5_seed_google_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/no_flk_exp/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="46" lean-forward="true" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/no_flk_exp/4.3_labelflip_test_noflk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seed_only_exp (bad results)/4.4_labelflip_test_so.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345">
-          <caret line="34" column="35" lean-forward="false" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/no_flk_exp/4.3_labelflip_test_noflk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/labelflip_A/4.1_labelflip_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1620">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labelflip_A/4.2_labelflip_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -827,143 +714,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1.7_outlier_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/1.7_outlier_dataset.py" />
     <entry file="file://$USER_HOME$/.PyCharm2016.3/system/python_stubs/-1247972723/numpy/core/multiarray.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="606" column="42" lean-forward="true" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="676" column="31" lean-forward="true" selection-start-line="676" selection-start-column="31" selection-end-line="676" selection-end-column="31" />
-          <folding>
-            <element signature="e#440#498#0" expanded="false" />
-            <element signature="e#525#1418#0" expanded="false" />
-            <element signature="e#690#1418#0" expanded="false" />
-            <element signature="e#690#994#1" expanded="false" />
-            <element signature="e#2081#8410#0" expanded="false" />
-            <element signature="e#2081#2351#1" expanded="false" />
-            <element signature="e#2801#6161#0" expanded="false" />
-            <element signature="e#2906#3021#0" expanded="false" />
-            <element signature="e#3629#5710#0" expanded="false" />
-            <element signature="e#4674#5710#0" expanded="false" />
-            <element signature="e#4761#5244#0" expanded="false" />
-            <element signature="e#5290#5710#0" expanded="false" />
-            <element signature="e#5780#6161#0" expanded="false" />
-            <element signature="e#5853#5926#0" expanded="false" />
-            <element signature="e#5985#6161#0" expanded="false" />
-            <element signature="e#6195#6307#0" expanded="false" />
-            <element signature="e#6462#6771#0" expanded="false" />
-            <element signature="e#6803#6819#0" expanded="false" />
-            <element signature="e#8438#8473#0" expanded="false" />
-            <element signature="e#10373#10531#0" expanded="false" />
-            <element signature="e#10634#10646#0" expanded="false" />
-            <element signature="e#12545#13562#0" expanded="false" />
-            <element signature="e#12578#12636#0" expanded="false" />
-            <element signature="e#13604#14462#0" expanded="false" />
-            <element signature="e#13778#13864#0" expanded="false" />
-            <element signature="e#13891#14442#0" expanded="false" />
-            <element signature="e#14616#15386#0" expanded="false" />
-            <element signature="e#14823#15002#0" expanded="false" />
-            <element signature="e#15068#15205#0" expanded="false" />
-            <element signature="e#15558#17987#0" expanded="false" />
-            <element signature="e#15592#15759#0" expanded="false" />
-            <element signature="e#15930#17714#0" expanded="false" />
-            <element signature="e#16068#17714#0" expanded="false" />
-            <element signature="e#16147#16448#0" expanded="false" />
-            <element signature="e#16259#16448#0" expanded="false" />
-            <element signature="e#16529#16873#0" expanded="false" />
-            <element signature="e#16574#16784#0" expanded="false" />
-            <element signature="e#17074#17392#0" expanded="false" />
-            <element signature="e#17436#17685#0" expanded="false" />
-            <element signature="e#17477#17685#0" expanded="false" />
-            <element signature="e#17787#17966#0" expanded="false" />
-            <element signature="e#17843#17966#0" expanded="false" />
-            <element signature="e#18025#18043#0" expanded="false" />
-            <element signature="e#18095#18330#0" expanded="false" />
-            <element signature="e#18135#18292#0" expanded="false" />
-            <element signature="e#18382#18617#0" expanded="false" />
-            <element signature="e#18422#18579#0" expanded="false" />
-            <element signature="e#18666#18716#0" expanded="false" />
-            <element signature="e#18765#19022#0" expanded="false" />
-            <element signature="e#18805#18984#0" expanded="false" />
-            <element signature="e#19071#19126#0" expanded="false" />
-            <element signature="e#19132#19174#0" expanded="false" />
-            <element signature="e#19666#19781#0" expanded="false" />
-            <element signature="e#19831#20002#0" expanded="false" />
-            <element signature="e#20055#20129#0" expanded="false" />
-            <element signature="e#20182#20241#0" expanded="false" />
-            <element signature="e#20296#20458#0" expanded="false" />
-            <element signature="e#20340#20458#0" expanded="false" />
-            <element signature="e#20513#20674#0" expanded="false" />
-            <element signature="e#20674#20705#0" expanded="false" />
-            <element signature="e#21257#21340#0" expanded="false" />
-            <element signature="e#21636#25493#0" expanded="false" />
-            <element signature="e#21636#21977#1" expanded="false" />
-            <element signature="e#22095#25448#0" expanded="false" />
-            <element signature="e#22466#23218#0" expanded="false" />
-            <element signature="e#22568#22731#0" expanded="false" />
-            <element signature="e#22628#22731#0" expanded="false" />
-            <element signature="e#22786#23218#0" expanded="false" />
-            <element signature="e#22910#23121#0" expanded="false" />
-            <element signature="e#22984#23121#0" expanded="false" />
-            <element signature="e#23405#24556#0" expanded="false" />
-            <element signature="e#23915#24556#0" expanded="false" />
-            <element signature="e#23979#24268#0" expanded="false" />
-            <element signature="e#24319#24542#0" expanded="false" />
-            <element signature="e#24556#24601#0" expanded="false" />
-            <element signature="e#24956#25124#0" expanded="false" />
-            <element signature="e#25281#25448#0" expanded="false" />
-            <element signature="e#25546#25913#0" expanded="false" />
-            <element signature="e#28897#29533#0" expanded="false" />
-            <element signature="e#29019#29495#0" expanded="false" />
-            <element signature="e#29141#29179#0" expanded="false" />
-            <element signature="e#29658#29977#0" expanded="false" />
-            <element signature="e#30108#30833#0" expanded="false" />
-            <element signature="e#30298#30757#0" expanded="false" />
-            <element signature="e#30366#30441#0" expanded="false" />
-            <element signature="e#30408#30441#0" expanded="false" />
-            <element signature="e#30510#30757#0" expanded="false" />
-            <element signature="e#30584#30665#0" expanded="false" />
-            <element signature="e#30628#30665#0" expanded="false" />
-            <element signature="e#30916#31574#0" expanded="false" />
-            <element signature="e#31041#31536#0" expanded="false" />
-            <element signature="e#31127#31128#0" expanded="false" />
-            <element signature="e#31607#31711#0" expanded="false" />
-            <element signature="e#31756#31822#0" expanded="false" />
-            <element signature="e#31894#32899#0" expanded="false" />
-            <element signature="e#32255#32822#0" expanded="false" />
-            <element signature="e#32410#32822#0" expanded="false" />
-            <element signature="e#32940#33023#0" expanded="false" />
-            <element signature="e#33070#33169#0" expanded="false" />
-            <element signature="e#33223#33842#0" expanded="false" />
-            <element signature="e#33423#33622#0" expanded="false" />
-            <element signature="e#33457#33572#0" expanded="false" />
-            <element signature="e#33731#33826#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/featext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="47" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,9 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#55#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -981,19 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Layers/OutlierNoise.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#50#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1005,194 +747,281 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/4.4_labelflip_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="62" column="51" lean-forward="true" selection-start-line="62" selection-start-column="51" selection-end-line="62" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/4.3_labelflip_train_outlier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="75" column="74" lean-forward="false" selection-start-line="75" selection-start-column="74" selection-end-line="75" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E1_data/1.2_split_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/__init__.py">
+    <entry file="file://$PROJECT_DIR$/4.3_labelflip_train_outlier.py" />
+    <entry file="file://$PROJECT_DIR$/E3_shallow/3.2_shallow_train_outlier.py" />
+    <entry file="file://$PROJECT_DIR$/4.1_labelflip_train.py" />
+    <entry file="file://$PROJECT_DIR$/E1_data/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E2_features/2.2_outliers_merge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E2_features/2.1_features_extraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/cfg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E1_data/1.1_convert_folder_to_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="7" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nets/shallow_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="47" lean-forward="false" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E3_shallow/3.2_shallow_train_outlier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/4.1_labelflip_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="105" column="13" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E3_shallow/3.1_shallow_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="16" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-          <folding>
-            <element signature="e#1#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E3_shallow/3.2_finetune_labelflip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/4.2_labelflip_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="121" column="16" lean-forward="false" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
-          <folding />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E1_data/__init__.py">
+    <entry file="file://$PROJECT_DIR$/4.4_labelflip_test.py" />
+    <entry file="file://$PROJECT_DIR$/4.2_labelflip_test.py" />
+    <entry file="file://$PROJECT_DIR$/config/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E1_data/1.2_split_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E1_data/1.1_convert_folder_to_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imdataset/path/path.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E2_features/2.2_outliers_merge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common.py">
+    <entry file="file:///usr/lib/python2.7/dist-packages/h5py/_hl/files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="318" column="0" lean-forward="true" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nets/shallow_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Layers/OutlierNoise.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Layers/LabelFlipNoise.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1494">
+          <caret line="177" column="3" lean-forward="true" selection-start-line="177" selection-start-column="3" selection-end-line="177" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/e2_finetune_labelflip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="654">
+          <caret line="69" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/shape_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-470">
+          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/metrics/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2770">
+          <caret line="1114" column="0" lean-forward="false" selection-start-line="1114" selection-start-column="0" selection-end-line="1114" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imdataset/NetScore.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="95" column="33" lean-forward="false" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="33" />
+        <state relative-caret-position="450">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/f1_shallow_train.py" />
+    <entry file="file://$PROJECT_DIR$/E3_shallow/f2_finetune_labelflip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="42" column="22" lean-forward="true" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/f3_shallow_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="156" column="13" lean-forward="false" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/e3_shallow_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="57" column="19" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/featext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="25" column="44" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E2_features/2.1_features_extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E4_shallow_features_clustering/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="38" column="74" lean-forward="false" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="282" column="0" lean-forward="false" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/net_utils/model_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E4_shallow_features_clustering/e1_extract_features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="48" column="91" lean-forward="true" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/cluster/affinity_propagation_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/scipy/cluster/hierarchy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24945">
+          <caret line="1711" column="44" lean-forward="true" selection-start-line="1711" selection-start-column="44" selection-end-line="1711" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="e#278#329#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/E3_shallow/Shallow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2049">
-          <caret line="231" column="66" lean-forward="false" selection-start-line="231" selection-start-column="66" selection-end-line="231" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="54" column="26" lean-forward="true" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E3_shallow/3.3_shallow_test.py">
+    <entry file="file://$PROJECT_DIR$/E3_shallow/e1_shallow_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        <state relative-caret-position="255">
+          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/.fuse_hidden0002cb5100000007">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding />
         </state>
       </provider>

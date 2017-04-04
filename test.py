@@ -3,7 +3,7 @@ import os
 import net_utils
 from argparse import ArgumentParser
 import sys
-import cfg
+import config
 from imdataset import ImageDataset
 from imdataset import NetScore
 
@@ -74,7 +74,7 @@ def write_net_score(netScore, model_name, testset_name, csv_path=None, detailed_
 # def main(argv):
 #
 #     parser = ArgumentParser()
-#     parser.add_argument('-n', "-net", action='store', dest='net', required=True, choices=cfg.NETS)
+#     parser.add_argument('-n', "-net", action='store', dest='net', required=True, choices=config.NETS)
 #     parser.add_argument('-d', "-dataset", action='store', dest='dataset_path', required=True)
 #     parser.add_argument('-o', "-out", action='store', dest='out_dataset_path', required=True)
 #
@@ -87,7 +87,7 @@ def write_net_score(netScore, model_name, testset_name, csv_path=None, detailed_
 #     # parser.add_argument("--scratch", action='store_false', dest='use_local', default=False)
 #     a = parser.parse_args()
 #
-#     cfg.init("FEATURES EXTRACTION", is_experiment=False , use_local=a.use_local)
+#     config.init("FEATURES EXTRACTION", is_experiment=False , use_local=a.use_local)
 #
 #
 #

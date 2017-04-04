@@ -1,12 +1,9 @@
-from cfg import cfg
-import common
-from common import dataset_fname
+from config import cfg, common
 from imdataset import ImageDataset
 
 
-
 # PARAMS
-if cfg.USE_TOY_DATASET:
+if cfg.use_toy_dataset:
     FNAME_START_WITH= "0001"
 else:
     FNAME_START_WITH = "seed"
@@ -17,13 +14,15 @@ def main():
     exp_duplicate_seed()
 
 
+
+
+
 def exp_duplicate_seed():
     dataset = cfg.DATASET
-    for crop_size, crop_size_stamp in zip(cfg.ALL_CROP_SIZE, cfg.ALL_CROP_SIZE_STAMP):
+    for crop_size in cfg.all_crop_sizer:
         crop = crop_size['crop']
         size = crop_size['size']
 
-        dataset_path = common.dataset_path(dataset, crop, size)
         train_path = common.dataset_path(dataset + '_train', crop, size)
         train_path_ds = common.dataset_path(dataset + '_train_ds', crop, size)
 

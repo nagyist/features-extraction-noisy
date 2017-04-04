@@ -1,10 +1,11 @@
 import numpy as np
 from sklearn.metrics import precision_score, recall_score, f1_score
 import imdataset
+from imdataset import ImageDataset
 
 class NetScore():
     def __init__(self, testset, predictions):
-        # type: (imdataset.ImageDataset, list(int)) -> None
+        # type: ( ImageDataset, list(int)) -> None
 
         self.testset = testset
         self.predictions = predictions
@@ -16,30 +17,33 @@ class NetScore():
         top_labels = []
         global_top_5 = 0
         global_top_1 = 0
-        per_class_top_5 = np.zeros([testset.labelsize, ])
-        per_class_top_1 = np.zeros([testset.labelsize, ])
-        per_class_counter = np.zeros([testset.labelsize, ])
+        per_class_top_5 = np.zeros([testset.labelsize, ], dtype=np.uint16)
+        per_class_top_1 = np.zeros([testset.labelsize, ], dtype=np.uint16)
+        per_class_counter = np.zeros([testset.labelsize, ], dtype=np.uint16)
         at_least_one_in_class = np.zeros([testset.labelsize, ])
 
-        top5_args_array = np.zeros([testset.labelsize, 5])
-        top5_probs_array = np.zeros([testset.labelsize, 5])
+        top5_args_per_example = np.zeros([0, 5], dtype=np.uint16)
+        top5_probs_per_example = np.zeros([0, 5])
+        true_class_per_example = []
 
         for i, prediction in enumerate(predictions):
-            true_label = testset.getLabelInt(i)
+            true_class = testset.getLabelInt(i)
+
             top5_args = prediction.argsort()[-5:][::-1]
             top5_probs = prediction[top5_args]
-            top5_args_array.append(top5_args)
-            top5_probs_array.append(top5_probs)
+            top5_args_per_example = np.vstack((top5_args_per_example, top5_args))
+            top5_probs_per_example = np.vstack((top5_probs_per_example, top5_probs))
+            true_class_per_example.append(true_class)
 
             arg_max = np.argmax(prediction)
 
-            per_class_counter[true_label] += 1
-            at_least_one_in_class[true_label] = 1
-            if true_label in top5_args:
-                per_class_top_5[true_label] += 1
+            per_class_counter[true_class] += 1
+            at_least_one_in_class[true_class] = 1
+            if true_class in top5_args:
+                per_class_top_5[true_class] += 1
                 global_top_5 += 1
-            if arg_max == true_label:
-                per_class_top_1[true_label] += 1
+            if arg_max == true_class:
+                per_class_top_1[true_class] += 1
                 global_top_1 += 1
             top_labels.append(arg_max)
 
@@ -92,8 +96,9 @@ class NetScore():
         self.perclass_examples = per_class_counter
         self.examples = int(np.sum(per_class_counter))
 
-        self.top5_classes_per_class = top5_args_array
-        self.top5_probs_per_class = top5_probs_array
+        self.top5_classes_per_example = top5_args_per_example
+        self.top5_probs_per_example = top5_probs_per_example
+        self.true_class_per_example = np.asarray(true_class_per_example)
 
     def print_global(self):
         print("\n\n")

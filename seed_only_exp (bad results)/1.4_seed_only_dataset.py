@@ -1,26 +1,25 @@
-import cfg
-import common
-from common import dataset_fname
+import config
+from config import common
 from imdataset import ImageDataset
 
 
 
 # PARAMS
-if cfg.USE_TOY_DATASET:
+if config.USE_TOY_DATASET:
     FNAME_START_WITH= "image_"
 else:
     FNAME_START_WITH = "seed"
 
 
 def main():
-    cfg.init()
+    config.init()
 
-    for crop_size, crop_size_stamp in zip(cfg.ALL_CROP_SIZE, cfg.ALL_CROP_SIZE_STAMP):
+    for crop_size, crop_size_stamp in zip(config.ALL_CROP_SIZE, config.ALL_CROP_SIZE_STAMP):
         crop = crop_size['crop']
         size = crop_size['size']
 
-        dataset_path = common.dataset_path(cfg.DATASET, crop, size)
-        out_dataset_path =  common.dataset_path(cfg.DATASET + '_so', crop, size)
+        dataset_path = common.dataset_path(config.DATASET, crop, size)
+        out_dataset_path =  common.dataset_path(config.DATASET + '_so', crop, size)
 
 
         print("")

@@ -337,8 +337,17 @@ class ImageDataset:
             os.remove(hdf5_out)
         return self
 
+    @staticmethod
+    def h5_data_shape(path):
+        h5f = h5py.File(path, 'r')
+        return h5f[DATA_DATASET_NAME].shape
 
-    def load_hdf5(self, path):
+    @staticmethod
+    def h5_label_size(path):
+        h5f = h5py.File(path, 'r')
+        return h5f[LABELS_NAME_DATASET_NAME].shape
+
+    def load_hdf5(self, path, copy_in_ram=True):
         h5f = h5py.File(path, 'r')
         if DATA_DATASET_NAME not in h5f.keys() and LABELS_DATASET_NAME not in h5f.keys() and FILENAMES_DATASET_NAME not in h5f.keys():
             h5f.close()
@@ -346,14 +355,21 @@ class ImageDataset:
         else:
             data = labels = fnames = labelsmap = None
             if DATA_DATASET_NAME in h5f.keys():
-                data = h5f[DATA_DATASET_NAME][:]
+                #data = h5f[DATA_DATASET_NAME][:]
+                data = h5f[DATA_DATASET_NAME]
+                data = data[:] if copy_in_ram else data
             if LABELS_DATASET_NAME in h5f.keys():
-                labels = h5f[LABELS_DATASET_NAME][:]
+                labels = h5f[LABELS_DATASET_NAME]
+                labels = labels[:] if copy_in_ram else labels
             if FILENAMES_DATASET_NAME in h5f.keys():
-                fnames = h5f[FILENAMES_DATASET_NAME][:]
+                fnames = h5f[FILENAMES_DATASET_NAME]
+                fnames = fnames[:] if copy_in_ram else fnames
             if LABELS_NAME_DATASET_NAME in h5f.keys():
-                labelsmap = h5f[LABELS_NAME_DATASET_NAME][:]
-            h5f.close()
+                labelsmap = h5f[LABELS_NAME_DATASET_NAME]
+                labelsmap = labelsmap[:] if copy_in_ram else labelsmap
+            if copy_in_ram:
+                h5f.close()
+
             self.__setState(data, labels, fnames, labelsmap)
         return self
 

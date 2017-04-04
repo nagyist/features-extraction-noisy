@@ -1,13 +1,23 @@
-from cfg import cfg
-import common
+from config import cfg, common
 from imdataset import imdir_label_to_hdf5_dataset
 
 
 
 
+def main():
+    cfg.init(use_toy_dataset=True)
+
+    exp_convert_folder_to_dataset()
+    # 'dbp3120_test_verrocchio77'
+    # 'dbp3120_so_test'
+    # 'dbp3120_noflk'
+    # 'outliers'
+
+
+
 def exp_convert_folder_to_dataset():
-    dataset = cfg.DATASET
-    for crop_size, crop_size_stamp in zip(cfg.ALL_CROP_SIZE, cfg.ALL_CROP_SIZE_STAMP):
+    dataset = cfg.dataset
+    for crop_size in cfg.all_crop_size:
         crop = crop_size['crop']
         size = crop_size['size']
 
@@ -23,13 +33,6 @@ def exp_convert_folder_to_dataset():
                                     verbose=True)
 
 
-def main():
-    cfg.init()
-    exp_convert_folder_to_dataset()
-    # 'dbp3120_test_verrocchio77'
-    # 'dbp3120_so_test'
-    # 'dbp3120_noflk'
-    # 'outliers'
 
 if __name__ == "__main__":
     main()
