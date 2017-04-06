@@ -772,7 +772,7 @@ class ImageDataset:
         return self.sub_dataset_from_indices(indices,remove_empty_classes)
 
     def sub_dataset_with_label(self, label, remove_empty_classes=False):
-        # Type: (int) -> ImageDataset
+        # type: (int, bool) -> ImageDataset
         indices = np.argwhere(self.labels == label)
 
         if len(indices) > 0:
@@ -787,6 +787,19 @@ class ImageDataset:
             # subset = ImageDataset()
             # subset.load_ndarray(data, labels, fnames, self.labelnames, labelsize=self.labelsize)
             # return subset
+        else:
+            return None
+
+
+    def sub_dataset_with_labels(self, labels, remove_empty_classes=False):
+        # type: (list[int], bool) -> ImageDataset
+        all_indices = []
+        for label in labels:
+            indices = np.argwhere(self.labels == label)
+            all_indices.append(indices)
+
+        if len(indices) > 0:
+            return self.sub_dataset_from_indices(indices[:, 0], remove_empty_classes)
         else:
             return None
 

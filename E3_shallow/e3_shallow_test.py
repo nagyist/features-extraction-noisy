@@ -48,6 +48,8 @@ def shallow_test(feat_net='resnet50', double_seeds=True, outlier_model=False):
     #  Weights to load on labelflip-finetuned nets (finetuned loading the weights  in shallow_weights_to_loads list)
     shallow_ft_lf_weights_to_load = ['00', '02', '04', '08', '12', '16', 'best', 'last']
 
+
+
     for sn in shallow_nets:
         for sh_i in shallow_weights_to_loads:
 

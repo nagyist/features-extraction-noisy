@@ -1,5 +1,5 @@
 from config import cfg
-from E4_shallow_features_clustering import extract_shallow_features
+from F_shallow_features_clustering import extract_shallow_features
 
 
 #cfg.init()

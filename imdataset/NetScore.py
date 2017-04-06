@@ -17,8 +17,8 @@ class NetScore():
         top_labels = []
         global_top_5 = 0
         global_top_1 = 0
-        per_class_top_5 = np.zeros([testset.labelsize, ], dtype=np.uint16)
-        per_class_top_1 = np.zeros([testset.labelsize, ], dtype=np.uint16)
+        per_class_top_5 = np.zeros([testset.labelsize, ], dtype=np.float)
+        per_class_top_1 = np.zeros([testset.labelsize, ], dtype=np.float)
         per_class_counter = np.zeros([testset.labelsize, ], dtype=np.uint16)
         at_least_one_in_class = np.zeros([testset.labelsize, ])
 
@@ -49,8 +49,8 @@ class NetScore():
 
         for l, counter in enumerate(per_class_counter):
             if counter > 0:
-                per_class_top_1[l] /= counter
-                per_class_top_5[l] /= counter
+                per_class_top_1[l] /= float(counter)
+                per_class_top_5[l] /= float(counter)
 
         global_top_5 = float(global_top_5) / len(predictions)
         global_top_1 = float(global_top_1) / len(predictions)

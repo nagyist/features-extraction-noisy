@@ -84,7 +84,9 @@ class ShallowNet:
         return self
 
     def test(self, shallowTester):
-        shallowTester.test(self)
+        # type: (ShallowTester) -> NetScore
+        return shallowTester.test(self)
+
 
 
     @staticmethod
@@ -202,11 +204,10 @@ class ShallowTester:
 
 
     def test(self, shallow):
-
         # type: (ShallowNet) -> NetScore
 
         if self.verbose:
-            print("Testing net: " + shallow.name)
+            print("Testing Shallow net: " + shallow.name)
             if shallow.weights_loaded_from is not None:
                 print("Weights from:  " + shallow.weights_loaded_from)
                 print("Weights index: " + str(shallow.weights_loaded_index))

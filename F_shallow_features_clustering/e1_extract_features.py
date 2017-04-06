@@ -19,6 +19,7 @@ def extract_shallow_features():
     old_trainset_name = cfg.dataset + '_train_ds'
     #old_testset_name = cfg.dataset + '_test'
     dataset_name =  cfg.dataset + '_train_ds'
+    dataset_name = cfg.dataset + '_test'
     #crop, size = cfg.crop_size(net=feat_net)
 
 
@@ -46,7 +47,7 @@ def extract_shallow_features():
     model = B.H8K(extr_n, lf_decay=0.01).init(lf=False).load(SL, labelflip_finetune_epoch).model()
     #model.summary()
     feature_vectors = net_utils.extract_features(model, dataset, out_layer, batch_size, True)
-    feature_vectors.save_hdf5("shallow_extracted_features/shallow_classifier_feat_vector.h5")
+    feature_vectors.save_hdf5("shallow_extracted_features/shallow_feat_" + dataset_name + ".h5")
 
 if __name__ == "__main__":
     main(sys.argv)

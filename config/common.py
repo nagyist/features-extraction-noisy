@@ -7,6 +7,24 @@ from config import cfg
 from imdataset import ImageDataset
 
 
+
+
+########################################################################################################################
+### SHALLOW NETWORK EXTRACTED FEATURES
+# def shallow_feat_name(shallow_name, dataset_name, feat_net, ext=False):
+#     extracted_feat_dataset = feat_fname(dataset_name, feat_net)
+#     ret = "shallow_{}__{}".format(shallow_name, extracted_feat_dataset) + ('.h5' if ext else '')
+#     return ret
+#
+# def shallow_feat_path(shallow_net_name, dataset_name, feat_net, ext=True):
+#     folder = shallow_folder_path(shallow_net_name, dataset_name, feat_net)
+#     if not os.path.isdir(folder):
+#         os.mkdir(folder)
+#     return os.path.join(folder, shallow_name(shallow_net_name, dataset_name, feat_net, ext))
+
+
+########################################################################################################################
+### SHALLOW NETWORK WEIGHTS
 def shallow_name(shallow_name, dataset_name, feat_net, ext=False):
     extracted_feat_dataset = feat_fname(dataset_name, feat_net)
     ret = "shallow_{}__{}".format(shallow_name, extracted_feat_dataset) + ('.h5' if ext else '')
@@ -22,7 +40,9 @@ def shallow_folder_path(shallow_net_name, dataset_name, feat_net):
     return os.path.join(cfg.shallow_path, shallow_name(shallow_net_name, dataset_name, feat_net, False))
 
 
-# EXTRACTED FEATURE DATASET
+
+########################################################################################################################
+### EXTRACTED FEATURE DATASET
 def feat_fname(dataset_name, net_name, ext=False):
     ret =  "feat_" + dataset_name + "__" + net_name
     if cfg.feature_layer_dict[net_name] is not None:
@@ -50,11 +70,15 @@ def feat_dataset_n_classes(dataset_name, net_name):
     path = feat_path(dataset_name, net_name, True)
     return ImageDataset.h5_label_size(path)[0]
 
-# DATASET FOLDER
+
+
+########################################################################################################################
+###  DATASET FOLDER
 def folder_dataset_path(dataset_name):
     return os.path.join("dataset",dataset_name)
 
-# DATASET H5
+########################################################################################################################
+### DATASET H5
 def dataset_path(dataset_name, crop=None, size=None, ext=True):
     return os.path.join("dataset", dataset_fname(dataset_name, crop, size, ext))
 
@@ -62,8 +86,8 @@ def dataset_fname(dataset_name, crop=None, size=None, ext=False):
     return dataset_name + ('__' + cfg.crop_size_stamp(crop, size) if crop is not None and size is not None else '') \
            + ('.h5' if ext else '')
 
-def dataset(dataset_name, crop=None, size=None):
-    return imdataset.ImageDataset().load_hdf5(dataset_path(dataset_name, crop, size, True))
+def dataset(dataset_name, crop=None, size=None, inram=True):
+    return imdataset.ImageDataset().load_hdf5(dataset_path(dataset_name, crop, size, ext=True), copy_in_ram=inram)
 
 
 
