@@ -1,3 +1,4 @@
+import codecs
 import sys
 
 from E3_shallow.Shallow import ShallowNetBuilder, ShallowTester, ShallowLoader, ShallowNet, NetScore
@@ -55,10 +56,8 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
     trainset_name = cfg.dataset + '_train' + ('_ds' if double_seeds else '')
     #validset_name = cfg.dataset + '_valid'
 
-    # testset_name = trainset_name
-    # testset_name = cfg.dataset + '_test'
+    #testset_name = cfg.dataset + '_test'
     testset_name = cfg.dataset
-    #testset_name = cfg.dataset + '_valid'
 
     print("Shallow Test")
     print("Features from CNN: " + feat_net)
@@ -95,15 +94,23 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
                 extr_n = '_ft@' + str(sh_i)
                 for lf_i in shallow_ft_lf_weights_to_load:
                     shallow_net = sn(extr_n, lf_decay=0.01).init(lf=False).load(SL, lf_i)
-                    keep, prune = test_for_top_classes(shallow_net, ST,  out_on_csv="class_pruning.csv")
+                    keep, prune = test_for_top_classes(shallow_net, ST,  out_on_csv="class_pruning.csv",
+                                                       out_classname_txt="class_names_keep_from_pruning.txt",
+                                                       out_classindex_txt="class_keep_from_pruning.txt")
                     pruned = dataset_to_prune.sub_dataset_with_labels(keep)
-                    pruned.save_hdf5(common.feat_path(pruned_feat_dataset_path(dataset_name, feat_net, shallow_net)))
+                    pruned_out_feature_dataset = pruned_feat_dataset_path(dataset_name, testset_name,  n_top_classes, feat_net, shallow_net)
+                    print("Saving pruned feature dataset in: " + pruned_out_feature_dataset)
+                    pruned.save_hdf5(pruned_out_feature_dataset)
             else:
                 # Test without LabelFlip Finetune:
                 shallow_net = sn().init(lf=False).load(SL, sh_i)
-                keep, prune = test_for_top_classes(shallow_net, ST, out_on_csv="class_pruning.csv")
+                keep, prune = test_for_top_classes(shallow_net, ST, out_on_csv="class_pruning.csv",
+                                                   out_classname_txt="class_names_keep_from_pruning.txt",
+                                                   out_classindex_txt="class_keep_from_pruning.txt")
                 pruned = dataset_to_prune.sub_dataset_with_labels(keep)
-                pruned.save_hdf5(common.feat_path(pruned_feat_dataset_path(dataset_name, feat_net, shallow_net)))
+                pruned_out_feature_dataset = pruned_feat_dataset_path(dataset_name, testset_name, n_top_classes, feat_net, shallow_net)
+                print("Saving pruned feature dataset in: " + pruned_out_feature_dataset)
+                pruned.save_hdf5(pruned_out_feature_dataset)
 
 
 # def test_train_valid_loss(feat_net, training_set_name, validation_set_name, shallow_network):
@@ -120,11 +127,13 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
 def pruned_feat_dataset(dataset_name, feat_net, shallow_net):
     return ImageDataset().load_hdf5( pruned_feat_dataset_path(dataset_name, feat_net, shallow_net))
 
-def pruned_feat_dataset_path(dataset_name, feat_net, shallow_net):
-    return common.feat_path(dataset_name, feat_net, ext=False) + '_pruned-'+shallow_net.name+'@'+shallow_net.weights_loaded_index+ '.h5'
+def pruned_feat_dataset_path(dataset_name, testing_dataset_name, nb_classes, feat_net, shallow_net):
+    feat_path = common.feat_path(dataset_name, feat_net, ext=False)
+    return feat_path + '_pruned-'+shallow_net.name+'@'+shallow_net.weights_loaded_index+ '_nb-classes-' + str(nb_classes) + '_test-on-' + testing_dataset_name +'.h5'
 
 
-def test_for_top_classes(shallow_net, shallow_tester, nb_selected_classes=500, ordering_score='top1', out_on_csv=None, verbose=False):
+def test_for_top_classes(shallow_net, shallow_tester, nb_selected_classes=500, ordering_score='top1', out_on_csv=None,
+                         out_classname_txt=None, out_classindex_txt=None, verbose=False):
     '''
 
     :param shallow_net:
@@ -140,7 +149,9 @@ def test_for_top_classes(shallow_net, shallow_tester, nb_selected_classes=500, o
     print("")
     print("Testing with shallow model: " + shallow_net.name)
     print("With weights:               " + shallow_net.weights_loaded_index)
+    print("Start test..")
     net_score = shallow_net.test(shallow_tester)
+    print("Sorting results by '{}' score..".format(ordering_score))
     top_classes = np.argsort(net_score.perclass_top1)[::-1]
     print("")
 
@@ -168,24 +179,37 @@ def test_for_top_classes(shallow_net, shallow_tester, nb_selected_classes=500, o
     for i in range(nb_selected_classes, len(top_classes)):
         prune_class_list.append(nb_selected_classes)
 
+    if out_classname_txt is not None:
+        of = codecs.open(out_classname_txt, 'w', encoding='utf-8')
+        for cls in keep_class_list:
+            of.write(str(shallow_tester.testset.labelnames[cls]).decode('utf-8')+"\n")
+
+    if out_classindex_txt is not None:
+        of = codecs.open(out_classindex_txt, 'w', encoding='utf-8')
+        for cls in keep_class_list:
+            of.write(str(cls) + "\n")
+
     if out_on_csv is not None:
-        of = file(out_on_csv, 'w')
-        of.write('Ordering by:\t' + ordering_score)
+        of = codecs.open(out_on_csv, 'w', encoding='utf-8')
+        of.write(u'Ordering by:\t' + ordering_score)
 
-        of.write('\n\n\nBest classes (to keep)\tordering by:\t' + ordering_score)
-        of.write('\nClass Index\tTop-1\tTop-5\tPrecision\tRecall\tF1-Score')
+        of.write(u'\n\n\nBest classes (to keep)\tordering by:\t' + ordering_score)
+        of.write(u'\nClass Index\tClass Name\tTop-1\tTop-5\tPrecision\tRecall\tF1-Score')
         for cls in keep_class_list:
-            of.write('\n{}\t{}\t{}\t{}\t{}\t{}'.format(cls, net_score.perclass_top1[cls], net_score.perclass_top5[cls],
-                                                       net_score.perclass_precision[cls], net_score.perclass_recall[cls],
-                                                       net_score.perclass_f1[cls]) )
+            # str(shallow_tester.testset.labelnames[cls]).decode('utf-8')
+            of.write(u'\n{}\t"{}"\t{}\t{}\t{}\t{}\t{}'.format(cls, str(shallow_tester.testset.labelnames[cls]).decode('utf-8'),
+                                                              net_score.perclass_top1[cls], net_score.perclass_top5[cls],
+                                                              net_score.perclass_precision[cls], net_score.perclass_recall[cls],
+                                                              net_score.perclass_f1[cls]) )
 
-        of.write('\n\n\nWorst classes (to prune)\tordering by:\t' + ordering_score)
-        of.write('\nClass Index\tTop-1\tTop-5\tPrecision\tRecall\tF1-Score')
+        of.write(u'\n\n\nWorst classes (to prune)\tordering by:\t' + ordering_score)
+        of.write(u'\nClass Index\tClass Name\tTop-1\tTop-5\tPrecision\tRecall\tF1-Score')
         for cls in keep_class_list:
-            of.write('\n{}\t{}\t{}\t{}\t{}\t{}'.format(cls, net_score.perclass_top1[cls], net_score.perclass_top5[cls],
-                                                       net_score.perclass_precision[cls],
-                                                       net_score.perclass_recall[cls],
-                                                       net_score.perclass_f1[cls]))
+            of.write(u'\n{}\t"{}"\t{}\t{}\t{}\t{}\t{}'.format(cls, str(shallow_tester.testset.labelnames[cls]).decode('utf-8'),
+                                                              net_score.perclass_top1[cls], net_score.perclass_top5[cls],
+                                                              net_score.perclass_precision[cls],
+                                                              net_score.perclass_recall[cls],
+                                                              net_score.perclass_f1[cls]))
     print top_classes_str
     return keep_class_list, prune_class_list
 

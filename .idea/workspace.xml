@@ -2,32 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d274d0f-1f5e-4f4c-8fd2-1f8db3f4e80b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/VisualEmbedding.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/e1_im2doc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/keep_best_im2doc_model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e0_merge_features_train_valid.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e1_dnn2docvec.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e2_prune_class_from_feat_data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dbpedia_vectors.npy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp3.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp_g1.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/E4_shallow_features_clustering/__init__.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/E4_shallow_features_clustering/clustering_test_mydata.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/E4_shallow_features_clustering/e1_extract_features.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/e1_extract_features.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/e2_prune_class_from_feat_data.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/e1_dnn2docvec.py" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e2_dnn2docvec.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/Shallow.py" afterPath="$PROJECT_DIR$/E3_shallow/Shallow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/e3_shallow_test.py" afterPath="$PROJECT_DIR$/E3_shallow/e3_shallow_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/common.py" afterPath="$PROJECT_DIR$/config/common.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp2.py" afterPath="$PROJECT_DIR$/exp2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/ImageDataset.py" afterPath="$PROJECT_DIR$/imdataset/ImageDataset.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/NetScore.py" afterPath="$PROJECT_DIR$/imdataset/NetScore.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,7 +21,8 @@
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp5_shallow_train.coverage" NAME="exp5_shallow_train Coverage Results" MODIFIED="1490295696162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/3_shallow_classifier" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$clustering_test.coverage" NAME="clustering_test Coverage Results" MODIFIED="1491305724520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E4_shallow_features_clustering" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$e0_merge_features_train_valid.coverage" NAME="e0_merge_features_train_valid Coverage Results" MODIFIED="1491415791936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/G1_zero_shot_data" />
-    <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp_g1.coverage" NAME="exp_g1 Coverage Results" MODIFIED="1491412478874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$clustering_test_mydata__1_.coverage" NAME="clustering_test_mydata (1) Coverage Results" MODIFIED="1491578061739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/F_shallow_features_clustering" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp_g1.coverage" NAME="exp_g1 Coverage Results" MODIFIED="1491580954971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$1_2_split_dataset.coverage" NAME="1.2_split_dataset Coverage Results" MODIFIED="1490563989892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$2_2_outliers_merge.coverage" NAME="2.2_outliers_merge Coverage Results" MODIFIED="1490871728020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp3.coverage" NAME="exp3 Coverage Results" MODIFIED="1491409151397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -64,20 +44,20 @@
       <file leaf-file-name="e1_prune_classes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state relative-caret-position="372">
+              <caret line="119" column="43" lean-forward="true" selection-start-line="119" selection-start-column="43" selection-end-line="119" selection-end-column="43" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="e1_dnn2docvec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e1_dnn2docvec.py">
+      <file leaf-file-name="common.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="214">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -135,8 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2.1_features_extraction.py" />
-        <option value="$PROJECT_DIR$/2.2_outliers_merge.py" />
         <option value="$PROJECT_DIR$/1.1_convert_folder_to_dataset.py" />
         <option value="$PROJECT_DIR$/3.1_shallow_train.py" />
         <option value="$PROJECT_DIR$/1_data/__init__.py" />
@@ -185,6 +163,8 @@
         <option value="$PROJECT_DIR$/G1_zero_shot_data/e2_prune_class_from_feat_data.py" />
         <option value="$PROJECT_DIR$/G1_zero_shot_data/e1_prune_class_csv_gen.py" />
         <option value="$PROJECT_DIR$/G1_zero_shot_exp/e1_dnn2docvec.py" />
+        <option value="$PROJECT_DIR$/G1_zero_shot_exp/e2_dnn2docvec.py" />
+        <option value="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py" />
         <option value="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" />
       </list>
     </option>
@@ -266,7 +246,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="E3_shallow" />
+              <option name="myItemId" value="E5_embedding" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -297,7 +277,7 @@
       <recent name="$PROJECT_DIR$/E3_shallow" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.e0_merge_features_train_valid">
+  <component name="RunManager" selected="Python.exp_g1">
     <configuration default="false" name="exp3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -352,24 +332,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="keep_best_weight" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/EJ1_embedding" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="feature-extraction-noisy" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/EJ1_embedding/keep_best_im2doc_model.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="e0_merge_features_train_valid" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -384,6 +346,24 @@
       <module name="feature-extraction-noisy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/G1_zero_shot_data/e0_merge_features_train_valid.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="clustering_test_mydata (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/F_shallow_features_clustering" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="feature-extraction-noisy" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -617,16 +597,16 @@
       <item index="0" class="java.lang.String" itemvalue="Python.exp3" />
       <item index="1" class="java.lang.String" itemvalue="Python.exp_g1" />
       <item index="2" class="java.lang.String" itemvalue="Python.clustering_test_mydata" />
-      <item index="3" class="java.lang.String" itemvalue="Python.keep_best_weight" />
-      <item index="4" class="java.lang.String" itemvalue="Python.e0_merge_features_train_valid" />
+      <item index="3" class="java.lang.String" itemvalue="Python.e0_merge_features_train_valid" />
+      <item index="4" class="java.lang.String" itemvalue="Python.clustering_test_mydata (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.e0_merge_features_train_valid" />
-        <item index="1" class="java.lang.String" itemvalue="Python.exp_g1" />
+        <item index="0" class="java.lang.String" itemvalue="Python.exp_g1" />
+        <item index="1" class="java.lang.String" itemvalue="Python.clustering_test_mydata (1)" />
         <item index="2" class="java.lang.String" itemvalue="Python.clustering_test_mydata" />
-        <item index="3" class="java.lang.String" itemvalue="Python.exp3" />
-        <item index="4" class="java.lang.String" itemvalue="Python.keep_best_weight" />
+        <item index="3" class="java.lang.String" itemvalue="Python.e0_merge_features_train_valid" />
+        <item index="4" class="java.lang.String" itemvalue="Python.exp3" />
       </list>
     </recent_temporary>
   </component>
@@ -658,7 +638,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26588023" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39110708" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -690,16 +670,6 @@
           <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py</url>
-          <line>152</line>
-          <option name="timeStamp" value="152" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py</url>
-          <line>156</line>
-          <option name="timeStamp" value="185" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/E5_embedding/e1_im2doc.py</url>
           <line>102</line>
           <option name="timeStamp" value="210" />
@@ -708,6 +678,11 @@
           <url>file://$PROJECT_DIR$/G1_zero_shot_exp/e0_merge_features_train_valid.py</url>
           <line>21</line>
           <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py</url>
+          <line>130</line>
+          <option name="timeStamp" value="242" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -720,18 +695,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="234" />
+      <option name="time" value="243" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/exp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/F_shallow_features_clustering/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -798,14 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/h5py/_hl/files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -827,14 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/matplotlib/axes/_axes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -846,6 +798,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="476" column="0" lean-forward="false" selection-start-line="476" selection-start-column="0" selection-end-line="476" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -863,16 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1046">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-          <folding>
-            <element signature="e#278#329#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/F_shallow_features_clustering/e1_extract_features.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -884,13 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="706" column="8" lean-forward="false" selection-start-line="706" selection-start-column="8" selection-end-line="706" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/F_shallow_features_clustering/clustering_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -980,6 +916,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -987,13 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="18" column="27" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="91" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1013,6 +945,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="844" column="36" lean-forward="true" selection-start-line="844" selection-start-column="36" selection-end-line="844" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/Shallow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="50" column="33" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E2_features/2.1_features_extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="35" column="43" lean-forward="false" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/e1_shallow_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="31" column="23" lean-forward="true" selection-start-line="21" selection-start-column="2" selection-end-line="31" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/VisualEmbedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e2_prune_class_from_feat_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e0_merge_features_train_valid.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1023,28 +1003,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py">
+    <entry file="file://$PROJECT_DIR$/F_shallow_features_clustering/clustering_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="844" column="36" lean-forward="true" selection-start-line="844" selection-start-column="36" selection-end-line="844" selection-end-column="36" />
+        <state relative-caret-position="555">
+          <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e2_dnn2docvec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/exp_g1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="90">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#88#0" expanded="false" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/h5py/_hl/files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="794" column="49" lean-forward="true" selection-start-line="794" selection-start-column="49" selection-end-line="794" selection-end-column="49" />
+        <state relative-caret-position="214">
+          <caret line="793" column="8" lean-forward="false" selection-start-line="793" selection-start-column="8" selection-end-line="793" selection-end-column="8" />
           <folding>
             <element signature="e#440#498#0" expanded="false" />
             <element signature="e#525#1418#0" expanded="false" />
@@ -1062,9 +1074,6 @@
             <element signature="e#6803#6819#0" expanded="false" />
             <element signature="e#8438#8473#0" expanded="false" />
             <element signature="e#10634#10646#0" expanded="false" />
-            <element signature="e#12545#13562#0" expanded="false" />
-            <element signature="e#12578#12636#0" expanded="false" />
-            <element signature="e#15216#15986#0" expanded="false" />
             <element signature="e#16158#18587#0" expanded="false" />
             <element signature="e#16192#16359#0" expanded="false" />
             <element signature="e#16530#18314#0" expanded="false" />
@@ -1141,62 +1150,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E3_shallow/Shallow.py">
+    <entry file="file:///usr/lib/python2.7/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="50" column="33" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="33" />
+        <state relative-caret-position="162">
+          <caret line="705" column="0" lean-forward="false" selection-start-line="705" selection-start-column="0" selection-end-line="705" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E2_features/2.1_features_extraction.py">
+    <entry file="file://$PROJECT_DIR$/config/common.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="43" lean-forward="false" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E3_shallow/e1_shallow_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="31" column="23" lean-forward="true" selection-start-line="21" selection-start-column="2" selection-end-line="31" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e2_prune_class_from_feat_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/VisualEmbedding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e1_dnn2docvec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="214">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        <state relative-caret-position="372">
+          <caret line="119" column="43" lean-forward="true" selection-start-line="119" selection-start-column="43" selection-end-line="119" selection-end-column="43" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

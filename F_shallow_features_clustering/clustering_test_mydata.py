@@ -98,7 +98,7 @@ def clustering_mean_shift(X, **kwargs):
 def clustering_dbscan(X): # NOT WORKING
     import  numpy as np
     # Compute DBSCAN
-    db = DBSCAN(eps=0.40, min_samples=2, metric='cosine', algorithm='brute').fit(X)
+    db = DBSCAN(eps=0.35, min_samples=2, metric='cosine', algorithm='brute').fit(X)
     core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
     core_samples_mask[db.core_sample_indices_] = True
     return db.labels_
@@ -108,7 +108,7 @@ from config import cfg
 from imdataset import ImageDataset
 cfg.init()
 dataset = ImageDataset().load_hdf5("shallow_extracted_features/shallow_feat_dbp3120_train_ds.h5")
-dataset_sub = dataset.sub_dataset_with_label(1252)
+dataset_sub = dataset.sub_dataset_with_label(3115)
 # good examples: 1843, 123, 43, 422
 # hard examples: 421, 843, 93, 927
 

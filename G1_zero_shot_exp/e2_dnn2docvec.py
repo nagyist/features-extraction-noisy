@@ -7,6 +7,8 @@ from keras.metrics import cosine_proximity
 from keras.models import Sequential
 from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop
 
+from E3_shallow.Shallow import ShallowNetBuilder, ShallowLoader
+from G1_zero_shot_exp.e1_prune_classes import pruned_feat_dataset
 from config import cfg, common
 from imdataset import ImageDataset
 
@@ -15,52 +17,28 @@ def main(args):
     cfg.init()
     dnn2docvec()
 
-# def cos_distance(y_true, y_pred):
-#     def l2_normalize(x, axis):
-#         norm = K.sqrt(K.sum(K.square(x), axis=axis, keepdims=True))
-#         return K.sign(x) * K.maximum(K.abs(x), K.epsilon()) / K.maximum(norm, K.epsilon())
-#     y_true = l2_normalize(y_true, axis=-1)
-#     y_pred = l2_normalize(y_pred, axis=-1)
-#     return -K.mean(y_true * y_pred, axis=-1)
-
-def cos_distance(y_true, y_pred):
-    y_true = K.l2_normalize(y_true, axis=-1)
-    y_pred = K.l2_normalize(y_pred, axis=-1)
-    return K.mean(1 - K.sum((y_true * y_pred), axis=-1))
 
 
-def cosine_similarity_loss(y_true, y_pred):
-    y_true_norm = K.l2_normalize(y_true, axis=-1)
-    y_pred_norm = K.l2_normalize(y_pred, axis=-1)
+def dnn2docvec_exp():
+    feat_net='resnet50'
+    dataset = cfg.dataset
+    shallow_trainset = dataset + '_train'
+    shallow_net = ShallowNetBuilder().A()
+    shallow_weight_index = 'best'
 
-    numerator = K.sum(y_true * y_pred, axis=-2)
-    #denominator = y_true_norm * y_pred_norm
-    return -K.sum(numerator / (y_true_norm * y_pred_norm))
-
-    #return K.sum(1 - ((y_true * y_pred) / (y_true_norm*y_pred_norm)))
-    #return -K.mean(K.sum(y_true * y_pred) / (y_true_norm * y_pred_norm))
+    SL = ShallowLoader(shallow_trainset, feat_net)
+    shallow_net.load(shallowLoader=SL, weight_index=shallow_weight_index)
 
 
 
-def get_model(input, output, dense=[2000]):
-    model = Sequential()
-    if dense is not None and len(dense) > 0:
-        for i, d in enumerate(dense):
-            if i == 0:
-                model.add(Dense(input_dim=input, output_dim=d, activation='relu'))
-            else:
-                model.add(Dense(output_dim=d, activation='relu'))
-        model.add(Dense(output_dim=output, activation=None))  # relu or sigmoid?
-    else:
-        model.add(Dense(input_dim=input, output_dim=output, activation=None))  # relu or sigmoid?
-    print model.summary()
-    return model
 
-
-def dnn2docvec(dataset=cfg.dataset, feat_net='resnet50'):
+def dnn2docvec(dataset=cfg.dataset, feat_net='resnet50', shallow_net=ShallowNetBuilder().A()):
     import numpy as np
 
     print("Loading visual features..")
+    SL = ShallowLoader(shallow_training_set, feat_net)
+    shallow_net.load(SL, )
+    visual_features = pruned_feat_dataset(dataset, feat_net, )
     visual_features = ImageDataset().load_hdf5("shallow_extracted_features/shallow_feat_dbp3120_train_ds.h5")
     print("Loading textual features..")
     textual_features = np.load("doc2vec_dbpedia_vectors.npy")
