@@ -56,8 +56,8 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
     trainset_name = cfg.dataset + '_train' + ('_ds' if double_seeds else '')
     #validset_name = cfg.dataset + '_valid'
 
-    #testset_name = cfg.dataset + '_test'
     testset_name = cfg.dataset
+    # testset_name = cfg.dataset + '_test'
 
     print("Shallow Test")
     print("Features from CNN: " + feat_net)
@@ -179,14 +179,16 @@ def test_for_top_classes(shallow_net, shallow_tester, nb_selected_classes=500, o
     for i in range(nb_selected_classes, len(top_classes)):
         prune_class_list.append(nb_selected_classes)
 
+    ordered_class_list = keep_class_list[:]
+    ordered_class_list.sort()
     if out_classname_txt is not None:
         of = codecs.open(out_classname_txt, 'w', encoding='utf-8')
-        for cls in keep_class_list:
+        for cls in ordered_class_list:
             of.write(str(shallow_tester.testset.labelnames[cls]).decode('utf-8')+"\n")
 
     if out_classindex_txt is not None:
         of = codecs.open(out_classindex_txt, 'w', encoding='utf-8')
-        for cls in keep_class_list:
+        for cls in ordered_class_list:
             of.write(str(cls) + "\n")
 
     if out_on_csv is not None:

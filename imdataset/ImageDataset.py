@@ -795,11 +795,11 @@ class ImageDataset:
         # type: (list[int], bool) -> ImageDataset
         all_indices = []
         for label in labels:
-            indices = np.argwhere(self.labels == label)
-            all_indices.append(indices)
+            indices = np.argwhere(self.labels == label)[:, 0]
+            all_indices += list(indices)
 
         if len(indices) > 0:
-            return self.sub_dataset_from_indices(indices[:, 0], remove_empty_classes)
+            return self.sub_dataset_from_indices(all_indices, remove_empty_classes)
         else:
             return None
 
