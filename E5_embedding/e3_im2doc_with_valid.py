@@ -1,9 +1,10 @@
+import json
 import os
 import sys
 from keras import backend as K
 from keras.callbacks import ReduceLROnPlateau, EarlyStopping, ModelCheckpoint
 from keras.engine import Input
-from keras.layers import Dense
+from keras.layers import Dense, copy
 from keras.metrics import cosine_proximity
 from keras.models import Sequential
 from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop
@@ -18,48 +19,82 @@ from imdataset import ImageDataset
 
 
 def main(args):
-    im2doc()
+    im2doc_wvalid()
 
-def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN, class_list=cfg_emb.CLASS_LIST_TRAIN):
+def im2doc_wvalid(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN,
+                  visual_features_valid=cfg_emb.VISUAL_FEATURES_VALID, class_list=cfg_emb.CLASS_LIST_TRAIN):
     import numpy as np
 
     print("Loading visual features..")
     visual_features = ImageDataset().load_hdf5(visual_features)
+    if visual_features_valid is not None:
+        visual_features_valid = ImageDataset().load_hdf5(visual_features_valid)
 
     print("Loading textual features..")
     text_features = np.load(text_features)
 
-    if class_list is not None:
+    if class_list is None:
+        class_list = np.unique(visual_features.labels).tolist()
+    else:
         class_list = file(class_list, 'r').read().split('\n')
         #class_list.sort()
 
     print("Generating dataset..")
-    data = []
-    targets = []
 
     if class_list is not None:
         cycle_on = class_list, text_features
     else:
         cycle_on = enumerate(text_features)
 
+
+    data_train = []
+    target_train = []
+    if visual_features_valid is not None:
+        data_valid = []
+        target_valid = []
+
     for lbl, docv in zip(cycle_on[0], cycle_on[1]):
         lbl = int(lbl)
         visual_features_with_label = visual_features.sub_dataset_with_label(lbl)
         for visual_feat in visual_features_with_label.data:
-            data.append(visual_feat)
-            targets.append(docv)
+            data_train.append(visual_feat)
+            # TODO: normalize vectors in data_train
+            target_train.append(docv)
 
-    data = np.asarray(data)
-    while len(data.shape) > 2:
-        if data.shape[-1] == 1:
-            data = np.squeeze(data, axis=(-1,))
+        if visual_features_valid is not None:
+            visual_features_valid_with_label = visual_features_valid.sub_dataset_with_label(lbl)
+            for visual_feat in visual_features_valid_with_label.data:
+                data_valid.append(visual_feat)
+                # TODO: normalize vectors in data_valid
+                target_valid.append(docv)
 
-    targets = np.asarray(targets)
+    data_train = np.asarray(data_train)
+    data_valid = np.asarray(data_valid)
+
+    while len(data_train.shape) > 2:
+        if data_train.shape[-1] == 1:
+            data_train = np.squeeze(data_train, axis=(-1,))
+
+    while len(data_valid.shape) > 2:
+        if data_valid.shape[-1] == 1:
+            data_valid = np.squeeze(data_valid, axis=(-1,))
+
+    target_train = np.asarray(target_train)
+    target_valid = np.asarray(target_valid)
+
+    validation_data = [data_valid, target_valid]
+
+
+
+
+
 
     print("Generating model..")
 
     EPOCHS = 60
     hiddens = [ [2000,1000], [1000] ]
+    #hiddens = [ [1000] ]
+
     lrs = [10]
     batch_sizes = [32]
     optimizers_str = ['Adadelta']
@@ -87,7 +122,7 @@ def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.
                         fname += "_hl-" + str(hu)
                     fname = os.path.join(IM2DOC_FOLDER, fname)
 
-                    model = get_model(data.shape[1], targets.shape[-1], hid)
+                    model = get_model(data_train.shape[1], target_train.shape[-1], hid)
                     model.compile(optimizer=opt(lr=lr), loss=cos_distance)
 
                     earlystop = EarlyStopping(monitor='loss', min_delta=0.0005, patience=9)
@@ -97,8 +132,16 @@ def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.
                     bestpoint_wo = ModelCheckpoint(fname + '.weights.{epoch:02d}.loss-{loss:.4f}.h5', monitor='loss',
                                                 save_best_only=True, save_weights_only=True)
                     callbacks = [earlystop, reduceLR, bestpoint]
-                    history = model.fit(data, targets, batch_size=64, nb_epoch=EPOCHS, verbose=1, shuffle=True,
-                                        callbacks=callbacks)
+                    history = model.fit(data_train, target_train, batch_size=64, nb_epoch=EPOCHS, verbose=1, shuffle=True,
+                                        callbacks=callbacks, validation_data=validation_data)
+
+                    loss_csv = file(fname + '.loss.csv', 'w')
+                    loss_csv.write('Epoch, Loss, Val Loss\n')
+                    epoch = 0
+                    for loss, val_loss in zip(history.history['loss'], history.history['val_loss']):
+                        epoch+=1
+                        loss_csv.write(str(epoch) + ', ' + str(loss) + ', ' + str(val_loss) + '\n')
+
 
 
 

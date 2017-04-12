@@ -93,8 +93,10 @@ def get_class_list():
 
 
 def load_class_list(path,  encoding='utf-8'):
-    return codecs.open(path, 'r', encoding=encoding).read().split('\n')
-
+    if path is not None:
+        return codecs.open(path, 'r', encoding=encoding).read().split('\n')
+    else:
+        return None
 
 def save_class_list(class_list, path, encoding='utf-8'):
     # type: (list, basestring) -> None

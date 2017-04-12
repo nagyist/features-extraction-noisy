@@ -40,12 +40,15 @@ def cos_distance(y_true, y_pred):
 def main(args):
     test_embedding()
 
-def test_embedding(class_list=cfg_emb.CLASS_LIST_TRAIN):
+def test_embedding(class_list_train=cfg_emb.CLASS_LIST_TRAIN, class_list_total=cfg_emb.CLASS_LIST_TRAIN):
     import numpy as np
 
-    if class_list is not None:
-        class_list = file(class_list, 'r').read().split('\n')
-        # class_list.sort()
+    if class_list_train is not None:
+        class_list_train = file(class_list_train, 'r').read().split('\n')
+
+    class_list_train = cfg_emb.load_class_list(class_list_train)
+    class_list_total = cfg_emb.load_class_list(class_list_total)
+
 
     cfg.init('resnet50')
     for crop_size in cfg.all_crop_size:
@@ -90,8 +93,8 @@ def test_embedding(class_list=cfg_emb.CLASS_LIST_TRAIN):
             similars = np.asarray(similars, dtype=np.uint32)
 
             # Translate class index of doc2vec (executed on a subset of dataset) in class index of original dataset
-            if class_list is not None:
-                similars = [int(class_list[s]) for s in similars[:,0]]
+            if class_list_total is not None:
+                similars = [int(class_list_total[s]) for s in similars[:,0]]
             else:
                 similars = similars[:,0]
 
