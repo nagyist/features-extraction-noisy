@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f38d7c24-f101-41fe-807d-fc64d1f02e24" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/seed__w1200__http:^^dbpedia.org^resource^1618_in_art__0.jpg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/e0_merge_features_train_valid.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/e1_prune_classes.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/E5_embedding/e1_im2doc.py" afterPath="$PROJECT_DIR$/E5_embedding/e3_im2doc.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" afterPath="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E2_features/2.1_features_extraction.py" afterPath="$PROJECT_DIR$/E2_features/2.1_features_extraction.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e1_im2doc.py" afterPath="$PROJECT_DIR$/E5_embedding/e1_im2doc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" afterPath="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/Shallow.py" afterPath="$PROJECT_DIR$/E3_shallow/Shallow.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp3.py" afterPath="$PROJECT_DIR$/exp3.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/ImageDataset.py" afterPath="$PROJECT_DIR$/imdataset/ImageDataset.py" />
@@ -19,7 +23,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp3.coverage" NAME="exp3 Coverage Results" MODIFIED="1491761161841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp3.coverage" NAME="exp3 Coverage Results" MODIFIED="1491918940064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e2_train_valid_test_py.coverage" NAME="Unittests in e2_train_valid_test.py Coverage Results" MODIFIED="1491915540074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$E5___e2.coverage" NAME="E5 - e2 Coverage Results" MODIFIED="1491918558270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E5_embedding" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -36,97 +42,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="e1_im2doc.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/e1_im2doc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="63" column="29" lean-forward="false" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e2_test_embedding.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/e2_test_embedding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e1_prune_classes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="182" column="29" lean-forward="true" selection-start-line="182" selection-start-column="29" selection-end-line="182" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dataset.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/dist-packages/h5py/_hl/dataset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="training.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/engine/training.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="1254" column="0" lean-forward="false" selection-start-line="1254" selection-start-column="0" selection-end-line="1254" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="723" column="0" lean-forward="false" selection-start-line="723" selection-start-column="0" selection-end-line="723" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exp3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exp3.py">
+      <file leaf-file-name="cfg_emb.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/common.py">
+      <file leaf-file-name="e2_train_valid_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+            <state relative-caret-position="548">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="e3_im2doc.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="100" column="40" lean-forward="false" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="metrics.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/metrics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="76" column="35" lean-forward="true" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageDataset.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
+      <file leaf-file-name="e4_test_emb_on_train.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="350" column="0" lean-forward="false" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
+            <state relative-caret-position="248">
+              <caret line="82" column="32" lean-forward="true" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="e5_zero_shot_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-111">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -134,16 +112,34 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e1_im2doc.py" />
+        <option value="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/emb_cfg.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/cfg_embedding.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e1_prune_classes.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e0_merge_features_train_valid.py" />
+        <option value="$PROJECT_DIR$/E3_shallow/Shallow.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
+        <option value="$PROJECT_DIR$/imdataset/ImageDataset.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e4_test_embedding.py" />
         <option value="$PROJECT_DIR$/exp3.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e3_im2doc.py" />
       </list>
     </option>
   </component>
@@ -198,35 +194,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="G1_zero_shot_exp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature-extraction-noisy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature-extraction-noisy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="E5_embedding" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature-extraction-noisy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature-extraction-noisy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -238,6 +206,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
     <property name="last_opened_file_path" value="$USER_HOME$/workspace/dbpedia-dataset" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/E5_embedding" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -413,8 +386,28 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Python.exp3" />
+    <configuration default="false" name="E5 - e2" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/E5_embedding" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="feature-extraction-noisy" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.E5 - e2" />
+      <item index="1" class="java.lang.String" itemvalue="Python.exp3" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -435,6 +428,17 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_in_e2_train_valid_test_py - 2017.04.11 at 14h 58m 34s.xml">
+      <configuration name="Unittests in e2_train_valid_test.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_e2_train_valid_test_py - 2017.04.11 at 14h 58m 48s.xml">
+      <configuration name="Unittests in e2_train_valid_test.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_e2_train_valid_test_py - 2017.04.11 at 14h 59m 01s.xml">
+      <configuration name="Unittests in e2_train_valid_test.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -450,17 +454,17 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40562615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.179375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940108" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39927405" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -479,16 +483,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/E5_embedding/e1_im2doc.py</url>
-          <line>101</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/E5_embedding/e2_test_embedding.py</url>
-          <line>82</line>
-          <option name="timeStamp" value="17" />
+          <url>file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -496,7 +503,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="50" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -539,14 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="723" column="0" lean-forward="false" selection-start-line="723" selection-start-column="0" selection-end-line="723" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/engine/training.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -579,14 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="182" column="29" lean-forward="true" selection-start-line="182" selection-start-column="29" selection-end-line="182" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -595,38 +586,327 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
+    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1247972723/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="350" column="0" lean-forward="false" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
+        <state relative-caret-position="211">
+          <caret line="3400" column="8" lean-forward="false" selection-start-line="3400" selection-start-column="8" selection-end-line="3400" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e1_im2doc.py">
+    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e2_dnn2docvec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="63" column="29" lean-forward="false" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
+        <state relative-caret-position="570">
+          <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#10#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e0_merge_features_train_valid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="94" column="43" lean-forward="true" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E1_data/1.2_split_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#30#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="295" column="72" lean-forward="false" selection-start-line="293" selection-start-column="19" selection-end-line="295" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e1_prune_classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="174" column="19" lean-forward="true" selection-start-line="174" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/engine/topology.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="2723" column="0" lean-forward="false" selection-start-line="2723" selection-start-column="0" selection-end-line="2723" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E3_shallow/Shallow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="126" column="41" lean-forward="true" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e0_merge_features_train_valid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="39" lean-forward="false" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/VisualEmbedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#30#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-705">
+          <caret line="56" column="58" lean-forward="false" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
+          <folding>
+            <element signature="e#440#498#0" expanded="false" />
+            <element signature="e#525#1418#0" expanded="false" />
+            <element signature="e#690#1418#0" expanded="false" />
+            <element signature="e#690#994#1" expanded="false" />
+            <element signature="e#2081#8410#0" expanded="false" />
+            <element signature="e#2081#2351#1" expanded="false" />
+            <element signature="e#2801#6161#0" expanded="false" />
+            <element signature="e#2906#3021#0" expanded="false" />
+            <element signature="e#3629#5710#0" expanded="false" />
+            <element signature="e#4674#5710#0" expanded="false" />
+            <element signature="e#4761#5244#0" expanded="false" />
+            <element signature="e#5290#5710#0" expanded="false" />
+            <element signature="e#5780#6161#0" expanded="false" />
+            <element signature="e#5853#5926#0" expanded="false" />
+            <element signature="e#5985#6161#0" expanded="false" />
+            <element signature="e#6195#6307#0" expanded="false" />
+            <element signature="e#6462#6771#0" expanded="false" />
+            <element signature="e#6803#6819#0" expanded="false" />
+            <element signature="e#8438#8473#0" expanded="false" />
+            <element signature="e#8930#8949#0" expanded="false" />
+            <element signature="e#8987#9118#0" expanded="false" />
+            <element signature="e#9217#10531#0" expanded="false" />
+            <element signature="e#9319#9404#0" expanded="false" />
+            <element signature="e#9502#10531#0" expanded="false" />
+            <element signature="e#9571#9705#0" expanded="false" />
+            <element signature="e#10215#10531#0" expanded="false" />
+            <element signature="e#10373#10531#0" expanded="false" />
+            <element signature="e#10634#12130#0" expanded="false" />
+            <element signature="e#10634#10646#0" expanded="false" />
+            <element signature="e#11023#11074#0" expanded="false" />
+            <element signature="e#11268#11398#0" expanded="false" />
+            <element signature="e#11453#11560#0" expanded="false" />
+            <element signature="e#11616#11723#0" expanded="false" />
+            <element signature="e#11779#11888#0" expanded="false" />
+            <element signature="e#12545#13562#0" expanded="false" />
+            <element signature="e#12578#12636#0" expanded="false" />
+            <element signature="e#13619#13689#0" expanded="false" />
+            <element signature="e#13746#13823#0" expanded="false" />
+            <element signature="e#14056#14142#0" expanded="false" />
+            <element signature="e#14169#15042#0" expanded="false" />
+            <element signature="e#14275#14410#0" expanded="false" />
+            <element signature="e#14477#14572#0" expanded="false" />
+            <element signature="e#14642#14740#0" expanded="false" />
+            <element signature="e#14812#14924#0" expanded="false" />
+            <element signature="e#15216#15986#0" expanded="false" />
+            <element signature="e#15423#15602#0" expanded="false" />
+            <element signature="e#15668#15805#0" expanded="false" />
+            <element signature="e#16158#18587#0" expanded="false" />
+            <element signature="e#16192#16359#0" expanded="false" />
+            <element signature="e#16530#18314#0" expanded="false" />
+            <element signature="e#16668#18314#0" expanded="false" />
+            <element signature="e#16747#17048#0" expanded="false" />
+            <element signature="e#16859#17048#0" expanded="false" />
+            <element signature="e#17129#17473#0" expanded="false" />
+            <element signature="e#17174#17384#0" expanded="false" />
+            <element signature="e#17674#17992#0" expanded="false" />
+            <element signature="e#18036#18285#0" expanded="false" />
+            <element signature="e#18077#18285#0" expanded="false" />
+            <element signature="e#18387#18566#0" expanded="false" />
+            <element signature="e#18443#18566#0" expanded="false" />
+            <element signature="e#18625#18643#0" expanded="false" />
+            <element signature="e#18695#18930#0" expanded="false" />
+            <element signature="e#18735#18892#0" expanded="false" />
+            <element signature="e#18982#19217#0" expanded="false" />
+            <element signature="e#19022#19179#0" expanded="false" />
+            <element signature="e#19266#19316#0" expanded="false" />
+            <element signature="e#19365#19622#0" expanded="false" />
+            <element signature="e#19405#19584#0" expanded="false" />
+            <element signature="e#19671#19726#0" expanded="false" />
+            <element signature="e#19732#19774#0" expanded="false" />
+            <element signature="e#20266#20381#0" expanded="false" />
+            <element signature="e#20431#20602#0" expanded="false" />
+            <element signature="e#20655#20729#0" expanded="false" />
+            <element signature="e#20782#20841#0" expanded="false" />
+            <element signature="e#20896#21058#0" expanded="false" />
+            <element signature="e#20940#21058#0" expanded="false" />
+            <element signature="e#21113#21274#0" expanded="false" />
+            <element signature="e#21274#21305#0" expanded="false" />
+            <element signature="e#21857#21940#0" expanded="false" />
+            <element signature="e#22236#22577#1" expanded="false" />
+            <element signature="e#23601#23824#0" expanded="false" />
+            <element signature="e#23679#23824#0" expanded="false" />
+            <element signature="e#24132#25347#0" expanded="false" />
+            <element signature="e#24670#25347#0" expanded="false" />
+            <element signature="e#24738#25039#0" expanded="false" />
+            <element signature="e#25098#25329#0" expanded="false" />
+            <element signature="e#25347#25392#0" expanded="false" />
+            <element signature="e#25771#25947#0" expanded="false" />
+            <element signature="e#26120#26295#0" expanded="false" />
+            <element signature="e#26393#26760#0" expanded="false" />
+            <element signature="e#26853#29657#0" expanded="false" />
+            <element signature="e#26853#27364#1" expanded="false" />
+            <element signature="e#27373#27425#0" expanded="false" />
+            <element signature="e#27728#28586#0" expanded="false" />
+            <element signature="e#27943#28253#0" expanded="false" />
+            <element signature="e#28134#28253#0" expanded="false" />
+            <element signature="e#28637#28970#0" expanded="false" />
+            <element signature="e#29021#29204#0" expanded="false" />
+            <element signature="e#29233#29339#0" expanded="false" />
+            <element signature="e#29744#30380#0" expanded="false" />
+            <element signature="e#29866#30342#0" expanded="false" />
+            <element signature="e#29988#30026#0" expanded="false" />
+            <element signature="e#30505#30824#0" expanded="false" />
+            <element signature="e#30955#31680#0" expanded="false" />
+            <element signature="e#31145#31604#0" expanded="false" />
+            <element signature="e#31213#31288#0" expanded="false" />
+            <element signature="e#31255#31288#0" expanded="false" />
+            <element signature="e#31357#31604#0" expanded="false" />
+            <element signature="e#31431#31512#0" expanded="false" />
+            <element signature="e#31475#31512#0" expanded="false" />
+            <element signature="e#31763#32427#0" expanded="false" />
+            <element signature="e#31894#32389#0" expanded="false" />
+            <element signature="e#31980#31981#0" expanded="false" />
+            <element signature="e#32621#32711#0" expanded="false" />
+            <element signature="e#32896#33000#0" expanded="false" />
+            <element signature="e#33045#33111#0" expanded="false" />
+            <element signature="e#33183#34188#0" expanded="false" />
+            <element signature="e#33544#34111#0" expanded="false" />
+            <element signature="e#33699#34111#0" expanded="false" />
+            <element signature="e#34359#34458#0" expanded="false" />
+            <element signature="e#34512#35131#0" expanded="false" />
+            <element signature="e#34712#34911#0" expanded="false" />
+            <element signature="e#34746#34861#0" expanded="false" />
+            <element signature="e#35020#35115#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-111">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/posixpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/metrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="76" column="35" lean-forward="true" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="82" column="32" lean-forward="true" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exp3.py">
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        <state relative-caret-position="548">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_test_embedding.py">
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="-149">
+          <caret line="602" column="8" lean-forward="false" selection-start-line="602" selection-start-column="8" selection-end-line="602" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="100" column="40" lean-forward="false" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

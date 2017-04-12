@@ -8,21 +8,19 @@ from keras.metrics import cosine_proximity
 from keras.models import Sequential
 from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop
 
+from E5_embedding import cfg_emb
+from E5_embedding.cfg_emb import IM2DOC_FOLDER
 from config import cfg, common
 from imdataset import ImageDataset
 
-IM2DOC_FOLDER = "im2doc_embedding"
-VISUAL_FEATURES = "extracted_features/feat_dbp3120__resnet50__avg_pool_pruned-A@best_nb-classes-500_test-on-dbp3120.h5"
 # "shallow_extracted_features/shallow_feat_dbp3120_train_ds.h5"
-TEXT_FEATURES = "doc2vec_dbpedia_vectors.npy"
-CLASS_LIST = "class_keep_from_pruning.txt"
+
 
 
 def main(args):
-    cfg.init()
     im2doc()
 
-def im2doc(visual_features=VISUAL_FEATURES, text_features=TEXT_FEATURES, class_list=CLASS_LIST):
+def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN, class_list=cfg_emb.CLASS_LIST_TRAIN):
     import numpy as np
 
     print("Loading visual features..")
@@ -99,7 +97,8 @@ def im2doc(visual_features=VISUAL_FEATURES, text_features=TEXT_FEATURES, class_l
                     bestpoint_wo = ModelCheckpoint(fname + '.weights.{epoch:02d}.loss-{loss:.4f}.h5', monitor='loss',
                                                 save_best_only=True, save_weights_only=True)
                     callbacks = [earlystop, reduceLR, bestpoint]
-                    model.fit(data, labels, batch_size=64, nb_epoch=EPOCHS, verbose=1, shuffle=True, callbacks=callbacks)
+                    history = model.fit(data, labels, batch_size=64, nb_epoch=EPOCHS, verbose=1, shuffle=True,
+                                        callbacks=callbacks)
 
 
 

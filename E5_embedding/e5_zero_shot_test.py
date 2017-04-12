@@ -9,7 +9,8 @@ from keras.models import Sequential, load_model
 from keras.optimizers import SGD, Adadelta
 from matplotlib.pyplot import imshow
 
-from E5_embedding.e1_im2doc import get_model, IM2DOC_FOLDER, VISUAL_FEATURES, CLASS_LIST
+from E5_embedding import cfg_emb
+from E5_embedding.cfg_emb import IM2DOC_FOLDER
 from config import cfg, common
 from imdataset import ImageDataset
 
@@ -39,9 +40,12 @@ def cos_distance(y_true, y_pred):
 def main(args):
     test_embedding()
 
-def test_embedding():
+def test_embedding(class_list=cfg_emb.CLASS_LIST_TRAIN):
     import numpy as np
 
+    if class_list is not None:
+        class_list = file(class_list, 'r').read().split('\n')
+        # class_list.sort()
 
     cfg.init('resnet50')
     for crop_size in cfg.all_crop_size:
@@ -51,7 +55,7 @@ def test_embedding():
 
         print("Loading visual features..")
         imdataset = common.dataset('dbp3120_train_ds', crop=crop, size=size, inram=False)
-        visual_features = ImageDataset().load_hdf5(VISUAL_FEATURES)
+        visual_features = ImageDataset().load_hdf5(cfg_emb.VISUAL_FEATURES_TRAIN)
 
         print("Loading doc2vec model..")
         d2v_model = doc2vec.Doc2Vec.load(DOC2VEC_MODEL)
@@ -83,6 +87,13 @@ def test_embedding():
             nv = np.asarray(vec)
             #similars = d2v_model.similar_by_vector(nv)
             similars = d2v_model.docvecs.most_similar(positive=[nv], topn=10)
+            similars = np.asarray(similars, dtype=np.uint32)
+
+            # Translate class index of doc2vec (executed on a subset of dataset) in class index of original dataset
+            if class_list is not None:
+                similars = [int(class_list[s]) for s in similars[:,0]]
+            else:
+                similars = similars[:,0]
 
             fname = visual_features.fnames[index]
             label = visual_features.labels[index]
@@ -99,10 +110,10 @@ def test_embedding():
             print("")
             print("Class: {} - {}".format(label, str(label_name).decode('utf-8')))
             print("Image: " + str(fname).decode('utf-8'))
-            similars = np.asarray(similars, dtype=np.uint32)
-            print("Top 10 similars classes: " + str(similars[:,0]))
-            print("1st similar class: {} - {} ".format(str(similars[0,0]), imdataset.labelIntToStr(similars[0,0])))
-            print("2nd similar class: {} - {} ".format(str(similars[1,0]), imdataset.labelIntToStr(similars[1,0])))
+            print("Top 10 similars classes: " + str(similars[:]))
+            for i in range(0, 8):
+                print("{} similar class: {} - {} ".format(i+1, str(similars[i]), visual_features.labelIntToStr(similars[i])))
+
 
 if __name__ == "__main__":
     main(sys.argv)

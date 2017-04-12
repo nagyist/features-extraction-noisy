@@ -2,6 +2,8 @@ import codecs
 import sys
 
 from E3_shallow.Shallow import ShallowNetBuilder, ShallowTester, ShallowLoader, ShallowNet, NetScore
+from E5_embedding import cfg_emb
+from E5_embedding.cfg_emb import pruned_feat_dataset_path
 from config import cfg, common, feat_dataset_n_classes
 
 import numpy as np
@@ -46,13 +48,16 @@ BATCH = 32
 
 def main(args):
     cfg.init()
-    prune_feat_dataset_with_shallow_classifier('resnet50')
+    prune_feat_dataset_with_shallow_classifier()
 
 
 
-def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds=True, n_top_classes=500, labelflip=False):
+def prune_feat_dataset_with_shallow_classifier(feat_net=cfg_emb.FEAT_NET,
+                                               double_seeds=True,
+                                               n_top_classes=cfg_emb.PRUNING_KEEP_N_CLASSES,
+                                               labelflip=cfg_emb.USE_LABELFLIP):
 
-    dataset_name = cfg.dataset
+    dataset_name = cfg_emb.FEAT_DATASET
     trainset_name = cfg.dataset + '_train' + ('_ds' if double_seeds else '')
     #validset_name = cfg.dataset + '_valid'
 
@@ -70,7 +75,7 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
 
     SNB = ShallowNetBuilder(in_shape, out_shape)
     SL = ShallowLoader(trainset_name, feat_net)
-    ST =  ShallowTester(feat_net, trainset_name, testset_name, csv_class_stats=False, csv_global_stats=False)
+    ST = ShallowTester(feat_net, trainset_name, testset_name, csv_class_stats=False, csv_global_stats=False)
 
 
     # Nets to test
@@ -78,23 +83,21 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
     shallow_nets = [SNB.A]
 
     # Weights to load on nets to test
-    #shallow_weights_to_loads = [ '15'] # 'best' # best = best on validation
-    shallow_weights_to_loads = ['best']  # 'best' # best = best on validation
-
+    shallow_weights_to_loads = ['best']
     #  Weights to load on labelflip-finetuned nets (finetuned loading the weights  in shallow_weights_to_loads list)
-    shallow_ft_lf_weights_to_load = ['00'] # 'best' # best = best on validation
-
+    shallow_ft_lf_weights_to_load = ['00']
 
     dataset_to_prune = common.feat_dataset(dataset_name, feat_net)
 
     for sn in shallow_nets:
         for sh_i in shallow_weights_to_loads:
-            if labelflip:
+            if cfg_emb.USE_LABELFLIP:
                 # Test some of the finetuned model that use LabelFlip noise label:
                 extr_n = '_ft@' + str(sh_i)
                 for lf_i in shallow_ft_lf_weights_to_load:
-                    shallow_net = sn(extr_n, lf_decay=0.01).init(lf=False).load(SL, lf_i)
-                    keep, prune = test_for_top_classes(shallow_net, ST,  out_on_csv="class_pruning.csv",
+                    shallow_net = sn(extr_n, lf_decay=cfg_emb.LF_DECAY).init(lf=False).load(SL, lf_i)
+                    keep, prune = test_for_top_classes(shallow_net, ST, nb_selected_classes=n_top_classes,
+                                                       out_on_csv="class_pruning.csv",
                                                        out_classname_txt="class_names_keep_from_pruning.txt",
                                                        out_classindex_txt="class_keep_from_pruning.txt")
                     pruned = dataset_to_prune.sub_dataset_with_labels(keep)
@@ -104,7 +107,8 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
             else:
                 # Test without LabelFlip Finetune:
                 shallow_net = sn().init(lf=False).load(SL, sh_i)
-                keep, prune = test_for_top_classes(shallow_net, ST, out_on_csv="class_pruning.csv",
+                keep, prune = test_for_top_classes(shallow_net, ST, nb_selected_classes=n_top_classes,
+                                                   out_on_csv="class_pruning.csv",
                                                    out_classname_txt="class_names_keep_from_pruning.txt",
                                                    out_classindex_txt="class_keep_from_pruning.txt")
                 pruned = dataset_to_prune.sub_dataset_with_labels(keep)
@@ -113,26 +117,12 @@ def prune_feat_dataset_with_shallow_classifier(feat_net='resnet50', double_seeds
                 pruned.save_hdf5(pruned_out_feature_dataset)
 
 
-# def test_train_valid_loss(feat_net, training_set_name, validation_set_name, shallow_network):
-#     in_shape = cfg.feat_shape_dict[feat_net]
-#     out_shape = feat_dataset_n_classes(training_set_name, feat_net)
-#
-#     SNB = ShallowNetBuilder(in_shape, out_shape)
-#     SL = ShallowLoader(training_set_name, feat_net)
-#     ST_tr =  ShallowTester(feat_net, training_set_name, training_set_name, csv_class_stats=False, csv_global_stats=False)
-#     ST_val =  ShallowTester(feat_net, training_set_name, validation_set_name, csv_class_stats=False, csv_global_stats=False)
-#
 
 
-def pruned_feat_dataset(dataset_name, feat_net, shallow_net):
-    return ImageDataset().load_hdf5( pruned_feat_dataset_path(dataset_name, feat_net, shallow_net))
-
-def pruned_feat_dataset_path(dataset_name, testing_dataset_name, nb_classes, feat_net, shallow_net):
-    feat_path = common.feat_path(dataset_name, feat_net, ext=False)
-    return feat_path + '_pruned-'+shallow_net.name+'@'+shallow_net.weights_loaded_index+ '_nb-classes-' + str(nb_classes) + '_test-on-' + testing_dataset_name +'.h5'
 
 
-def test_for_top_classes(shallow_net, shallow_tester, nb_selected_classes=500, ordering_score='top1', out_on_csv=None,
+def test_for_top_classes(shallow_net, shallow_tester, nb_selected_classes=cfg_emb.PRUNING_KEEP_N_CLASSES,
+                         ordering_score='top1', out_on_csv=None,
                          out_classname_txt=None, out_classindex_txt=None, verbose=False):
     '''
 

@@ -583,67 +583,67 @@ class ImageDataset:
         validation_set = None
         for label in range(0,self.labelsize):
             sub = self.sub_dataset_with_label(label)
+            if sub is not None:
+                training_only_indices = []
+                validation_legal_indices_per_rule = []  # one for each validation_inclusion_rule
+                for i in range(0, len(validation_inclusion_rules)):
+                    validation_legal_indices_per_rule.append([])
 
-            training_only_indices = []
-            validation_legal_indices_per_rule = []  # one for each validation_inclusion_rule
-            for i in range(0, len(validation_inclusion_rules)):
-                validation_legal_indices_per_rule.append([])
-
-            for index, fname in enumerate(sub.fnames):
-                excluded = False
-                for exclude_fname in exclude_file_starting_with:
-                    if fname.startswith(exclude_fname):
-                        excluded=True
-                        training_only_indices.append(index)
-                        break
-
-                if not excluded:
-                    included = False
-                    for rule_index, rule in enumerate(validation_inclusion_rules):
-                        if fname.startswith(rule.file_starting_with):
-                            validation_legal_indices_per_rule[rule_index].append(index)
-                            included = True
+                for index, fname in enumerate(sub.fnames):
+                    excluded = False
+                    for exclude_fname in exclude_file_starting_with:
+                        if fname.startswith(exclude_fname):
+                            excluded=True
+                            training_only_indices.append(index)
                             break
-                    if not included:
-                        training_only_indices.append(index)
 
-            validation_indices = []
-            legal_indices_for_a_rule = []
-            for rule_index, legal_indices in enumerate(validation_legal_indices_per_rule):
-                legal_indices_for_a_rule += legal_indices
-                rule = validation_inclusion_rules[rule_index]
-                if rule.percentage_option == PercentageOption.respect_to_filtered_data:
-                    len_rule_valid = int(len(legal_indices) * rule.percentage)
-                elif rule.percentage_option == PercentageOption.respect_to_class_data:
-                    len_rule_valid = rule.int_approximation(len(sub.data) * rule.percentage)
-                if len_rule_valid > 0:
-                    if len_rule_valid > len(legal_indices):
-                        validation_indices += legal_indices
-                        raise UserWarning(
-                            "Label {} - {} doesn't have sufficient examples to reach the percentage {} on rule {}".
-                            format(label, sub.labelnames[label], rule.percentage, rule_index))
-                    else:
-                        nd_legal_indices = np.asarray(legal_indices, dtype=int)
-                        choice = scipy.random.choice(a=legal_indices, size=len_rule_valid, replace=False)
-                        validation_indices += choice.tolist()
+                    if not excluded:
+                        included = False
+                        for rule_index, rule in enumerate(validation_inclusion_rules):
+                            if fname.startswith(rule.file_starting_with):
+                                validation_legal_indices_per_rule[rule_index].append(index)
+                                included = True
+                                break
+                        if not included:
+                            training_only_indices.append(index)
 
-            #validation_indices = set(validation_indices)
-            #   should be a set without using set(), because in random.choice replace=False.
-            training_only_indices += [x for x in legal_indices_for_a_rule if x not in validation_indices]
+                validation_indices = []
+                legal_indices_for_a_rule = []
+                for rule_index, legal_indices in enumerate(validation_legal_indices_per_rule):
+                    legal_indices_for_a_rule += legal_indices
+                    rule = validation_inclusion_rules[rule_index]
+                    if rule.percentage_option == PercentageOption.respect_to_filtered_data:
+                        len_rule_valid = int(len(legal_indices) * rule.percentage)
+                    elif rule.percentage_option == PercentageOption.respect_to_class_data:
+                        len_rule_valid = rule.int_approximation(len(sub.data) * rule.percentage)
+                    if len_rule_valid > 0:
+                        if len_rule_valid > len(legal_indices):
+                            validation_indices += legal_indices
+                            raise UserWarning(
+                                "Label {} - {} doesn't have sufficient examples to reach the percentage {} on rule {}".
+                                format(label, sub.labelnames[label], rule.percentage, rule_index))
+                        else:
+                            nd_legal_indices = np.asarray(legal_indices, dtype=int)
+                            choice = scipy.random.choice(a=legal_indices, size=len_rule_valid, replace=False)
+                            validation_indices += choice.tolist()
 
-            if training_set is None:
-                training_set = sub.sub_dataset_from_indices(training_only_indices)
-            else:
-                sub_train = sub.sub_dataset_from_indices(training_only_indices)
-                if sub_train is not None:
-                    training_set.merge_with_dataset(sub_train)
+                #validation_indices = set(validation_indices)
+                #   should be a set without using set(), because in random.choice replace=False.
+                training_only_indices += [x for x in legal_indices_for_a_rule if x not in validation_indices]
 
-            if validation_set is None:
-                validation_set = sub.sub_dataset_from_indices(validation_indices)
-            else:
-                sub_valid = sub.sub_dataset_from_indices(validation_indices)
-                if sub_valid is not None:
-                    validation_set.merge_with_dataset(sub_valid)
+                if training_set is None:
+                    training_set = sub.sub_dataset_from_indices(training_only_indices)
+                else:
+                    sub_train = sub.sub_dataset_from_indices(training_only_indices)
+                    if sub_train is not None:
+                        training_set.merge_with_dataset(sub_train)
+
+                if validation_set is None:
+                    validation_set = sub.sub_dataset_from_indices(validation_indices)
+                else:
+                    sub_valid = sub.sub_dataset_from_indices(validation_indices)
+                    if sub_valid is not None:
+                        validation_set.merge_with_dataset(sub_valid)
 
         return training_set, validation_set
 

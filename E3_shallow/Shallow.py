@@ -114,7 +114,7 @@ class ShallowLoader:
         shallow_path = common.shallow_path(name, self.trainset_name, self.feat_net_name, ext=False)
         model = shallow.model()
         if model is None:
-            RuntimeError("You have to initialize the model with init() before loading the weights")
+            raise RuntimeError("You have to initialize the model with init() before loading the weights")
         model.load_weights(shallow_path + '.weights.' + str(weight_index) + '.h5', by_name=True)
         shallow.weights_loaded_from=name
         shallow.weights_loaded_index=weight_index
