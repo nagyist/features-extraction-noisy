@@ -7,9 +7,9 @@ from keras.layers import Dense
 from keras.metrics import cosine_proximity
 from keras.models import Sequential
 from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop
+import numpy as np
 
 from E5_embedding import cfg_emb
-from E5_embedding.cfg_emb import IM2DOC_FOLDER
 from config import cfg, common
 from imdataset import ImageDataset
 
@@ -20,7 +20,7 @@ from imdataset import ImageDataset
 def main(args):
     im2doc()
 
-def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN, class_list=cfg_emb.CLASS_LIST_TRAIN):
+def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN_400, class_list=cfg_emb.CLASS_LIST_TRAIN):
     import numpy as np
 
     print("Loading visual features..")
@@ -85,7 +85,7 @@ def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.
                     fname = "video2doc_model_opt-{}_lr-{}_bs-{}".format(opt_str, lr, bs)
                     for i, hu in enumerate(hid):
                         fname += "_hl-" + str(hu)
-                    fname = os.path.join(IM2DOC_FOLDER, fname)
+                    fname = os.path.join(cfg_emb.IM2DOCVEC_FOLDER, fname)
 
                     model = get_model(data.shape[1], targets.shape[-1], hid)
                     model.compile(optimizer=opt(lr=lr), loss=cos_distance)

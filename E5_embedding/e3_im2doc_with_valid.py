@@ -10,19 +10,20 @@ from keras.models import Sequential
 from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop
 
 from E5_embedding import cfg_emb
-from E5_embedding.cfg_emb import IM2DOC_FOLDER
 from config import cfg, common
 from imdataset import ImageDataset
 
 # "shallow_extracted_features/shallow_feat_dbp3120_train_ds.h5"
 
+MONITOR = 'loss'
+#MONITOR = 'val_loss'
 
 
 def main(args):
-    im2doc_wvalid()
+    im2docvec_wvalid()
 
-def im2doc_wvalid(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN,
-                  visual_features_valid=cfg_emb.VISUAL_FEATURES_VALID, class_list=cfg_emb.CLASS_LIST_TRAIN):
+def im2docvec_wvalid(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN_400,
+                     visual_features_valid=cfg_emb.VISUAL_FEATURES_VALID, class_list=cfg_emb.CLASS_LIST_TRAIN):
     import numpy as np
 
     print("Loading visual features..")
@@ -117,21 +118,23 @@ def im2doc_wvalid(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=c
                     print "optim:   " + str(opt_str)
                     print "lr:      " + str(lr)
 
-                    fname = "video2doc_model_opt-{}_lr-{}_bs-{}".format(opt_str, lr, bs)
+                    fname = "im2docvec_opt-{}_lr-{}_bs-{}".format(opt_str, lr, bs)
                     for i, hu in enumerate(hid):
                         fname += "_hl-" + str(hu)
-                    fname = os.path.join(IM2DOC_FOLDER, fname)
+                    folder = os.path.join(cfg_emb.IM2DOCVEC_FOLDER, fname)
+                    if not os.path.isdir(folder):
+                        os.mkdir(folder)
+
+                    fname = os.path.join(folder, fname)
 
                     model = get_model(data_train.shape[1], target_train.shape[-1], hid)
                     model.compile(optimizer=opt(lr=lr), loss=cos_distance)
 
-                    earlystop = EarlyStopping(monitor='loss', min_delta=0.0005, patience=9)
-                    reduceLR = ReduceLROnPlateau(monitor='loss', factor=0.1, patience=4, verbose=1, epsilon=0.0005)
-                    bestpoint = ModelCheckpoint(fname + '.weights.{epoch:02d}.loss-{loss:.4f}.h5', monitor='loss',
-                                                save_best_only=True, save_weights_only=False)
-                    bestpoint_wo = ModelCheckpoint(fname + '.weights.{epoch:02d}.loss-{loss:.4f}.h5', monitor='loss',
-                                                save_best_only=True, save_weights_only=True)
-                    callbacks = [earlystop, reduceLR, bestpoint]
+                    earlystop = EarlyStopping(monitor=MONITOR, min_delta=0.0005, patience=9)
+                    reduceLR = ReduceLROnPlateau(monitor=MONITOR, factor=0.1, patience=4, verbose=1, epsilon=0.0005)
+                    bestpoint = ModelCheckpoint(fname + '.model.best.h5', monitor=MONITOR, save_best_only=True)
+                    checkpoint = ModelCheckpoint(fname + '.weights.{epoch:02d}.h5', monitor=MONITOR, save_best_only=False, save_weights_only=True)
+                    callbacks = [earlystop, reduceLR, bestpoint, checkpoint]
                     history = model.fit(data_train, target_train, batch_size=64, nb_epoch=EPOCHS, verbose=1, shuffle=True,
                                         callbacks=callbacks, validation_data=validation_data)
 

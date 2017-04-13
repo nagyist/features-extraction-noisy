@@ -7,7 +7,6 @@ from config import cfg, common, feat_dataset_n_classes
 from imdataset import ImageDataset
 
 
-IM2DOC_FOLDER = "im2doc_embedding"
 
 
 
@@ -19,9 +18,13 @@ FEAT_TESTSET_NAME = FEAT_DATASET
 FEAT_TRAINSET_NAME = cfg.dataset + '_train' + ('_ds' if DOUBLE_SEEDS else '')
 
 PRUNING_KEEP_N_CLASSES = 500
-IM2DOC_FOLDER = "im2doc_embedding"
 VISUAL_FEATURES = "extracted_features/feat_dbp3120__resnet50__avg_pool_pruned-A@best_nb-classes-500_test-on-dbp3120.h5"
 # "shallow_extracted_features/shallow_feat_dbp3120_train_ds.h5"
+
+IM2DOCVEC_FOLDER = "im2doc_embedding"
+if not os.path.isdir(IM2DOCVEC_FOLDER):
+    os.mkdir(IM2DOCVEC_FOLDER)
+
 
 
 CLASS_LIST = "class_keep_from_pruning.txt"
@@ -32,9 +35,11 @@ CLASS_NAME_LIST = "class_names_keep_from_pruning.txt"
 CLASS_NAME_LIST_TEST = "class_names_keep_from_pruning-test.txt"
 CLASS_NAME_LIST_TRAIN = "class_names_keep_from_pruning-train.txt"
 
-TEXT_FEATURES = "doc2vec_dbpedia_vectors.npy"
-TEXT_FEATURES_TEST = "doc2vec_dbpedia_vectors-test.npy"
-TEXT_FEATURES_TRAIN = "doc2vec_dbpedia_vectors-train.npy"
+TEXT_FEATURES_TRAIN_400 = "docvec_400_train_on_400.npy"
+TEXT_FEATURES_TOTAL_500 = "docvec_500_train_on_500.npy"
+
+# TEXT_FEATURES_TEST = "doc2vec_dbpedia_vectors-test.npy"
+# TEXT_FEATURES_TRAIN = "doc2vec_dbpedia_vectors-train.npy"
 
 
 

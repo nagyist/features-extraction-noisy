@@ -1,5 +1,7 @@
 import os
 import sys
+
+from gensim import matutils
 from gensim.models import doc2vec
 import numpy as np
 from keras.callbacks import ReduceLROnPlateau
@@ -10,25 +12,26 @@ from keras.optimizers import SGD, Adadelta
 from matplotlib.pyplot import imshow
 
 from E5_embedding import cfg_emb
-from E5_embedding.cfg_emb import IM2DOC_FOLDER
 from config import cfg, common
 from imdataset import ImageDataset
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-DOC2VEC_MODEL = "doc2vec_dbpedia_model.bin"
 
 
 IM_DATASET = 'dbp3120_train_ds'
 
-IM2DOC_MODELS_FOLDER = IM2DOC_FOLDER
+IM2DOC_MODELS_FOLDER = cfg_emb.IM2DOCVEC_FOLDER
 #IM2DOC_MODEL_FNAME = 'video2doc_model_opt-Adadelta_lr-10_bs-32_hl-1000.weights.59.loss-0.0032.h5'
-IM2DOC_MODEL_FNAME = 'video2doc_model_opt-Adadelta_lr-10_bs-32_hl-2000_hl-1000.weights.40.loss-0.0013.h5'
+IM2DOC_MODEL = 'im2docvec_opt-Adadelta_lr-10_bs-32_hl-2000_hl-1000'
+IM2DOC_MODEL_EXT = '.model.best.h5'
+IM2DOC_WEIGHTS_EXT = None
 
 
 IM2DOC_PREDICTION_FOLDER = 'im2doc_prediction'
-IM2DOC_PREDICTION_FNAME = 'docs_from_dataset-' + IM_DATASET + '_' + IM2DOC_MODEL_FNAME.split('.weights.')[0] + '.npy'
+IM2DOC_PREDICTION_FNAME = 'docs_from_dataset-' + IM_DATASET + '_' + IM2DOC_MODEL + '.npy'
+
 
 
 def cos_distance(y_true, y_pred):
@@ -40,69 +43,87 @@ def cos_distance(y_true, y_pred):
 def main(args):
     test_embedding()
 
-def test_embedding(class_list=cfg_emb.CLASS_LIST):
+DOC2VEC_MODEL = "doc2vec_model_train_on_400.bin"
+CLASS_LIST_D2V=cfg_emb.CLASS_LIST_TRAIN
+CLASS_LIST_D2V_FOR_AP=cfg_emb.CLASS_LIST_TRAIN
+docs_file = "docvec_400_train_on_400.npy"
+
+DOC2VEC_MODEL = "doc2vec_model_train_on_500.bin"
+CLASS_LIST_D2V=cfg_emb.CLASS_LIST
+CLASS_LIST_D2V_FOR_AP=cfg_emb.CLASS_LIST_TRAIN
+docs_file = "docvec_400_train_on_400.npy"
+
+
+
+def test_embedding():
     import numpy as np
 
-    class_list = cfg_emb.load_class_list(class_list)
-
-    for crop_size in cfg.all_crop_size:
-        crop = crop_size['crop']
-        size = crop_size['size']
+    class_list_doc2vec = cfg_emb.load_class_list(CLASS_LIST_D2V)
 
 
-        print("Loading visual features..")
-        #imdataset = common.dataset('dbp3120_train_ds', crop=crop, size=size, inram=False)
-        visual_features = ImageDataset().load_hdf5(cfg_emb.VISUAL_FEATURES_TRAIN)
 
-        print("Loading doc2vec model..")
-        d2v_model = doc2vec.Doc2Vec.load(DOC2VEC_MODEL)
+    print("Loading visual features..")
+    #visual_features = ImageDataset().load_hdf5(cfg_emb.VISUAL_FEATURES_TRAIN)
+    visual_features_valid = ImageDataset().load_hdf5(cfg_emb.VISUAL_FEATURES_VALID)
+    visual_features = visual_features_valid
 
-        print("Loading im2doc model..")
-        # model = get_model(8000, 300, [4000, 2000])
-        # model.load_weights(os.path.join(IM2DOC_MODELS_FOLDER, IM2DOC_MODEL_FNAME))
-        model = load_model(os.path.join(IM2DOC_MODELS_FOLDER, IM2DOC_MODEL_FNAME), custom_objects={'cos_distance': cos_distance})
+    print("Loading doc2vec model..")
+    d2v_model = doc2vec.Doc2Vec.load(DOC2VEC_MODEL)
 
-        print("Predict docs from images (im2doc embedding)..")
-        data = visual_features.data
-        while len(data.shape) > 2:
-            if data.shape[-1] == 1:
-                data = np.squeeze(data, axis=(-1,))
-        output_doc_vectors = model.predict(data, verbose=True)
-        output_docs_useless = np.load("doc2vec_dbpedia_vectors.npy")
-
-        if not os.path.isdir(IM2DOC_PREDICTION_FOLDER):
-            os.mkdir(IM2DOC_PREDICTION_FOLDER)
-        np.save(os.path.join(IM2DOC_PREDICTION_FOLDER, IM2DOC_PREDICTION_FNAME), output_doc_vectors)
-
-        # plt.close('all')
-        # plt.figure(1)
-        # plt.clf()
+    print("Loading im2doc model..")
+    # model = get_model(8000, 300, [4000, 2000])
+    # model.load_weights(os.path.join(IM2DOC_MODELS_FOLDER, IM2DOC_MODEL_FNAME))
+    model_file = os.path.join(IM2DOC_MODELS_FOLDER, os.path.join(IM2DOC_MODEL, IM2DOC_MODEL + IM2DOC_MODEL_EXT))
+    model = load_model(model_file, custom_objects={'cos_distance': cos_distance})
+    if IM2DOC_WEIGHTS_EXT is not None:
+        print("Loading im2doc weights..")
+        weight_file = os.path.join(IM2DOC_MODELS_FOLDER, os.path.join(IM2DOC_MODEL, IM2DOC_MODEL + IM2DOC_WEIGHTS_EXT))
+        model.load_weights(weight_file)
 
 
-        for index, vec  in enumerate(output_doc_vectors):
-            nv = np.asarray(vec)
-            #similars = d2v_model.similar_by_vector(nv)
-            similars = d2v_model.docvecs.most_similar(positive=[nv], topn=10)
-            similars = np.asarray(similars, dtype=np.uint32)
+    print("Predict docs from images (im2doc embedding)..")
+    data = visual_features.data
+    while len(data.shape) > 2:
+        if data.shape[-1] == 1:
+            data = np.squeeze(data, axis=(-1,))
+    output_doc_vectors = model.predict(data, verbose=True)
+    #output_docs_shit = np.load("doc2vec_dbpedia_vectors.npy")
 
-            # Translate class index of doc2vec (executed on a subset of dataset) in class index of original dataset
-            if class_list is not None:
-                similars = [int(class_list[s]) for s in similars[:,0]]
-            else:
-                similars = similars[:,0]
+    if not os.path.isdir(IM2DOC_PREDICTION_FOLDER):
+        os.mkdir(IM2DOC_PREDICTION_FOLDER)
+    np.save(os.path.join(IM2DOC_PREDICTION_FOLDER, IM2DOC_PREDICTION_FNAME), output_doc_vectors)
 
-            fname = visual_features.fnames[index]
-            label = visual_features.labels[index]
-            label_name = visual_features.labelIntToStr(label)
+    # plt.close('all')
+    # plt.figure(1)
+    # plt.clf()
 
-            # sub_d = imdataset.sub_dataset_from_filename(fname)
-            # image = sub_d.data[0]
-            # image = image.transpose((2, 0, 1))
-            # image = image.transpose((2, 0, 1))
+    verb = False
+    for index, vec  in enumerate(output_doc_vectors):
+        nv = np.asarray(vec)
+        #similars = d2v_model.similar_by_vector(nv)
+        similars = d2v_model.docvecs.most_similar(positive=[nv], topn=10)
+        similars = np.asarray(similars, dtype=np.uint32)
 
-            #plt.title("Class: {} - {}".format(label, label_name) )
-            #plt.imshow(image)
+        # Translate class index of doc2vec (executed on a subset of dataset) in class index of original dataset
+        if class_list_doc2vec is not None:
+            similars = [int(class_list_doc2vec[s]) for s in similars[:,0]]
+        else:
+            similars = similars[:,0]
 
+        fname = visual_features.fnames[index]
+        label = visual_features.labels[index]
+        label_name = visual_features.labelIntToStr(label)
+
+        # sub_d = imdataset.sub_dataset_from_filename(fname)
+        # image = sub_d.data[0]
+        # image = image.transpose((2, 0, 1))
+        # image = image.transpose((2, 0, 1))
+
+        #plt.title("Class: {} - {}".format(label, label_name) )
+        #plt.imshow(image)
+        if verb:
+            #TODO: questo test eseguito con modello doc2vec addestrato sui 500 documenti scazza l'output.. anche se la mAP e' ottima..
+            #TODO: risolvere questo problema
             print("")
             print("Class: {} - {}".format(label, str(label_name).decode('utf-8')))
             print("Image: " + str(fname).decode('utf-8'))
@@ -110,6 +131,32 @@ def test_embedding(class_list=cfg_emb.CLASS_LIST):
             for i in range(0, 8):
                 print("{} similar class: {} - {} ".format(i+1, str(similars[i]), visual_features.labelIntToStr(similars[i])))
 
+    docs = np.load(docs_file)
+
+
+    # mAP test:
+    # TODO: capire perche' qua devo camnbiare la lista (nel caso di doc2vec addestrato sui 500)
+    class_list_doc2vec = cfg_emb.load_class_list(CLASS_LIST_D2V_FOR_AP)
+    av_prec = []
+    for i, doc in enumerate(docs):
+        scores = []
+        targets = []
+        lbl = int(class_list_doc2vec[i])
+        for im_docvec, im_label in zip(output_doc_vectors, visual_features.labels):
+            if im_label == lbl:
+                target = 1
+            else:
+                target = 0
+            score = np.dot(matutils.unitvec(im_docvec), matutils.unitvec(doc))
+            scores.append(score)
+            targets.append(target)
+
+        from sklearn.metrics import average_precision_score
+        AP = average_precision_score(targets, scores)
+        av_prec.append(AP)
+        print("Class {} - AP = {}".format(lbl, AP))
+    mAP = np.mean(np.asarray(av_prec))
+    print("\t\tmAP = {}".format(mAP))
 
 if __name__ == "__main__":
     main(sys.argv)

@@ -7,7 +7,7 @@ import sys
 from theano.gradient import np
 
 from E5_embedding import cfg_emb
-from E5_embedding.cfg_emb import VISUAL_FEATURES, CLASS_LIST, get_class_list, TEXT_FEATURES
+from E5_embedding.cfg_emb import VISUAL_FEATURES, CLASS_LIST, get_class_list, TEXT_FEATURES_TRAIN_400
 from config import cfg
 
 from imdataset import ImageDataset
@@ -18,7 +18,7 @@ METRIC = ['accuracy']
 BATCH = 32
 
 
-def split_train_valid_test(visual_features=VISUAL_FEATURES, text_features=TEXT_FEATURES, n_test_classes=100):
+def split_train_valid_test(visual_features=VISUAL_FEATURES, text_features=TEXT_FEATURES_TRAIN_400, n_test_classes=100):
 
 
     visual_features = ImageDataset().load_hdf5(visual_features)
