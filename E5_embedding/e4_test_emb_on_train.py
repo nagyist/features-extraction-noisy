@@ -43,12 +43,14 @@ def cos_distance(y_true, y_pred):
 def main(args):
     test_embedding()
 
-DOC2VEC_MODEL = "doc2vec_model_train_on_400.bin"
+DOC2VEC_MODEL = "doc2vec_model_train_on_400.bin" # It's not used to compute mAP, only for the verbose test (most similars)
+DOC2VEC_MODEL = "doc2vec_model_train_on_500.bin" # It's not used to compute mAP, only for the verbose test (most similars)
+
+
 CLASS_LIST_D2V=cfg_emb.CLASS_LIST_TRAIN
 CLASS_LIST_D2V_FOR_AP=cfg_emb.CLASS_LIST_TRAIN
 docs_file = "docvec_400_train_on_400.npy"
 
-DOC2VEC_MODEL = "doc2vec_model_train_on_500.bin"
 CLASS_LIST_D2V=cfg_emb.CLASS_LIST
 CLASS_LIST_D2V_FOR_AP=cfg_emb.CLASS_LIST_TRAIN
 docs_file = "docvec_400_train_on_400.npy"

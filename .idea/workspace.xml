@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f38d7c24-f101-41fe-807d-fc64d1f02e24" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp_im2docvec_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/E5_embedding/e3_im2doc.py" afterPath="$PROJECT_DIR$/E5_embedding/e3_im2docvec.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/exp3.py" afterPath="$PROJECT_DIR$/exp_im2docvec.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/zero_shot_callback.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/cfg_emb.py" afterPath="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" afterPath="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py" afterPath="$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" afterPath="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" afterPath="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" afterPath="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,7 +19,7 @@
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2doc_test.coverage" NAME="exp_im2doc_test Coverage Results" MODIFIED="1492110309612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e4_test_emb_on_train_py.coverage" NAME="Unittests in e4_test_emb_on_train.py Coverage Results" MODIFIED="1492094917847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e5_zero_shot_test_py.coverage" NAME="Unittests in e5_zero_shot_test.py Coverage Results" MODIFIED="1492101177711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec_test_zeroshot.coverage" NAME="exp_im2docvec_test_zeroshot Coverage Results" MODIFIED="1492103085420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec_test_zeroshot.coverage" NAME="exp_im2docvec_test_zeroshot Coverage Results" MODIFIED="1492167115934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp3.coverage" NAME="exp3 Coverage Results" MODIFIED="1492020117802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e2_train_valid_test_py.coverage" NAME="Unittests in e2_train_valid_test.py Coverage Results" MODIFIED="1491915540074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$E5___e2.coverage" NAME="E5 - e2 Coverage Results" MODIFIED="1491918558270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E5_embedding" />
@@ -48,7 +43,7 @@
       <file leaf-file-name="cfg_emb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="480">
               <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -60,7 +55,7 @@
       <file leaf-file-name="e2_train_valid_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="717">
+            <state relative-caret-position="1155">
               <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="65" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -72,7 +67,7 @@
       <file leaf-file-name="e3_im2docvec.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2docvec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="135">
               <caret line="22" column="103" lean-forward="false" selection-start-line="22" selection-start-column="103" selection-end-line="22" selection-end-column="103" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -84,8 +79,8 @@
       <file leaf-file-name="e3_im2doc_with_valid.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="25" column="84" lean-forward="false" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="84" />
+            <state relative-caret-position="356">
+              <caret line="60" column="42" lean-forward="true" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -93,13 +88,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="e4_test_emb_on_train.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="e4_test_emb_on_train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="137" column="26" lean-forward="false" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+            <state relative-caret-position="-225">
+              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zero_shot_callback.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/E5_embedding/zero_shot_callback.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,8 +115,8 @@
       <file leaf-file-name="e5_zero_shot_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="128" selection-end-column="57" />
+            <state relative-caret-position="1661">
+              <caret line="170" column="37" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="170" selection-end-column="37" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -148,11 +155,12 @@
         <option value="$PROJECT_DIR$/exp_im2doc.py" />
         <option value="$PROJECT_DIR$/exp_im2doc_test.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py" />
-        <option value="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" />
-        <option value="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" />
         <option value="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e3_im2docvec.py" />
+        <option value="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/zero_shot_callback.py" />
       </list>
     </option>
   </component>
@@ -183,6 +191,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -225,7 +234,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -252,7 +260,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_im2doc_test">
+  <component name="RunManager" selected="Python.exp_im2docvec_test_zeroshot">
     <configuration default="false" name="exp_im2doc_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -485,9 +493,9 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.exp_im2doc_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.e3_im2doc_with_valid" />
-        <item index="2" class="java.lang.String" itemvalue="Python.exp_im2docvec_test_zeroshot" />
+        <item index="0" class="java.lang.String" itemvalue="Python.exp_im2docvec_test_zeroshot" />
+        <item index="1" class="java.lang.String" itemvalue="Python.exp_im2doc_test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.e3_im2doc_with_valid" />
       </list>
     </recent_temporary>
   </component>
@@ -538,12 +546,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2323049" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2323049" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27495462" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2477314" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -570,19 +578,19 @@
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py</url>
-          <line>128</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py</url>
           <line>28</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py</url>
-          <line>157</line>
+          <line>159</line>
           <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py</url>
+          <line>150</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -595,7 +603,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="98" />
+      <option name="time" value="115" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -624,7 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -672,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -690,7 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,13 +904,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="717">
+        <state relative-caret-position="1155">
           <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="65" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -913,17 +917,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
+        <state relative-caret-position="480">
           <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -933,20 +929,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2docvec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="135">
           <caret line="22" column="103" lean-forward="false" selection-start-line="22" selection-start-column="103" selection-end-line="22" selection-end-column="103" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="25" column="84" lean-forward="false" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -955,17 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="128" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,9 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1116,16 +1088,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#52#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="137" column="26" lean-forward="false" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+        <state relative-caret-position="-225">
+          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="60" column="42" lean-forward="true" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1661">
+          <caret line="170" column="37" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="170" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/zero_shot_callback.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
