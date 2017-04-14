@@ -2,7 +2,7 @@ import keras
 import numpy as np
 
 # TODO !!!
-class LossHistory(keras.callbacks.Callback):
+class ZeroShotTest(keras.callbacks.Callback):
     def __init__(self, test_doc_vectors):
         self.test_doc_vectors = test_doc_vectors
 
