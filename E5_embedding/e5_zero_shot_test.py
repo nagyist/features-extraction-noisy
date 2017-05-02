@@ -22,7 +22,7 @@ import matplotlib.image as mpimg
 
 IM_DATASET = 'dbp3120_train_ds'
 
-IM2DOC_MODELS_FOLDER = cfg_emb.IM2DOCVEC_FOLDER
+IM2DOC_MODELS_FOLDER = cfg_emb.IM2DOC_MODEL_FOLDER
 #IM2DOC_MODEL_FNAME = 'video2doc_model_opt-Adadelta_lr-10_bs-32_hl-1000.weights.59.loss-0.0032.h5'
 IM2DOC_MODEL = 'im2docvec_opt-Adadelta_lr-10_bs-32_hl-2000_hl-1000'
 IM2DOC_MODEL_EXT = '.model.best.h5'

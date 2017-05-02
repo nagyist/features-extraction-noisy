@@ -85,7 +85,7 @@ def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.
                     fname = "video2doc_model_opt-{}_lr-{}_bs-{}".format(opt_str, lr, bs)
                     for i, hu in enumerate(hid):
                         fname += "_hl-" + str(hu)
-                    fname = os.path.join(cfg_emb.IM2DOCVEC_FOLDER, fname)
+                    fname = os.path.join(cfg_emb.IM2DOC_MODEL_FOLDER, fname)
 
                     model = get_model(data.shape[1], targets.shape[-1], hid)
                     model.compile(optimizer=opt(lr=lr), loss=cos_distance)

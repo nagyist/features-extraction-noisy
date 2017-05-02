@@ -2,11 +2,90 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f38d7c24-f101-41fe-807d-fc64d1f02e24" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E5_embedding/zero_shot_callback.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbpedia_vectors.npy" afterPath="$PROJECT_DIR$/dbpedia_vectors.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/feature-extraction-noisy.iml" afterPath="$PROJECT_DIR$/.idea/feature-extraction-noisy.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1_data/1.1_convert_folder_to_dataset.py" afterPath="$PROJECT_DIR$/E1_data/1.1_convert_folder_to_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1_data/1.2_split_dataset.py" afterPath="$PROJECT_DIR$/E1_data/1.2_split_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py" afterPath="$PROJECT_DIR$/E1_data/1.3_duplicate_seed.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1_data/__init__.py" afterPath="$PROJECT_DIR$/E1_data/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E2_features/2.1_features_extraction.py" afterPath="$PROJECT_DIR$/E2_features/2.1_features_extraction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E2_features/2.2_outliers_merge.py" afterPath="$PROJECT_DIR$/E2_features/2.2_outliers_merge.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E2_features/__init__.py" afterPath="$PROJECT_DIR$/E2_features/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/Shallow.py" afterPath="$PROJECT_DIR$/E3_shallow/Shallow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/__init__.py" afterPath="$PROJECT_DIR$/E3_shallow/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/e1_shallow_train.py" afterPath="$PROJECT_DIR$/E3_shallow/e1_shallow_train.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/e2_finetune_labelflip.py" afterPath="$PROJECT_DIR$/E3_shallow/e2_finetune_labelflip.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/e3_shallow_test.py" afterPath="$PROJECT_DIR$/E3_shallow/e3_shallow_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/f2_finetune_labelflip.py" afterPath="$PROJECT_DIR$/E3_shallow/f2_finetune_labelflip.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E3_shallow/f3_shallow_test.py" afterPath="$PROJECT_DIR$/E3_shallow/f3_shallow_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/VisualEmbedding.py" afterPath="$PROJECT_DIR$/E5_embedding/VisualEmbedding.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/__init__.py" afterPath="$PROJECT_DIR$/E5_embedding/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/cfg_emb.py" afterPath="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e0_merge_features_train_valid.py" afterPath="$PROJECT_DIR$/E5_embedding/e0_merge_features_train_valid.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e1_prune_classes.py" afterPath="$PROJECT_DIR$/E5_embedding/e1_prune_classes.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" afterPath="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py" afterPath="$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e3_im2docvec.py" afterPath="$PROJECT_DIR$/E5_embedding/e3_im2docvec.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" afterPath="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" afterPath="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/keep_best_im2doc_model.py" afterPath="$PROJECT_DIR$/E5_embedding/keep_best_im2doc_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/zero_shot_callback.py" afterPath="$PROJECT_DIR$/E5_embedding/zero_shot_callback.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/F_shallow_features_clustering/__init__.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/clustering_test_mydata.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/F_shallow_features_clustering/e1_extract_features.py" afterPath="$PROJECT_DIR$/F_shallow_features_clustering/e1_extract_features.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/__init__.py" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/e0_merge_features_train_valid.py" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e0_merge_features_train_valid.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e1_prune_classes.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/G1_zero_shot_exp/e2_dnn2docvec.py" afterPath="$PROJECT_DIR$/G1_zero_shot_exp/e2_dnn2docvec.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Layers/LabelFlipCallback.py" afterPath="$PROJECT_DIR$/Layers/LabelFlipCallback.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Layers/LabelFlipNoise.py" afterPath="$PROJECT_DIR$/Layers/LabelFlipNoise.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Layers/OutlierNoise.py" afterPath="$PROJECT_DIR$/Layers/OutlierNoise.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Layers/__init__.py" afterPath="$PROJECT_DIR$/Layers/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/__init__.py" afterPath="$PROJECT_DIR$/config/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/common.py" afterPath="$PROJECT_DIR$/config/common.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.py" afterPath="$PROJECT_DIR$/config/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/convert_bad_saved_h5_dataset.py" afterPath="$PROJECT_DIR$/convert_bad_saved_h5_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp.py" afterPath="$PROJECT_DIR$/exp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp2.py" afterPath="$PROJECT_DIR$/exp2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_g1.py" afterPath="$PROJECT_DIR$/exp_g1.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_im2docvec.py" afterPath="$PROJECT_DIR$/exp_im2docvec.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_im2docvec_test.py" afterPath="$PROJECT_DIR$/exp_im2docvec_test.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" afterPath="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/featext.py" afterPath="$PROJECT_DIR$/featext.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/ImageDataset.py" afterPath="$PROJECT_DIR$/imdataset/ImageDataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/NetScore.py" afterPath="$PROJECT_DIR$/imdataset/NetScore.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/__test.py" afterPath="$PROJECT_DIR$/imdataset/__test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/image/__init__.py" afterPath="$PROJECT_DIR$/imdataset/image/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/image/__test.py" afterPath="$PROJECT_DIR$/imdataset/image/__test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/image/images.py" afterPath="$PROJECT_DIR$/imdataset/image/images.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/path/__init__.py" afterPath="$PROJECT_DIR$/imdataset/path/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/path/path.py" afterPath="$PROJECT_DIR$/imdataset/path/path.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imdataset/utils/__init__.py" afterPath="$PROJECT_DIR$/imdataset/utils/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inconv.py" afterPath="$PROJECT_DIR$/inconv.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelflip_A/4.1_labelflip_train.py" afterPath="$PROJECT_DIR$/labelflip_A/4.1_labelflip_train.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelflip_A/4.2_labelflip_test.py" afterPath="$PROJECT_DIR$/labelflip_A/4.2_labelflip_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/net_utils/__init__.py" afterPath="$PROJECT_DIR$/net_utils/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/net_utils/model_utils.py" afterPath="$PROJECT_DIR$/net_utils/model_utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/net_utils/zz__old/multi_gpu.py" afterPath="$PROJECT_DIR$/net_utils/zz__old/multi_gpu.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nets/__init__.py" afterPath="$PROJECT_DIR$/nets/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nets/_old_crap/ShallowNet.py" afterPath="$PROJECT_DIR$/nets/_old_crap/ShallowNet.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nets/shallow_net.py" afterPath="$PROJECT_DIR$/nets/shallow_net.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/no_flk_exp/1.5_seed_google_dataset.py" afterPath="$PROJECT_DIR$/no_flk_exp/1.5_seed_google_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/no_flk_exp/4.3_labelflip_test_noflk.py" afterPath="$PROJECT_DIR$/no_flk_exp/4.3_labelflip_test_noflk.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/no_flk_exp/todo.txt" afterPath="$PROJECT_DIR$/no_flk_exp/todo.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/1.4_seed_only_dataset.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/1.4_seed_only_dataset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/2.3_features_seed_only.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/2.3_features_seed_only.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/3.2_shallow_train_so.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/3.2_shallow_train_so.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/4.3_labelflip_train_so.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/4.3_labelflip_train_so.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seed_only_exp (bad results)/4.4_labelflip_test_so.py" afterPath="$PROJECT_DIR$/seed_only_exp (bad results)/4.4_labelflip_test_so.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,13 +96,19 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2doc_test.coverage" NAME="exp_im2doc_test Coverage Results" MODIFIED="1492110309612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e4_test_emb_on_train_py.coverage" NAME="Unittests in e4_test_emb_on_train.py Coverage Results" MODIFIED="1492094917847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e5_zero_shot_test_py.coverage" NAME="Unittests in e5_zero_shot_test.py Coverage Results" MODIFIED="1492101177711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec_test_zeroshot.coverage" NAME="exp_im2docvec_test_zeroshot Coverage Results" MODIFIED="1492167115934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp3.coverage" NAME="exp3 Coverage Results" MODIFIED="1492020117802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e2_train_valid_test_py.coverage" NAME="Unittests in e2_train_valid_test.py Coverage Results" MODIFIED="1491915540074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp3.coverage" NAME="exp3 Coverage Results" MODIFIED="1492020117802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp_im2docvec_test_zeroshot.coverage" NAME="exp_im2docvec_test_zeroshot Coverage Results" MODIFIED="1493730658004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$E5___e2.coverage" NAME="E5 - e2 Coverage Results" MODIFIED="1491918558270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E5_embedding" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e4_test_emb_on_train_py.coverage" NAME="Unittests in e4_test_emb_on_train.py Coverage Results" MODIFIED="1492094917847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$e3_im2doc_with_valid.coverage" NAME="e3_im2doc_with_valid Coverage Results" MODIFIED="1492106456802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E5_embedding" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec_test_zeroshot.coverage" NAME="exp_im2docvec_test_zeroshot Coverage Results" MODIFIED="1492167115934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp_im2docvec_test.coverage" NAME="exp_im2docvec_test Coverage Results" MODIFIED="1493742279751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature-extraction-noisy$e4_test_emb_on_train.coverage" NAME="e4_test_emb_on_train Coverage Results" MODIFIED="1493217385224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E5_embedding" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e5_zero_shot_test_py.coverage" NAME="Unittests in e5_zero_shot_test.py Coverage Results" MODIFIED="1492101177711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -40,85 +125,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cfg_emb.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e2_train_valid_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
-              <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="65" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e3_im2docvec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2docvec.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="22" column="103" lean-forward="false" selection-start-line="22" selection-start-column="103" selection-end-line="22" selection-end-column="103" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e3_im2doc_with_valid.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="60" column="42" lean-forward="true" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e4_test_emb_on_train.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="e4_test_emb_on_train.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-225">
-              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="2340">
+              <caret line="222" column="0" lean-forward="true" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#1676#4568#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zero_shot_callback.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/zero_shot_callback.py">
+      <file leaf-file-name="exp_im2docvec_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exp_im2docvec_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+            <state relative-caret-position="135">
+              <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e5_zero_shot_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1661">
-              <caret line="170" column="37" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="170" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,6 +158,14 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>FOR_SIMIL</find>
+      <find>FOLDER</find>
+      <find>perm</find>
+      <find>unison</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -155,12 +189,14 @@
         <option value="$PROJECT_DIR$/exp_im2doc.py" />
         <option value="$PROJECT_DIR$/exp_im2doc_test.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py" />
-        <option value="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e3_im2docvec.py" />
         <option value="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py" />
-        <option value="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" />
         <option value="$PROJECT_DIR$/E5_embedding/zero_shot_callback.py" />
+        <option value="$PROJECT_DIR$/config/config.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
+        <option value="$PROJECT_DIR$/exp_im2docvec_test.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py" />
       </list>
     </option>
   </component>
@@ -171,10 +207,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1600" />
     <option name="y" value="-1" />
     <option name="width" value="1600" />
-    <option name="height" value="1201" />
+    <option name="height" value="901" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -191,7 +226,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -214,33 +249,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="imdataset" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature-extraction-noisy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature-extraction-noisy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="E5_embedding" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/exp_im2docvec_test.py" />
+    <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -260,45 +282,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_im2docvec_test_zeroshot">
-    <configuration default="false" name="exp_im2doc_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="feature-extraction-noisy" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_im2docvec_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="e3_im2doc_with_valid" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/E5_embedding" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="feature-extraction-noisy" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.exp_im2docvec_test">
     <configuration default="false" name="exp_im2docvec_test_zeroshot" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -315,7 +299,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -336,13 +319,6 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -398,7 +374,6 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
@@ -430,6 +405,26 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="feature-extraction-noisy" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -450,6 +445,28 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="feature-extraction-noisy" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -461,41 +478,68 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="feature-extraction-noisy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="E5 - e2" type="PythonConfigurationType" factoryName="Python">
+    <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python2.7" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/E5_embedding" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="feature-extraction-noisy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Python.E5 - e2" />
-      <item index="1" class="java.lang.String" itemvalue="Python.exp_im2doc_test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.e3_im2doc_with_valid" />
-      <item index="3" class="java.lang.String" itemvalue="Python.exp_im2docvec_test_zeroshot" />
+    <configuration default="false" name="exp_im2docvec_test" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="feature-extraction-noisy" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_im2docvec_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.exp_im2docvec_test" />
+      <item index="1" class="java.lang.String" itemvalue="Python.exp_im2docvec_test_zeroshot" />
     </list>
     <recent_temporary>
-      <list size="3">
+      <list size="1">
         <item index="0" class="java.lang.String" itemvalue="Python.exp_im2docvec_test_zeroshot" />
-        <item index="1" class="java.lang.String" itemvalue="Python.exp_im2doc_test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.e3_im2doc_with_valid" />
       </list>
     </recent_temporary>
   </component>
@@ -539,28 +583,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="-1" width="1600" height="1201" extended-state="6" />
+    <frame x="0" y="-1" width="1600" height="901" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.179375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18404119" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40051347" sideWeight="0.502574" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2323049" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32862645" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23106547" sideWeight="0.497426" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2477314" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3568678" sideWeight="0.497426" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940108" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,14 +627,19 @@
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py</url>
-          <line>159</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py</url>
           <line>150</line>
           <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py</url>
+          <line>201</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="127" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -603,95 +652,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="115" />
+      <option name="time" value="128" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp_im2docvec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1845">
-          <caret line="123" column="73" lean-forward="false" selection-start-line="123" selection-start-column="73" selection-end-line="123" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="67" column="84" lean-forward="true" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp_im2docvec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="47" lean-forward="false" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exp_im2docvec_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -704,22 +669,8 @@
         <state relative-caret-position="1650">
           <caret line="123" column="73" lean-forward="false" selection-start-line="123" selection-start-column="73" selection-end-line="123" selection-end-column="73" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp_g1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -727,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="688" column="44" lean-forward="true" selection-start-line="687" selection-start-column="19" selection-end-line="688" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -742,18 +692,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="1254" column="0" lean-forward="false" selection-start-line="1254" selection-start-column="0" selection-end-line="1254" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1247972723/posix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="548" column="4" lean-forward="false" selection-start-line="548" selection-start-column="4" selection-end-line="548" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1247972723/posix.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
@@ -761,28 +703,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/h5py/_hl/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/h5py/_hl/dataset.py" />
     <entry file="file://$PROJECT_DIR$/config/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1247972723/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="3400" column="8" lean-forward="false" selection-start-line="3400" selection-start-column="8" selection-end-line="3400" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1247972723/__builtin__.py" />
     <entry file="file://$PROJECT_DIR$/G1_zero_shot_exp/e2_dnn2docvec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -818,33 +747,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/E5_embedding/e1_prune_classes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9">
           <caret line="174" column="19" lean-forward="true" selection-start-line="174" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/engine/topology.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="2723" column="0" lean-forward="false" selection-start-line="2723" selection-start-column="0" selection-end-line="2723" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -862,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/VisualEmbedding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/posixpath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
@@ -883,22 +782,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-149">
-          <caret line="602" column="8" lean-forward="false" selection-start-line="602" selection-start-column="8" selection-end-line="602" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1247972723/numpy/core/multiarray.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="4640" column="8" lean-forward="false" selection-start-line="4640" selection-start-column="8" selection-end-line="4640" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/-1247972723/numpy/core/multiarray.py" />
     <entry file="file://$PROJECT_DIR$/exp3.py" />
     <entry file="file://$PROJECT_DIR$/exp_im2docvec.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -907,23 +791,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/gensim/models/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/imdataset/NetScore.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
+    <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="21" column="71" lean-forward="false" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -932,211 +812,212 @@
         <state relative-caret-position="135">
           <caret line="22" column="103" lean-forward="false" selection-start-line="22" selection-start-column="103" selection-end-line="22" selection-end-column="103" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/gensim/models/__init__.py">
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_train_valid_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imdataset/NetScore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1337">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="1155">
+          <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="65" />
           <folding>
-            <element signature="e#440#498#0" expanded="false" />
-            <element signature="e#525#1418#0" expanded="false" />
-            <element signature="e#690#1418#0" expanded="false" />
-            <element signature="e#690#994#1" expanded="false" />
-            <element signature="e#2081#8410#0" expanded="false" />
-            <element signature="e#2081#2351#1" expanded="false" />
-            <element signature="e#2801#6161#0" expanded="false" />
-            <element signature="e#2906#3021#0" expanded="false" />
-            <element signature="e#3629#5710#0" expanded="false" />
-            <element signature="e#4674#5710#0" expanded="false" />
-            <element signature="e#4761#5244#0" expanded="false" />
-            <element signature="e#5290#5710#0" expanded="false" />
-            <element signature="e#5780#6161#0" expanded="false" />
-            <element signature="e#5853#5926#0" expanded="false" />
-            <element signature="e#5985#6161#0" expanded="false" />
-            <element signature="e#6195#6307#0" expanded="false" />
-            <element signature="e#6462#6771#0" expanded="false" />
-            <element signature="e#6803#6819#0" expanded="false" />
-            <element signature="e#8438#8473#0" expanded="false" />
-            <element signature="e#8930#8949#0" expanded="false" />
-            <element signature="e#8987#9118#0" expanded="false" />
-            <element signature="e#9217#10531#0" expanded="false" />
-            <element signature="e#9319#9404#0" expanded="false" />
-            <element signature="e#9502#10531#0" expanded="false" />
-            <element signature="e#9571#9705#0" expanded="false" />
-            <element signature="e#10215#10531#0" expanded="false" />
-            <element signature="e#10373#10531#0" expanded="false" />
-            <element signature="e#10634#12130#0" expanded="false" />
-            <element signature="e#10634#10646#0" expanded="false" />
-            <element signature="e#11023#11074#0" expanded="false" />
-            <element signature="e#11268#11398#0" expanded="false" />
-            <element signature="e#11453#11560#0" expanded="false" />
-            <element signature="e#11616#11723#0" expanded="false" />
-            <element signature="e#11779#11888#0" expanded="false" />
-            <element signature="e#12545#13562#0" expanded="false" />
-            <element signature="e#12578#12636#0" expanded="false" />
-            <element signature="e#13619#13689#0" expanded="false" />
-            <element signature="e#13746#13823#0" expanded="false" />
-            <element signature="e#14056#14142#0" expanded="false" />
-            <element signature="e#14169#15042#0" expanded="false" />
-            <element signature="e#14275#14410#0" expanded="false" />
-            <element signature="e#14477#14572#0" expanded="false" />
-            <element signature="e#14642#14740#0" expanded="false" />
-            <element signature="e#14812#14924#0" expanded="false" />
-            <element signature="e#15216#15986#0" expanded="false" />
-            <element signature="e#15423#15602#0" expanded="false" />
-            <element signature="e#15668#15805#0" expanded="false" />
-            <element signature="e#16158#18587#0" expanded="false" />
-            <element signature="e#16192#16359#0" expanded="false" />
-            <element signature="e#16530#18314#0" expanded="false" />
-            <element signature="e#16668#18314#0" expanded="false" />
-            <element signature="e#16747#17048#0" expanded="false" />
-            <element signature="e#16859#17048#0" expanded="false" />
-            <element signature="e#17129#17473#0" expanded="false" />
-            <element signature="e#17174#17384#0" expanded="false" />
-            <element signature="e#17674#17992#0" expanded="false" />
-            <element signature="e#18036#18285#0" expanded="false" />
-            <element signature="e#18077#18285#0" expanded="false" />
-            <element signature="e#18387#18566#0" expanded="false" />
-            <element signature="e#18443#18566#0" expanded="false" />
-            <element signature="e#18625#18643#0" expanded="false" />
-            <element signature="e#18695#18930#0" expanded="false" />
-            <element signature="e#18735#18892#0" expanded="false" />
-            <element signature="e#18982#19217#0" expanded="false" />
-            <element signature="e#19022#19179#0" expanded="false" />
-            <element signature="e#19266#19316#0" expanded="false" />
-            <element signature="e#19365#19622#0" expanded="false" />
-            <element signature="e#19405#19584#0" expanded="false" />
-            <element signature="e#19671#19726#0" expanded="false" />
-            <element signature="e#19732#19774#0" expanded="false" />
-            <element signature="e#20266#20381#0" expanded="false" />
-            <element signature="e#20431#20602#0" expanded="false" />
-            <element signature="e#20655#20729#0" expanded="false" />
-            <element signature="e#20782#20841#0" expanded="false" />
-            <element signature="e#20896#21058#0" expanded="false" />
-            <element signature="e#20940#21058#0" expanded="false" />
-            <element signature="e#21113#21274#0" expanded="false" />
-            <element signature="e#21274#21305#0" expanded="false" />
-            <element signature="e#21857#21940#0" expanded="false" />
-            <element signature="e#22236#22577#1" expanded="false" />
-            <element signature="e#23601#23824#0" expanded="false" />
-            <element signature="e#23679#23824#0" expanded="false" />
-            <element signature="e#24132#25347#0" expanded="false" />
-            <element signature="e#24670#25347#0" expanded="false" />
-            <element signature="e#24738#25039#0" expanded="false" />
-            <element signature="e#25098#25329#0" expanded="false" />
-            <element signature="e#25347#25392#0" expanded="false" />
-            <element signature="e#25771#25947#0" expanded="false" />
-            <element signature="e#26120#26295#0" expanded="false" />
-            <element signature="e#26393#26760#0" expanded="false" />
-            <element signature="e#26853#29657#0" expanded="false" />
-            <element signature="e#26853#27364#1" expanded="false" />
-            <element signature="e#27373#27425#0" expanded="false" />
-            <element signature="e#27728#28586#0" expanded="false" />
-            <element signature="e#27943#28253#0" expanded="false" />
-            <element signature="e#28134#28253#0" expanded="false" />
-            <element signature="e#28637#28970#0" expanded="false" />
-            <element signature="e#29021#29204#0" expanded="false" />
-            <element signature="e#29233#29339#0" expanded="false" />
-            <element signature="e#29744#30380#0" expanded="false" />
-            <element signature="e#29866#30342#0" expanded="false" />
-            <element signature="e#29988#30026#0" expanded="false" />
-            <element signature="e#30505#30824#0" expanded="false" />
-            <element signature="e#30955#31680#0" expanded="false" />
-            <element signature="e#31145#31604#0" expanded="false" />
-            <element signature="e#31213#31288#0" expanded="false" />
-            <element signature="e#31255#31288#0" expanded="false" />
-            <element signature="e#31357#31604#0" expanded="false" />
-            <element signature="e#31431#31512#0" expanded="false" />
-            <element signature="e#31475#31512#0" expanded="false" />
-            <element signature="e#31763#32427#0" expanded="false" />
-            <element signature="e#31894#32389#0" expanded="false" />
-            <element signature="e#31980#31981#0" expanded="false" />
-            <element signature="e#32621#32711#0" expanded="false" />
-            <element signature="e#32896#33000#0" expanded="false" />
-            <element signature="e#33045#33111#0" expanded="false" />
-            <element signature="e#33183#34188#0" expanded="false" />
-            <element signature="e#33544#34111#0" expanded="false" />
-            <element signature="e#33699#34111#0" expanded="false" />
-            <element signature="e#34359#34458#0" expanded="false" />
-            <element signature="e#34512#35131#0" expanded="false" />
-            <element signature="e#34712#34911#0" expanded="false" />
-            <element signature="e#34746#34861#0" expanded="false" />
-            <element signature="e#35020#35115#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#52#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/E5_embedding/e3_im2doc_with_valid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="60" column="42" lean-forward="true" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+        <state relative-caret-position="-544">
+          <caret line="51" column="10" lean-forward="true" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/layers/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1661">
-          <caret line="170" column="37" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="170" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="67">
+          <caret line="783" column="0" lean-forward="false" selection-start-line="783" selection-start-column="0" selection-end-line="783" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/utils/layer_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/engine/topology.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="314" column="75" lean-forward="true" selection-start-line="314" selection-start-column="75" selection-end-line="314" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/VisualEmbedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/E5_embedding/zero_shot_callback.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        <state relative-caret-position="315">
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="33" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#71#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/cfg_emb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="103" column="4" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/gensim/similarities/index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="82" column="16" lean-forward="true" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp_g1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test_zeroshot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e5_zero_shot_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="148" column="15" lean-forward="false" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/gensim/similarities/docsim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="484" column="0" lean-forward="false" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2016.3/system/python_stubs/-1247972723/numpy/core/multiarray.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="3429" column="8" lean-forward="false" selection-start-line="3429" selection-start-column="8" selection-end-line="3429" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/scipy/spatial/distance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="325" column="0" lean-forward="false" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/gensim/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="516" column="0" lean-forward="false" selection-start-line="516" selection-start-column="0" selection-end-line="516" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imdataset/ImageDataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="843" column="4" lean-forward="false" selection-start-line="843" selection-start-column="4" selection-end-line="843" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/gensim/models/doc2vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="423" column="8" lean-forward="false" selection-start-line="423" selection-start-column="8" selection-end-line="423" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e4_test_emb_on_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2340">
+          <caret line="222" column="0" lean-forward="true" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#1676#4568#0" expanded="false" />
           </folding>
         </state>
       </provider>

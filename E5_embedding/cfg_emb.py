@@ -21,10 +21,14 @@ PRUNING_KEEP_N_CLASSES = 500
 VISUAL_FEATURES = "extracted_features/feat_dbp3120__resnet50__avg_pool_pruned-A@best_nb-classes-500_test-on-dbp3120.h5"
 # "shallow_extracted_features/shallow_feat_dbp3120_train_ds.h5"
 
-IM2DOCVEC_FOLDER = "im2doc_embedding"
-if not os.path.isdir(IM2DOCVEC_FOLDER):
-    os.mkdir(IM2DOCVEC_FOLDER)
+IM2DOC_PREDICTION_FOLDER = 'im2doc_prediction'
+IM2DOC_MODEL_FOLDER = "im2doc_embedding"
 
+if not os.path.isdir(IM2DOC_MODEL_FOLDER):
+    os.mkdir(IM2DOC_MODEL_FOLDER)
+
+if not os.path.isdir(IM2DOC_PREDICTION_FOLDER):
+    os.mkdir(IM2DOC_PREDICTION_FOLDER)
 
 
 CLASS_LIST = "class_keep_from_pruning.txt"

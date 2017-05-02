@@ -121,7 +121,7 @@ def im2docvec_wvalid(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_feature
                     fname = "im2docvec_opt-{}_lr-{}_bs-{}".format(opt_str, lr, bs)
                     for i, hu in enumerate(hid):
                         fname += "_hl-" + str(hu)
-                    folder = os.path.join(cfg_emb.IM2DOCVEC_FOLDER, fname)
+                    folder = os.path.join(cfg_emb.IM2DOC_MODEL_FOLDER, fname)
                     if not os.path.isdir(folder):
                         os.mkdir(folder)
 
