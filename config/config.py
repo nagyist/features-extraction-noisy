@@ -19,10 +19,7 @@ _SHALLOW_PATH = "shallow_classifier/"
 _DATASET_PATH = "dataset/"
 
 _WD_PATH = "/home/nagash/workspace/zz_SCRATCH_BACKUP/features-extraction"
-#_ALT_WD_PATH = "/var/scratch/rdchiaro/features-extraction"  # esecute in SCRATCH
-# __ALT_WD_PATH = "/local/rdchiaro/E2_features-extraction"       # execute in LOCAL
-#_ALT_WD_PATH = "/var/node436/local/rdchiaro/features-extraction"  # esecute in NODE436 LOCAL!
-_ALT_WD_PATH = "/mnt/data500/amsterdam_backup/scratch_backup/features-extraction"  # esecute in NODE436 LOCAL!
+_ALT_WD_PATH = "/home/delchiaro/mnt/bulldozer/equilibrium/delchiaro/features-extraction"
 
 
 _PRE_WEIGHTS = 'imagenet'

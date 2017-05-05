@@ -41,6 +41,22 @@ CLASS_NAME_LIST_TRAIN = "class_names_keep_from_pruning-train.txt"
 
 TEXT_FEATURES_TRAIN_400 = "docvec_400_train_on_400.npy"
 TEXT_FEATURES_TOTAL_500 = "docvec_500_train_on_500.npy"
+_TEXT_FEATURES_TEST_100 = None
+
+def GET_TEXT_FEATURES_TEST_100():
+    import numpy as np
+    import cfg_emb
+    if cfg_emb._TEXT_FEATURES_TEST_100 is None:
+        docs_vectors_500 = np.load(TEXT_FEATURES_TOTAL_500)
+        docs_vectors_100_zero_shot = []
+        class_list_all = load_class_list(CLASS_LIST)
+        class_list_for_map = load_class_list(CLASS_LIST_TEST)
+        for i, cls in enumerate(class_list_all):
+            if cls in class_list_for_map:
+                docs_vectors_100_zero_shot.append(docs_vectors_500[i])
+        cfg_emb._TEXT_FEATURES_TEST_100 = np.asarray(docs_vectors_100_zero_shot)
+    return cfg_emb._TEXT_FEATURES_TEST_100
+
 
 # TEXT_FEATURES_TEST = "doc2vec_dbpedia_vectors-test.npy"
 # TEXT_FEATURES_TRAIN = "doc2vec_dbpedia_vectors-train.npy"

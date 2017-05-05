@@ -1,12 +1,8 @@
-from E5_embedding.e3_im2docvec import im2doc, im2doc
-from E5_embedding.e3_im2doc_with_valid import im2docvec_wvalid
-from E5_embedding.e4_test_emb_on_train import test_embedding_similars
-from config import cfg
-from F_shallow_features_clustering import extract_shallow_features
+import os
+os.environ['THEANO_FLAGS'] = "floatX=float32,device=gpu1,lib.cnmem=1"
 
-#extract_shallow_features()
-
+from E5_embedding.e1_im2doc_with_mAP import im2docvec_wvalid_map
 
 
 #im2doc()
-im2docvec_wvalid()
+im2docvec_wvalid_map()

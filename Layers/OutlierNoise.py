@@ -1,7 +1,7 @@
 from keras.constraints import unitnorm, Constraint
 from keras.engine import InputSpec
 from keras.engine import Layer
-from keras.layers import Dense, initializations
+from keras.layers import Dense
 from keras import backend as K
 
 import numpy as np
