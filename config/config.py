@@ -18,7 +18,7 @@ _FEATURES_PATH = "extracted_features/"
 _SHALLOW_PATH = "shallow_classifier/"
 _DATASET_PATH = "dataset/"
 
-_WD_PATH = "/home/nagash/workspace/zz_SCRATCH_BACKUP/features-extraction"
+_WD_PATH = "/mnt/bulldozer/delchiaro/features-extraction"
 _ALT_WD_PATH = "/home/delchiaro/mnt/bulldozer/equilibrium/delchiaro/features-extraction"
 
 

@@ -10,6 +10,7 @@ from keras.models import Sequential
 from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop
 
 from E5_embedding import cfg_emb
+from E5_embedding.test_embedding import test_embedding_map
 from config import cfg, common
 from imdataset import ImageDataset
 from mAP_callback import ModelMAP
@@ -104,12 +105,12 @@ def im2docvec_wvalid_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
     print("Generating model..")
 
-    EPOCHS = 15
+    EPOCHS = 2
     hiddens = [ [1000], [500], [200] ]
     #hiddens = [ [2000,1000], ]
 
     lrs = [10]
-    batch_sizes = [32]
+    batch_sizes = [128]
     optimizers_str = ['Adadelta']
     optimizers = [Adadelta]
 
@@ -148,22 +149,47 @@ def im2docvec_wvalid_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                     checkpoint = ModelCheckpoint(fname + '.weights.{epoch:02d}.h5', monitor=MONITOR, save_best_only=False, save_weights_only=True)
 
                     #mAP_tr = ModelMAP(visual_features=visual_features, docs_vectors=text_features, class_list=class_list)
-                    mAP_val = ModelMAP(visual_features=visual_features_valid, docs_vectors=text_features, class_list=class_list, history_key='val_mAP')
-                    mAP_zs = ModelMAP(visual_features=visual_features_zs_test, docs_vectors=text_features_zs_test, class_list=class_list_test, history_key='zs_mAP')
+                    mAP_val = ModelMAP(visual_features=visual_features_valid, docs_vectors=text_features,
+                                       class_list=class_list, history_key='val_mAP',
+                                       exe_on_train_begin=True, on_train_begin_key='tr_begin-val_map',
+                                       exe_on_batch_end=False, on_batch_end_key='batch-val_map')
+                    mAP_zs = ModelMAP(visual_features=visual_features_zs_test, docs_vectors=text_features_zs_test,
+                                      class_list=class_list_test, history_key='zs_mAP',
+                                      exe_on_train_begin=True, on_train_begin_key='tr_begin-zs_map',
+                                      exe_on_batch_end=True, on_batch_end_key='batch-zs_map')
 
                     callbacks = [reduceLR, bestpoint, checkpoint, mAP_val, mAP_zs] #, earlystop, ]
-                    history = model.fit(data_train, target_train, batch_size=64, nb_epoch=EPOCHS, verbose=1, shuffle=True,
+                    # mAP = test_embedding_map(visual_features=visual_features_zs_test,
+                    #                          class_list_doc2vec=class_list_test,
+                    #                          docs_vectors_npy=text_features_zs_test,
+                    #                          im2doc_model=model,
+                    #                          verbose=False)
+                    # print("Pre train mAP: " + str(mAP))
+                    history = model.fit(data_train, target_train, batch_size=bs, nb_epoch=EPOCHS, verbose=1, shuffle=True,
                                         callbacks=callbacks, validation_data=validation_data)
 
                     loss_csv = file(fname + '.loss.csv', 'w')
+                    hist = history.history
+
+
+                    if 'tr_begin-val_map' in hist.keys():
+                        loss_csv.write('val_mAP pre train:, {}\n'.format(hist['tr_begin-val_map'][0]))
+                    if 'tr_begin-zs_map' in hist.keys():
+                        loss_csv.write('zs_mAP pre train:, {}\n'.format(hist['tr_begin-zs_map'][0]))
+
                     loss_csv.write('Epoch, Loss, Val Loss, valid mAP, test mAP\n')
                     epoch = 0
-                    hist = history.history
                     for loss, val_loss, val_mAP, zs_mAP in zip(hist['loss'], hist['val_loss'], hist['val_mAP'], hist['zs_mAP'] ):
                         epoch+=1
                         loss_csv.write(str(epoch) + ', ' + str(loss) + ', ' + str(val_loss) + ', ' + str(val_mAP) + ', ' + str(zs_mAP) + '\n')
 
-
+                    if 'batch-zs_map' in hist.keys() or 'batch-val_map' in hist.keys():
+                        loss_csv.write('\n\n\n\nbatch_size:, {}\n\n'.format(bs))
+                        loss_csv.write('Batch, val mAP, test mAP\n')
+                        batch = 0
+                        for val_mAP, zs_mAP in zip(hist['batch-val_map', 'batch-zs_map']):
+                            batch += 1
+                            loss_csv.write('{}, {}, {}\n'.format(batch, str(val_mAP), str(zs_mAP)))
 
 
 # def cos_distance(y_true, y_pred):

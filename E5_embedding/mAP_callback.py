@@ -5,32 +5,67 @@ from test_embedding import test_embedding_map
 class ModelMAP(keras.callbacks.Callback):
     def __init__(self, visual_features, docs_vectors, class_list,
                  im2doc_model_ext=None, im2doc_weights_ext=None, load_precomputed_imdocs=None,
-                 history_key="mAP"):
+                 history_key="mAP",
+                 exe_on_train_begin=False, on_train_begin_key=None,
+                 exe_on_batch_end=False, on_batch_end_key=None):
         super(ModelMAP, self).__init__()
-        self.visual_features = visual_features
-        self.docs_vectors = docs_vectors
-        self.class_list = class_list
-        self.im2doc_model_ext = im2doc_model_ext
-        self.im2doc_weights_ext =im2doc_weights_ext
-        self.load_precomputed_imdocs = load_precomputed_imdocs
-        self.history_key=history_key
+        self._visual_features = visual_features
+        self._docs_vectors = docs_vectors
+        self._class_list = class_list
+        self._im2doc_model_ext = im2doc_model_ext
+        self._im2doc_weights_ext =im2doc_weights_ext
+        self._load_precomputed_imdocs = load_precomputed_imdocs
+        self._history_key=history_key
+        self._exe_on_train_begin = exe_on_train_begin
+        self._exe_on_batch_end = exe_on_batch_end
+
+        if on_batch_end_key is None:
+            self.on_batch_end_key = 'batch_end-' + history_key
+        else:
+            self.on_batch_end_key = on_batch_end_key
+
+        if on_train_begin_key is None:
+            self.on_train_begin_key = 'train_begin-' + history_key
+        else:
+            self.on_train_begin_key = on_train_begin_key
+
 
     def on_train_begin(self, logs={}):
-        self.avarage_precisions = []
-        self.mAP = None
+        self.batch_mAP_hist = []
+        self.train_begin_mAP = None
+        if self._exe_on_train_begin:
+            mAP = self._compute_map(self.on_train_begin_key)
+            logs[self.on_train_begin_key] = mAP
+            self.train_begin_mAP = mAP
+        return self.train_begin_mAP
 
     def on_epoch_end(self, epoch, logs={}):
-        print("\nComputing " + self.history_key)
-        mAP = test_embedding_map(visual_features=self.visual_features,
-                                 class_list_doc2vec=self.class_list,
-                                 docs_vectors_npy=self.docs_vectors,
+        mAP = self._compute_map(logs, key=self._history_key)
+        logs[self.on_epoch_end] = mAP
+        return mAP
+
+
+    def on_batch_end(self, batch, logs={}):
+        if self._exe_on_batch_end:
+            return self._compute_map(logs, key=self.on_batch_end_key)
+            self.batch_mAP_hist.append(mAP)
+            return mAP
+        else:
+            return None
+
+    def _compute_map(self, key):
+        print("\nComputing " + key)
+        mAP = test_embedding_map(visual_features=self._visual_features,
+                                 class_list_doc2vec=self._class_list,
+                                 docs_vectors_npy=self._docs_vectors,
                                  im2doc_model=self.model,
-                                 im2doc_model_ext=self.im2doc_weights_ext,
-                                 im2doc_weights_ext=self.im2doc_weights_ext,
-                                 load_precomputed_imdocs=self.load_precomputed_imdocs,
+                                 im2doc_model_ext=self._im2doc_weights_ext,
+                                 im2doc_weights_ext=self._im2doc_weights_ext,
+                                 load_precomputed_imdocs=self._load_precomputed_imdocs,
                                  verbose=False)
-        logs[self.history_key] = mAP
-        print("    {}: {}\n\n".format(self.history_key, mAP))
+
+        print("    {}: {}\n\n".format(key, mAP))
+
 
 
 

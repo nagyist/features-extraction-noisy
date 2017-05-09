@@ -39,8 +39,10 @@ CLASS_NAME_LIST = "class_names_keep_from_pruning.txt"
 CLASS_NAME_LIST_TEST = "class_names_keep_from_pruning-test.txt"
 CLASS_NAME_LIST_TRAIN = "class_names_keep_from_pruning-train.txt"
 
-TEXT_FEATURES_TRAIN_400 = "docvec_400_train_on_400.npy"
-TEXT_FEATURES_TOTAL_500 = "docvec_500_train_on_500.npy"
+# TEXT_FEATURES_TRAIN_400 = "docvec_400_train_on_400.npy"
+# TEXT_FEATURES_TOTAL_500 = "docvec_500_train_on_500.npy"
+TEXT_FEATURES_TRAIN_400 = "docvec_400_train_on_wiki.npy"
+TEXT_FEATURES_TOTAL_500 = "docvec_500_train_on_wiki.npy"
 _TEXT_FEATURES_TEST_100 = None
 
 def GET_TEXT_FEATURES_TEST_100():
