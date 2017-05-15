@@ -20,7 +20,7 @@ from mAP_callback import ModelMAP
 from E6_joint_model import JointEmbedding
 from E6_joint_model.JointEmbedding import JointEmbedder
 from imdataset import ImageDataset
-
+import numpy as np
 
 def main(args):
     joint_embedding_train()
@@ -158,8 +158,8 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
                         fname = os.path.join(folder, fname)
 
-                        JE = JointEmbedder(im_input_dim=im_data_train.shape[-1], tx_input_dim=tx_data_train.shape[-1],
-                                           output_dim=joint_space_dim, )
+                        JE = JointEmbedder(im_dim=im_data_train.shape[-1], tx_dim=tx_data_train.shape[-1],
+                                           out_dim=joint_space_dim, )
 
                         model = JE.model(optimizer=opt(lr=lr),
                                          #activation='softmax',

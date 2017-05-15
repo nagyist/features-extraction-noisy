@@ -38,10 +38,10 @@ class JointEmbedder():
     # |  2K -> 128
     # |
 
-    def __init__(self, im_input_dim, tx_input_dim, output_dim):
-        self.im_input_dim = im_input_dim
-        self.tx_input_dim = tx_input_dim
-        self.output_dim = output_dim
+    def __init__(self, im_dim, tx_dim, out_dim):
+        self.im_input_dim = im_dim
+        self.tx_input_dim = tx_dim
+        self.output_dim = out_dim
 
 
     def model(self, optimizer, activation=None, im_hidden_layers=None, tx_hidden_layers=None,
@@ -71,30 +71,25 @@ class JointEmbedder():
         im_input = previous_tensor = Input(shape=(self.im_input_dim,), name='im_input')
         if im_hidden_layers is not None:
             for i, hidden_units in enumerate(im_hidden_layers):
-                hidden_activation = None
+                previous_tensor = Dense(output_dim=hidden_units, name='im_hidden_' + str(i))(previous_tensor)
                 if im_hidden_activation is not None:
-                    hidden_activation = im_hidden_activation[i]
-                hidden_layer = Dense(output_dim=hidden_units, name='im_hidden_' + str(i), activation=hidden_activation)
-                previous_tensor = hidden_layer(previous_tensor)
-        im_embedding_layer = Dense(self.output_dim, activation=activation, name='im_embedding')
-        im_emb = im_embedding_layer(previous_tensor)
+                    previous_tensor = Activation(activation=im_hidden_activation[i])(previous_tensor)
+        im_emb = Dense(self.output_dim, activation=activation, name='im_embedding')(previous_tensor)
+        im_emb = Activation(activation=activation)(im_emb)
 
         # Text network leg:
         tx_input = previous_tensor = Input(shape=(self.tx_input_dim,), name='tx_input')
         if tx_hidden_layers is not None:
             for i, hidden_units in enumerate(tx_hidden_layers):
-                hidden_activation = None
+                previous_tensor = Dense(output_dim=hidden_units, name='tx_hidden_' + str(i))(previous_tensor)
                 if tx_hidden_activation is not None:
-                    hidden_activation = tx_hidden_activation[i]
-                hidden_layer = Dense(output_dim=hidden_units, name='tx_hidden_' + str(i), activation=hidden_activation)
-                previous_tensor = hidden_layer(previous_tensor)
-        tx_embedding_layer = Dense(self.output_dim, activation=activation, name='tx_embedding')
-        tx_emb = tx_embedding_layer(previous_tensor)
-
+                    previous_tensor = Activation(activation=tx_hidden_activation[i])(previous_tensor)
+        tx_emb = Dense(self.output_dim, activation=activation, name='tx_embedding')(previous_tensor)
+        tx_emb = Activation(activation=activation)(tx_emb)
 
         #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode=lambda x: x[0] - x[1], output_shape=lambda x: x[0], name='subtract')
         #im_emb_sub_tx_emb = Merge(mode=euclideanSqDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
-        im_emb_sub_tx_emb = Merge(mode=euclideanDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
+        #im_emb_sub_tx_emb = Merge(mode=euclideanDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
         #im_emb_sub_tx_emb = Merge(mode='cos')([im_emb, tx_emb])
 
         #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode='sum')
@@ -107,30 +102,34 @@ class JointEmbedder():
                 model.compile(optimizer=optimizer, loss=fake_loss)
             elif submodel == "txt":
                 model = Model(input=tx_input, output=tx_emb)
-                model.compile(optimizer=optimizer, loss=avg_batch_mse_loss)
+                model.compile(optimizer=optimizer, loss=fake_loss)
             else:
                 model = None
         else:
-            model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, im_emb_sub_tx_emb])
+            model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb]) #, im_emb_sub_tx_emb])
+            model.summary()
             model.compile(optimizer=optimizer,
-                          loss=[fake_loss, avg_batch_mse_loss, contrastive_loss], # mse_on_sub_out_loss - da usare con 'subtract' merge invece di 'distance' merge
-                          loss_weights=[0, 0 * tx_tx_factr, 1 * tx_im_factr ])
-            # loss_weights:
-            #    0: fake loss
-            #   -1: the network minimize the loss, this loss is the distance from two text_embedding vectors and we want to
-            #       maximize this distance (we want two different text documents to be far in the embedded space, and so
-            #       maximize the distance)
-            #   +1: the network minimize the loss, this loss is the distance from each image with his own document, and we
-            #       want to minimize this distance.
-
+                          loss=[ get_contrastive_loss(tx_emb), get_contrastive_loss(im_emb),
+                              #cos_distance #'mean_squared_error'#contrastive_loss
+                          ],
+                          # mse_on_sub_out_loss - da usare con 'subtract' merge invece di 'distance' merge
+                          loss_weights=[1, 1]) #, -1 * tx_im_factr ])
         return model
+
+def cos_distance(y_true, y_pred):
+    y_true = K.l2_normalize(y_true, axis=-1)
+    y_pred = K.l2_normalize(y_pred, axis=-1)
+    return K.mean(1 - K.sum((y_true * y_pred), axis=-1))
 
 def euclideanSqDistance(inputs):
     if (len(inputs) != 2):
         raise 'oops'
     output = K.mean(K.square(inputs[1] - inputs[0]), axis=-1)
     output = K.expand_dims(output, 1)
+
     return output
+
+
 
 def euclideanDistance(inputs):
     if (len(inputs) != 2):
@@ -183,7 +182,19 @@ def contrastive_loss_cos(labels, dists):  #cos merge return cosine similarity (1
     return K.mean(sum)
 
 
+def get_contrastive_loss(text_outputs, margin=1):
+    def contrastive_loss_2(labels, im_outputs):
+        distances = K.sqrt(K.sum(K.square(im_outputs - text_outputs), axis=-1))
 
+        first_text = text_outputs[0:1, :]
+        last_texts = text_outputs[1:, :]
+        shifted_texts = K.concatenate([last_texts, first_text], axis=0)
+
+        shifted_distances =  K.sqrt(K.sum(K.square(im_outputs - shifted_texts), axis=-1))
+
+        loss = K.mean( distances + K.maximum(margin-shifted_distances, 0))
+        return loss
+    return contrastive_loss_2
 
 
 def contrastive_loss(labels, dists):

@@ -36,7 +36,7 @@ def test_embedding_on_train(map=True, top_similar_output=None):
         test_embedding_top_similars(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                                     class_list_doc2vec=cfg_emb.CLASS_LIST_TRAIN,
                                     docs_vectors_npy=DOCS_FILE_400,
-                                    im2doc_model=IM2DOC_MODEL,
+                                    im2doc_model_name=IM2DOC_MODEL,
                                     im2doc_model_ext=None, im2doc_weights_ext=None,
                                     load_precomputed_imdocs=False,
                                     top_similars=top_similar_output)
@@ -44,7 +44,7 @@ def test_embedding_on_train(map=True, top_similar_output=None):
         test_embedding_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                            class_list_doc2vec=cfg_emb.CLASS_LIST_TRAIN,
                            docs_vectors_npy=DOCS_FILE_400,
-                           im2doc_model_name=IM2DOC_MODEL,
+                           im2doc_model=IM2DOC_MODEL,
                            im2doc_model_ext=None, im2doc_weights_ext=None,
                            load_precomputed_imdocs=True)
 
@@ -63,7 +63,7 @@ def test_embedding_on_valid(map=True, top_similar_output=None):
         test_embedding_map(visual_features=VISUAL_FEATURES_VALID,
                            docs_vectors_npy=DOCS_FILE_400,
                            class_list_doc2vec=CLASS_LIST_D2V_for_map,
-                           im2doc_model_name=IM2DOC_MODEL,
+                           im2doc_model=IM2DOC_MODEL,
                            im2doc_model_ext=None, im2doc_weights_ext=None,
                            load_precomputed_imdocs=True)
 
@@ -93,7 +93,7 @@ def test_embedding_zero_shot(map=True, top_similar_output=None):
         test_embedding_map(visual_features=ZERO_SHOT_VISUAL_FEATURES,
                            docs_vectors_npy=docs_vectors_100_zero_shot,
                            class_list_doc2vec=ZERO_SHOT_CLASS_LIST_for_map,
-                           im2doc_model_name=IM2DOC_MODEL,
+                           im2doc_model=IM2DOC_MODEL,
                            im2doc_model_ext=None, im2doc_weights_ext=None,
                            load_precomputed_imdocs=True)
 

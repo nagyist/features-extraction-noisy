@@ -90,7 +90,7 @@ def test_joint_map(img_features, txt_features, class_list_doc2vec, joint_model,
         txts_embedded = txt_emb_model.predict(txt_data, verbose=verbose)
         np.save(txt_emb_path, txts_embedded)
 
-        [a, b, c] = joint_model.predict(x=[img_data[0:len(txt_data)], txt_data], verbose=verbose)
+        #[a, b, c] = joint_model.predict(x=[img_data[0:len(txt_data)], txt_data], verbose=verbose)
 
     if not isinstance(class_list_doc2vec, list):
         class_list_doc2vec = load_class_list(class_list_doc2vec)
@@ -102,8 +102,8 @@ def test_joint_map(img_features, txt_features, class_list_doc2vec, joint_model,
     av_prec = []
     from scipy.spatial.distance import cdist
 
-    # C = cdist(txts_embedded, imgs_embedded, 'cos')
-    # C = 1-C
+    #C = cdist(txts_embedded, imgs_embedded, 'cos')
+    #C = 1-C
     C = -cdist(txts_embedded, imgs_embedded, 'euclidean')
     #C = (np.sqrt(C.shape[0])-C)/np.sqrt(C.shape[0])
 

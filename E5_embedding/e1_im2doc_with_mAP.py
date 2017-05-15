@@ -105,12 +105,12 @@ def im2docvec_wvalid_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
     print("Generating model..")
 
-    EPOCHS = 2
+    EPOCHS = 20
     hiddens = [ [1000], [500], [200] ]
     #hiddens = [ [2000,1000], ]
 
     lrs = [10]
-    batch_sizes = [128]
+    batch_sizes = [8]
     optimizers_str = ['Adadelta']
     optimizers = [Adadelta]
 
@@ -156,7 +156,7 @@ def im2docvec_wvalid_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                     mAP_zs = ModelMAP(visual_features=visual_features_zs_test, docs_vectors=text_features_zs_test,
                                       class_list=class_list_test, history_key='zs_mAP',
                                       exe_on_train_begin=True, on_train_begin_key='tr_begin-zs_map',
-                                      exe_on_batch_end=True, on_batch_end_key='batch-zs_map')
+                                      exe_on_batch_end=False, on_batch_end_key='batch-zs_map')
 
                     callbacks = [reduceLR, bestpoint, checkpoint, mAP_val, mAP_zs] #, earlystop, ]
                     # mAP = test_embedding_map(visual_features=visual_features_zs_test,
@@ -170,7 +170,7 @@ def im2docvec_wvalid_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
                     loss_csv = file(fname + '.loss.csv', 'w')
                     hist = history.history
-
+                    return
 
                     if 'tr_begin-val_map' in hist.keys():
                         loss_csv.write('val_mAP pre train:, {}\n'.format(hist['tr_begin-val_map'][0]))
