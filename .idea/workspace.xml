@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f38d7c24-f101-41fe-807d-fc64d1f02e24" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E6_joint_model/documents_subtract.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/E6_joint_model/joint_from_scratch.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp_joint.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e1_im2doc_with_mAP.py" afterPath="$PROJECT_DIR$/E5_embedding/e1_im2doc_with_mAP.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" afterPath="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E6_joint_model/JointEmbedding.py" afterPath="$PROJECT_DIR$/E6_joint_model/JointEmbedding.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E6_joint_model/e1_joint_embedding.py" afterPath="$PROJECT_DIR$/E6_joint_model/e1_joint_embedding.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E6_joint_model/joint_from_scratch.py" afterPath="$PROJECT_DIR$/E6_joint_model/joint_from_scratch.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E6_joint_model/mAP_callback.py" afterPath="$PROJECT_DIR$/E6_joint_model/mAP_callback.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E6_joint_model/test_joint.py" afterPath="$PROJECT_DIR$/E6_joint_model/test_joint.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_im2docvec.py" afterPath="$PROJECT_DIR$/exp_im2docvec.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,14 +23,14 @@
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp_im2docvec_test.coverage" NAME="exp_im2docvec_test Coverage Results" MODIFIED="1493817430220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$e3_im2doc_with_valid.coverage" NAME="e3_im2doc_with_valid Coverage Results" MODIFIED="1492106456802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E5_embedding" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2doc_test.coverage" NAME="exp_im2doc_test Coverage Results" MODIFIED="1492110309612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec_test.coverage" NAME="exp_im2docvec_test Coverage Results" MODIFIED="1494613354926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec_test.coverage" NAME="exp_im2docvec_test Coverage Results" MODIFIED="1494868141657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e4_test_emb_on_train_py.coverage" NAME="Unittests in e4_test_emb_on_train.py Coverage Results" MODIFIED="1492094917847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e5_zero_shot_test_py.coverage" NAME="Unittests in e5_zero_shot_test.py Coverage Results" MODIFIED="1492101177711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec.coverage" NAME="exp_im2docvec Coverage Results" MODIFIED="1494852149573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_im2docvec.coverage" NAME="exp_im2docvec Coverage Results" MODIFIED="1494868616836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$Unittests_in_e2_train_valid_test_py.coverage" NAME="Unittests in e2_train_valid_test.py Coverage Results" MODIFIED="1491915540074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$exp_calculate_max_eucl_dist.coverage" NAME="exp_calculate_max_eucl_dist Coverage Results" MODIFIED="1494598282354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E6_joint_model" />
     <SUITE FILE_PATH="coverage/feature-extraction-noisy$exp_im2docvec_test_zeroshot.coverage" NAME="exp_im2docvec_test_zeroshot Coverage Results" MODIFIED="1493730658004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/feature_extraction_noisy$joint_from_scratch.coverage" NAME="joint_from_scratch Coverage Results" MODIFIED="1494865470650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E6_joint_model" />
+    <SUITE FILE_PATH="coverage/feature_extraction_noisy$joint_from_scratch.coverage" NAME="joint_from_scratch Coverage Results" MODIFIED="1494953416608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E6_joint_model" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$e1_joint_embedding.coverage" NAME="e1_joint_embedding Coverage Results" MODIFIED="1494853625915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E6_joint_model" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$documents_subtract.coverage" NAME="documents_subtract Coverage Results" MODIFIED="1494853634300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E6_joint_model" />
     <SUITE FILE_PATH="coverage/feature_extraction_noisy$E5___e2.coverage" NAME="E5 - e2 Coverage Results" MODIFIED="1491918558270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/E5_embedding" />
@@ -57,23 +53,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JointEmbedding.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E6_joint_model/JointEmbedding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1173">
-              <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="joint_from_scratch.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/E6_joint_model/joint_from_scratch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="10" lean-forward="false" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            <state relative-caret-position="187">
+              <caret line="122" column="43" lean-forward="false" selection-start-line="122" selection-start-column="43" selection-end-line="122" selection-end-column="43" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -81,22 +65,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exp_joint.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exp_joint.py">
+      <file leaf-file-name="JointEmbedding.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E6_joint_model/JointEmbedding.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_joint.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/E6_joint_model/test_joint.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="106" column="4" lean-forward="false" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="405">
+              <caret line="123" column="32" lean-forward="true" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,7 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shape</find>
       <find>shape(</find>
       <find>abs</find>
       <find>__init__</find>
@@ -142,6 +117,7 @@
       <find>SHALLOW_NET</find>
       <find>text_features_100_</find>
       <find>score_array</find>
+      <find>summa</find>
     </findStrings>
     <replaceStrings>
       <replace>JOINT_MODEL_PREDICTIONS_FOLDER</replace>
@@ -183,18 +159,18 @@
         <option value="$PROJECT_DIR$/config/config.py" />
         <option value="$PROJECT_DIR$/E5_embedding/mAP_callback.py" />
         <option value="$PROJECT_DIR$/E6_joint_model/exp_calculate_max_eucl_dist.py" />
-        <option value="$PROJECT_DIR$/E6_joint_model/mAP_callback.py" />
         <option value="$PROJECT_DIR$/E5_embedding/test_embedding.py" />
         <option value="$PROJECT_DIR$/E5_embedding/e2_test_embedding.py" />
         <option value="$PROJECT_DIR$/exp_im2docvec.py" />
-        <option value="$PROJECT_DIR$/E5_embedding/e1_im2doc_with_mAP.py" />
         <option value="$PROJECT_DIR$/E6_joint_model/joint_model_from_scratch.py" />
         <option value="$PROJECT_DIR$/E6_joint_model/e1_joint_embedding.py" />
         <option value="$PROJECT_DIR$/E6_joint_model/documents_subtract.py" />
         <option value="$PROJECT_DIR$/E5_embedding/cfg_emb.py" />
-        <option value="$PROJECT_DIR$/E6_joint_model/JointEmbedding.py" />
-        <option value="$PROJECT_DIR$/E6_joint_model/test_joint.py" />
         <option value="$PROJECT_DIR$/exp_joint.py" />
+        <option value="$PROJECT_DIR$/E6_joint_model/mAP_callback.py" />
+        <option value="$PROJECT_DIR$/E6_joint_model/test_joint.py" />
+        <option value="$PROJECT_DIR$/E5_embedding/e1_im2doc_with_mAP.py" />
+        <option value="$PROJECT_DIR$/E6_joint_model/JointEmbedding.py" />
         <option value="$PROJECT_DIR$/E6_joint_model/joint_from_scratch.py" />
       </list>
     </option>
@@ -225,7 +201,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -254,7 +230,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -618,9 +594,9 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.joint_from_scratch" />
-        <item index="1" class="java.lang.String" itemvalue="Python.documents_subtract" />
-        <item index="2" class="java.lang.String" itemvalue="Python.e1_joint_embedding" />
-        <item index="3" class="java.lang.String" itemvalue="Python.exp_im2docvec" />
+        <item index="1" class="java.lang.String" itemvalue="Python.exp_im2docvec" />
+        <item index="2" class="java.lang.String" itemvalue="Python.documents_subtract" />
+        <item index="3" class="java.lang.String" itemvalue="Python.e1_joint_embedding" />
         <item index="4" class="java.lang.String" itemvalue="Python.exp_im2docvec_test_zeroshot" />
       </list>
     </recent_temporary>
@@ -688,17 +664,17 @@
     <frame x="0" y="123" width="1600" height="901" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2117117" sideWeight="0.49550706" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21428572" sideWeight="0.49550706" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41206676" sideWeight="0.507722" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27599487" sideWeight="0.87194335" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991013" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40179718" sideWeight="0.87194335" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24967825" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32734275" sideWeight="0.49227798" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1936937" sideWeight="0.50449294" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32734275" sideWeight="0.49227798" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13449164" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -753,6 +729,11 @@
           <line>86</line>
           <option name="timeStamp" value="268" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/E6_joint_model/joint_from_scratch.py</url>
+          <line>163</line>
+          <option name="timeStamp" value="273" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -764,18 +745,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="269" />
+      <option name="time" value="275" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/exp_g1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -911,7 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,7 +892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,213 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="488" column="24" lean-forward="true" selection-start-line="488" selection-start-column="24" selection-end-line="488" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#690#2129#1" expanded="false" />
-            <element signature="e#2794#2817#0" expanded="false" />
-            <element signature="e#2960#2992#0" expanded="false" />
-            <element signature="e#3064#3129#0" expanded="false" />
-            <element signature="e#3311#3525#0" expanded="false" />
-            <element signature="e#3373#3470#0" expanded="false" />
-            <element signature="e#3606#3657#0" expanded="false" />
-            <element signature="e#3780#3873#0" expanded="false" />
-            <element signature="e#3922#3974#0" expanded="false" />
-            <element signature="e#4053#4086#0" expanded="false" />
-            <element signature="e#4203#4259#0" expanded="false" />
-            <element signature="e#4403#5017#0" expanded="false" />
-            <element signature="e#4441#4946#1" expanded="false" />
-            <element signature="e#5098#6011#0" expanded="false" />
-            <element signature="e#5136#5507#1" expanded="false" />
-            <element signature="e#5567#6011#0" expanded="false" />
-            <element signature="e#5731#6011#0" expanded="false" />
-            <element signature="e#6067#6697#0" expanded="false" />
-            <element signature="e#6105#6627#1" expanded="false" />
-            <element signature="e#6777#7752#0" expanded="false" />
-            <element signature="e#6832#7200#1" expanded="false" />
-            <element signature="e#7259#7752#0" expanded="false" />
-            <element signature="e#7359#7451#0" expanded="false" />
-            <element signature="e#7468#7752#0" expanded="false" />
-            <element signature="e#7785#8576#0" expanded="false" />
-            <element signature="e#7823#8525#1" expanded="false" />
-            <element signature="e#8633#9402#0" expanded="false" />
-            <element signature="e#8671#8918#1" expanded="false" />
-            <element signature="e#8977#9402#0" expanded="false" />
-            <element signature="e#9143#9402#0" expanded="false" />
-            <element signature="e#9455#11168#1" expanded="false" />
-            <element signature="e#11415#12373#0" expanded="false" />
-            <element signature="e#11451#11988#0" expanded="false" />
-            <element signature="e#11509#11566#0" expanded="false" />
-            <element signature="e#11789#11839#0" expanded="false" />
-            <element signature="e#11942#11988#0" expanded="false" />
-            <element signature="e#12019#12114#0" expanded="false" />
-            <element signature="e#12144#12239#0" expanded="false" />
-            <element signature="e#12256#12358#0" expanded="false" />
-            <element signature="e#12696#12793#0" expanded="false" />
-            <element signature="e#13214#14832#0" expanded="false" />
-            <element signature="e#13252#14770#1" expanded="false" />
-            <element signature="e#15197#19220#0" expanded="false" />
-            <element signature="e#15197#18349#1" expanded="false" />
-            <element signature="e#18669#19186#0" expanded="false" />
-            <element signature="e#19263#20724#0" expanded="false" />
-            <element signature="e#19263#20667#1" expanded="false" />
-            <element signature="e#20830#22644#0" expanded="false" />
-            <element signature="e#20830#21995#1" expanded="false" />
-            <element signature="e#22016#22243#0" expanded="false" />
-            <element signature="e#22027#22152#0" expanded="false" />
-            <element signature="e#22357#22584#0" expanded="false" />
-            <element signature="e#22468#22584#0" expanded="false" />
-            <element signature="e#22688#23881#0" expanded="false" />
-            <element signature="e#22688#23846#1" expanded="false" />
-            <element signature="e#23970#25618#0" expanded="false" />
-            <element signature="e#23970#24284#1" expanded="false" />
-            <element signature="e#24370#25618#0" expanded="false" />
-            <element signature="e#24417#25029#0" expanded="false" />
-            <element signature="e#24460#24743#0" expanded="false" />
-            <element signature="e#24527#24681#0" expanded="false" />
-            <element signature="e#24558#24652#0" expanded="false" />
-            <element signature="e#24796#24980#0" expanded="false" />
-            <element signature="e#25054#25579#0" expanded="false" />
-            <element signature="e#25133#25516#0" expanded="false" />
-            <element signature="e#25232#25516#0" expanded="false" />
-            <element signature="e#25232#25287#0" expanded="false" />
-            <element signature="e#25672#26254#0" expanded="false" />
-            <element signature="e#25672#25979#1" expanded="false" />
-            <element signature="e#26013#26240#0" expanded="false" />
-            <element signature="e#26131#26240#0" expanded="false" />
-            <element signature="e#26337#26807#0" expanded="false" />
-            <element signature="e#26529#26663#0" expanded="false" />
-            <element signature="e#26529#26603#0" expanded="false" />
-            <element signature="e#26808#26837#0" expanded="false" />
-            <element signature="e#27099#28968#0" expanded="false" />
-            <element signature="e#27099#28451#1" expanded="false" />
-            <element signature="e#28474#28812#0" expanded="false" />
-            <element signature="e#28591#28812#0" expanded="false" />
-            <element signature="e#28658#28776#0" expanded="false" />
-            <element signature="e#29025#30442#0" expanded="false" />
-            <element signature="e#29025#30401#1" expanded="false" />
-            <element signature="e#30494#32723#0" expanded="false" />
-            <element signature="e#30494#31888#1" expanded="false" />
-            <element signature="e#32057#32584#0" expanded="false" />
-            <element signature="e#32057#32114#0" expanded="false" />
-            <element signature="e#32327#32584#0" expanded="false" />
-            <element signature="e#34427#34960#0" expanded="false" />
-            <element signature="e#34427#34484#0" expanded="false" />
-            <element signature="e#34697#34960#0" expanded="false" />
-            <element signature="e#35160#37263#0" expanded="false" />
-            <element signature="e#35160#36138#1" expanded="false" />
-            <element signature="e#36188#36337#0" expanded="false" />
-            <element signature="e#36395#37263#0" expanded="false" />
-            <element signature="e#36714#36875#0" expanded="false" />
-            <element signature="e#36742#36874#0" expanded="false" />
-            <element signature="e#37313#38589#0" expanded="false" />
-            <element signature="e#37313#38307#1" expanded="false" />
-            <element signature="e#38383#38589#0" expanded="false" />
-            <element signature="e#38648#39907#0" expanded="false" />
-            <element signature="e#38648#39721#1" expanded="false" />
-            <element signature="e#39984#42264#0" expanded="false" />
-            <element signature="e#39984#41684#1" expanded="false" />
-            <element signature="e#41738#41842#0" expanded="false" />
-            <element signature="e#41855#42264#0" expanded="false" />
-            <element signature="e#41877#42010#0" expanded="false" />
-            <element signature="e#42316#44190#0" expanded="false" />
-            <element signature="e#42316#43639#1" expanded="false" />
-            <element signature="e#43699#44187#0" expanded="false" />
-            <element signature="e#43722#44106#0" expanded="false" />
-            <element signature="e#43871#43921#0" expanded="false" />
-            <element signature="e#44273#45693#0" expanded="false" />
-            <element signature="e#44273#44898#1" expanded="false" />
-            <element signature="e#44944#45692#0" expanded="false" />
-            <element signature="e#44988#45061#0" expanded="false" />
-            <element signature="e#45311#45522#0" expanded="false" />
-            <element signature="e#45333#45458#0" expanded="false" />
-            <element signature="e#45363#45447#0" expanded="false" />
-            <element signature="e#45539#45656#0" expanded="false" />
-            <element signature="e#45778#46799#0" expanded="false" />
-            <element signature="e#45778#46295#1" expanded="false" />
-            <element signature="e#46399#46741#0" expanded="false" />
-            <element signature="e#46458#46561#0" expanded="false" />
-            <element signature="e#46604#46741#0" expanded="false" />
-            <element signature="e#46866#48045#0" expanded="false" />
-            <element signature="e#46866#47670#1" expanded="false" />
-            <element signature="e#47736#48045#0" expanded="false" />
-            <element signature="e#47848#47977#0" expanded="false" />
-            <element signature="e#48111#49245#0" expanded="false" />
-            <element signature="e#48111#48915#1" expanded="false" />
-            <element signature="e#48980#49245#0" expanded="false" />
-            <element signature="e#49300#50286#0" expanded="false" />
-            <element signature="e#49300#49787#1" expanded="false" />
-            <element signature="e#49890#50228#0" expanded="false" />
-            <element signature="e#49947#50049#0" expanded="false" />
-            <element signature="e#50092#50228#0" expanded="false" />
-            <element signature="e#50338#51524#0" expanded="false" />
-            <element signature="e#50338#51267#1" expanded="false" />
-            <element signature="e#51610#51869#0" expanded="false" />
-            <element signature="e#51763#51820#0" expanded="false" />
-            <element signature="e#51786#51820#0" expanded="false" />
-            <element signature="e#51928#53840#0" expanded="false" />
-            <element signature="e#51928#53315#1" expanded="false" />
-            <element signature="e#53970#56645#0" expanded="false" />
-            <element signature="e#53970#55947#1" expanded="false" />
-            <element signature="e#55951#56010#0" expanded="false" />
-            <element signature="e#56182#56370#0" expanded="false" />
-            <element signature="e#56401#56591#0" expanded="false" />
-            <element signature="e#56681#58774#0" expanded="false" />
-            <element signature="e#56681#57607#1" expanded="false" />
-            <element signature="e#57708#57848#0" expanded="false" />
-            <element signature="e#57757#57835#0" expanded="false" />
-            <element signature="e#58016#58774#0" expanded="false" />
-            <element signature="e#58467#58638#0" expanded="false" />
-            <element signature="e#58810#58824#0" expanded="false" />
-            <element signature="e#58912#60180#0" expanded="false" />
-            <element signature="e#59082#59133#0" expanded="false" />
-            <element signature="e#59347#60116#0" expanded="false" />
-            <element signature="e#59474#59488#0" expanded="false" />
-            <element signature="e#59555#59802#0" expanded="false" />
-            <element signature="e#59673#59802#0" expanded="false" />
-            <element signature="e#60012#60116#0" expanded="false" />
-            <element signature="e#60209#60920#0" expanded="false" />
-            <element signature="e#60382#60448#0" expanded="false" />
-            <element signature="e#60747#60920#0" expanded="false" />
-            <element signature="e#61001#63480#0" expanded="false" />
-            <element signature="e#61001#62699#1" expanded="false" />
-            <element signature="e#62740#62818#0" expanded="false" />
-            <element signature="e#62915#62988#0" expanded="false" />
-            <element signature="e#63582#63695#0" expanded="false" />
-            <element signature="e#63797#63985#0" expanded="false" />
-            <element signature="e#64107#64388#0" expanded="false" />
-            <element signature="e#64599#67783#0" expanded="false" />
-            <element signature="e#64599#65588#1" expanded="false" />
-            <element signature="e#65708#67783#0" expanded="false" />
-            <element signature="e#66418#66679#0" expanded="false" />
-            <element signature="e#67074#67185#0" expanded="false" />
-            <element signature="e#67885#68217#0" expanded="false" />
-            <element signature="e#68381#68707#0" expanded="false" />
-            <element signature="e#68883#73822#0" expanded="false" />
-            <element signature="e#68883#71990#1" expanded="false" />
-            <element signature="e#72030#72120#0" expanded="false" />
-            <element signature="e#72135#73822#0" expanded="false" />
-            <element signature="e#72463#73045#0" expanded="false" />
-            <element signature="e#72493#72926#0" expanded="false" />
-            <element signature="e#72605#72735#0" expanded="false" />
-            <element signature="e#72621#72710#0" expanded="false" />
-            <element signature="e#72794#72926#0" expanded="false" />
-            <element signature="e#72810#72900#0" expanded="false" />
-            <element signature="e#72947#73045#0" expanded="false" />
-            <element signature="e#73076#73179#0" expanded="false" />
-            <element signature="e#73209#73354#0" expanded="false" />
-            <element signature="e#73384#73533#0" expanded="false" />
-            <element signature="e#73571#73704#0" expanded="false" />
-            <element signature="e#73587#73675#0" expanded="false" />
-            <element signature="e#73898#75496#0" expanded="false" />
-            <element signature="e#73898#74563#1" expanded="false" />
-            <element signature="e#74632#75496#0" expanded="false" />
-            <element signature="e#75010#75075#0" expanded="false" />
-            <element signature="e#75562#77038#0" expanded="false" />
-            <element signature="e#75600#76793#1" expanded="false" />
-            <element signature="e#76829#76945#0" expanded="false" />
-            <element signature="e#77092#79244#0" expanded="false" />
-            <element signature="e#77092#78963#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1141,7 +906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-425">
           <caret line="141" column="6" lean-forward="false" selection-start-line="141" selection-start-column="6" selection-end-line="141" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1149,24 +913,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-937">
           <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/E6_joint_model/exp_calculate_max_eucl_dist.py" />
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/metrics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/metrics/ranking.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8">
           <caret line="111" column="4" lean-forward="false" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1710,56 +1464,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="51" column="17" lean-forward="false" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_test_embedding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp_im2docvec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="68" lean-forward="false" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E6_joint_model/joint_model_from_scratch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/E6_joint_model/joint_model_from_scratch.py" />
     <entry file="file://$PROJECT_DIR$/E6_joint_model/documents_subtract.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="54" lean-forward="true" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E5_embedding/e1_im2doc_with_mAP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="154" column="61" lean-forward="false" selection-start-line="154" selection-start-column="61" selection-end-line="154" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1767,17 +1479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/E6_joint_model/mAP_callback.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1785,7 +1486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="1743" column="4" lean-forward="false" selection-start-line="1743" selection-start-column="4" selection-end-line="1743" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1794,7 +1494,7 @@
         <state relative-caret-position="139">
           <caret line="271" column="8" lean-forward="false" selection-start-line="271" selection-start-column="8" selection-end-line="271" selection-end-column="8" />
           <folding>
-            <element signature="e#24#62#0" expanded="true" />
+            <element signature="e#24#62#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2189,7 +1889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2197,7 +1896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="256" column="0" lean-forward="true" selection-start-line="251" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2205,7 +1903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2524,14 +2221,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E6_joint_model/test_joint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="106" column="4" lean-forward="false" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/E6_joint_model/e1_joint_embedding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1590">
@@ -2540,23 +2229,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E6_joint_model/JointEmbedding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1173">
-          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#71#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2564,14 +2240,84 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E6_joint_model/mAP_callback.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="45" column="33" lean-forward="false" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp_im2docvec_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e2_test_embedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-183">
+          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E6_joint_model/test_joint.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="106" column="8" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp_im2docvec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E5_embedding/e1_im2doc_with_mAP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="112" column="21" lean-forward="false" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/metrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/doctest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="2719" column="8" lean-forward="false" selection-start-line="2719" selection-start-column="8" selection-end-line="2719" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E6_joint_model/JointEmbedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="123" column="32" lean-forward="true" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/E6_joint_model/joint_from_scratch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="10" lean-forward="false" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        <state relative-caret-position="187">
+          <caret line="122" column="43" lean-forward="false" selection-start-line="122" selection-start-column="43" selection-end-line="122" selection-end-column="43" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

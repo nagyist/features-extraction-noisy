@@ -38,10 +38,11 @@ class JointEmbedder():
     # |  2K -> 128
     # |
 
-    def __init__(self, im_dim, tx_dim, out_dim):
+    def __init__(self, im_dim, tx_dim, out_dim, n_text_classes):
         self.im_input_dim = im_dim
         self.tx_input_dim = tx_dim
         self.output_dim = out_dim
+        self.n_text_classes = n_text_classes
 
 
     def model(self, optimizer, activation=None, im_hidden_layers=None, tx_hidden_layers=None,
@@ -74,7 +75,7 @@ class JointEmbedder():
                 previous_tensor = Dense(output_dim=hidden_units, name='im_hidden_' + str(i))(previous_tensor)
                 if im_hidden_activation is not None:
                     previous_tensor = Activation(activation=im_hidden_activation[i])(previous_tensor)
-        im_emb = Dense(self.output_dim, activation=activation, name='im_embedding')(previous_tensor)
+        im_emb = Dense(self.output_dim, name='im_embedding')(previous_tensor)
         im_emb = Activation(activation=activation)(im_emb)
 
         # Text network leg:
@@ -84,9 +85,9 @@ class JointEmbedder():
                 previous_tensor = Dense(output_dim=hidden_units, name='tx_hidden_' + str(i))(previous_tensor)
                 if tx_hidden_activation is not None:
                     previous_tensor = Activation(activation=tx_hidden_activation[i])(previous_tensor)
-        tx_emb = Dense(self.output_dim, activation=activation, name='tx_embedding')(previous_tensor)
+        tx_emb = Dense(self.output_dim, name='tx_embedding')(previous_tensor)
         tx_emb = Activation(activation=activation)(tx_emb)
-
+        tx_classification = Dense(self.n_text_classes, activation='softmax')(tx_emb) # or (previous_tensor) ??
         #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode=lambda x: x[0] - x[1], output_shape=lambda x: x[0], name='subtract')
         #im_emb_sub_tx_emb = Merge(mode=euclideanSqDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
         #im_emb_sub_tx_emb = Merge(mode=euclideanDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
@@ -106,14 +107,13 @@ class JointEmbedder():
             else:
                 model = None
         else:
-            model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb]) #, im_emb_sub_tx_emb])
-            model.summary()
+            model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, tx_classification])
             model.compile(optimizer=optimizer,
-                          loss=[ get_contrastive_loss(tx_emb), get_contrastive_loss(im_emb),
-                              #cos_distance #'mean_squared_error'#contrastive_loss
+                          loss=[ get_contrastive_loss(tx_emb),
+                                 get_contrastive_loss(im_emb), #avg_batch_mse_loss
+                                 'categorical_crossentropy'
                           ],
-                          # mse_on_sub_out_loss - da usare con 'subtract' merge invece di 'distance' merge
-                          loss_weights=[1, 1]) #, -1 * tx_im_factr ])
+                          loss_weights=[1, 0, 1])
         return model
 
 def cos_distance(y_true, y_pred):
@@ -190,9 +190,12 @@ def get_contrastive_loss(text_outputs, margin=1):
         last_texts = text_outputs[1:, :]
         shifted_texts = K.concatenate([last_texts, first_text], axis=0)
 
-        shifted_distances =  K.sqrt(K.sum(K.square(im_outputs - shifted_texts), axis=-1))
+        shifted_distances = K.sqrt(K.sum(K.square(im_outputs - shifted_texts), axis=-1))
 
-        loss = K.mean( distances + K.maximum(margin-shifted_distances, 0))
+        #loss = K.mean((distances + K.maximum(margin-shifted_distances, 0)))
+        loss = K.mean((K.square(distances) + K.square(K.maximum(margin-shifted_distances, 0))))
+        #loss = K.mean(distances - shifted_distances)
+
         return loss
     return contrastive_loss_2
 
@@ -263,16 +266,23 @@ def avg_batch_mse_loss(y_true, y_pred):
 
     y_pred_first_row = y_pred[0:1, :]
     y_pred_other_rows = y_pred[1:, :]
-    y_pred_shifted =  K.concatenate([y_pred_other_rows, y_pred_first_row], axis=0)
+    y_pred_shifted = K.concatenate([y_pred_other_rows, y_pred_first_row], axis=0)
 
-    max_distance = np.sqrt(K.int_shape(y_pred)[1])
-    return K.variable(np.array([max_distance])) - mean_squared_error(y_pred, y_pred_shifted)
+    return -K.mean(K.square(y_pred - y_pred_shifted))
+    #return -K.sqrt(K.sum(K.square(y_pred - y_pred_shifted), axis=-1))
+
+    # max_distance = np.sqrt(K.int_shape(y_pred)[1])
+    # return K.variable(np.array([max_distance])) - mean_squared_error(y_pred, y_pred_shifted)
 
     # mse = K.mean(K.sqrt(K.sum(K.square(y_pred - y_pred_shifted), axis=1)))
     # dist = K.variable(np.array([1])) - mse
     # zero = K.variable(np.array([0]))
     # concat = K.concatenate([zero, dist])
     # return K.max(concat)
+
+
+
+
 
 
 

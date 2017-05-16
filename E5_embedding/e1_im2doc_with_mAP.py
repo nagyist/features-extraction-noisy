@@ -110,7 +110,7 @@ def im2docvec_wvalid_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
     #hiddens = [ [2000,1000], ]
 
     lrs = [10]
-    batch_sizes = [8]
+    batch_sizes = [32]
     optimizers_str = ['Adadelta']
     optimizers = [Adadelta]
 

@@ -43,6 +43,7 @@ class ModelMAP(keras.callbacks.Callback):
         return self.train_begin_mAP
 
     def on_train_end(self, logs={}):
+        self.train_end_mAP = None
         if self._exe_on_train_end:
             mAP = self._compute_map('mAP-on_train_end')
             self.train_end_mAP = mAP

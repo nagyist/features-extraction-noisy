@@ -20,15 +20,6 @@ def main():
 
     cfg.init()
 
-    hiddens = [200]
-
-
-    batch_size = 32
-    epochs = 50
-    optimizer_str = 'Adadelta' # 'sgd'
-    optimizer = Adadelta #sgd
-    lr = 10
-
     class_list_500 = load_class_list('class_keep_from_pruning.txt', int_cast=True)
     class_list_400 = load_class_list('class_keep_from_pruning-train.txt', int_cast=True)
     class_list_100 = load_class_list('class_keep_from_pruning-test.txt', int_cast=True)
@@ -92,21 +83,30 @@ def main():
     label_train = list_to_ndarray(label_train)
     label_valid = list_to_ndarray(label_valid)
 
+
+    joint_space_dim = 200
+    batch_size = 32
+    epochs = 40
+    optimizer_str = 'Adadelta' # 'sgd'
+    optimizer = Adadelta #sgd
+    lr = 10
+
+
     print("Generating model..")
     print ""
     print("Training model..")
-    print "hiddens: " + str(hiddens)
     print "optim:   " + str(optimizer_str)
     print "lr:      " + str(lr)
 
     fname = "jointmodel_opt-{}_lr-{}_bs-{}".format(optimizer_str, lr, batch_size)
 
-    joint_space_dim = 512
-    JE = JointEmbedder(im_dim=im_data_train.shape[-1], tx_dim=tx_data_train.shape[-1], out_dim=joint_space_dim)
+    JE = JointEmbedder(im_dim=im_data_train.shape[-1], tx_dim=tx_data_train.shape[-1], out_dim=joint_space_dim,
+                       n_text_classes=len(class_list_400))
+
     model = JE.model(optimizer=optimizer(lr=lr),
                      activation='sigmoid',
-                     #tx_hidden_layers=[512], tx_hidden_activation=['relu'],
-                     #im_hidden_layers=[512], im_hidden_activation=['relu'],
+                     #tx_hidden_layers=[256], tx_hidden_activation=['softmax'],
+                     #im_hidden_layers=[512], im_hidden_activation=['tanh'],
                      )
 
     # earlystop = EarlyStopping(monitor=MONITOR, min_delta=0.0005, patience=9)
@@ -115,18 +115,19 @@ def main():
     # checkpoint = ModelCheckpoint(fname + '.weights.{epoch:02d}.h5', monitor=MONITOR, save_best_only=False, save_weights_only=True)
 
     # # mAP_tr = ModelMAP(visual_features=visual_features, docs_vectors=text_features, class_list=class_list)
-    mAP_val = ModelMAP(visual_features=visual_features_400_valid, docs_vectors=text_features_400,
-                       class_list=class_list_400, history_key='val_mAP',
-                       exe_on_train_begin=False, on_train_begin_key='tr_begin-val_map',
-                       exe_on_batch_end=False, on_batch_end_key='batch-val_map',
-                       exe_on_train_end=True, exe_on_epoch_end=False
-                       )
     mAP_tr = ModelMAP(visual_features=visual_features_400_train, docs_vectors=text_features_400,
                       class_list=class_list_400, history_key='tr_mAP',
                       exe_on_train_begin=False, on_train_begin_key='tr_begin-tr_map',
                       exe_on_batch_end=False, on_batch_end_key='batch-tr_map',
                       exe_on_epoch_end=False,
                       exe_on_train_end=True)
+    mAP_val = ModelMAP(visual_features=visual_features_400_valid, docs_vectors=text_features_400,
+                       class_list=class_list_400, history_key='val_mAP',
+                       exe_on_train_begin=False, on_train_begin_key='tr_begin-val_map',
+                       exe_on_batch_end=False, on_batch_end_key='batch-val_map',
+                       exe_on_train_end=True, exe_on_epoch_end=False
+                       )
+
     mAP_zs = ModelMAP(visual_features=visual_features_100_zs_test, docs_vectors=text_features_100_zs,
                       class_list=class_list_100, history_key='zs_mAP',
                       exe_on_train_begin=False, on_train_begin_key='tr_begin-zs_map',
@@ -138,9 +139,31 @@ def main():
 
     # label_train = np.zeros([len(im_data_train), 1])
     # label_valid = np.zeros([len(im_data_valid), 1])
+
+    label_map = {}
+    for index, label in enumerate(class_list_400):
+        label_map[label] = index
+    size = len(class_list_400)
+
+    label_train_converted = []
+    for l in label_train:
+        new_l = np.zeros([size])
+        new_l[label_map[l]] = 1
+        label_train_converted.append(new_l)
+    label_train_converted = np.asarray(label_train_converted)
+    label_valid_converted = []
+    for l in label_valid:
+        new_l = np.zeros([size])
+        new_l[label_map[l]] = 1
+        label_valid_converted.append(new_l)
+    label_valid_converted = np.asarray(label_valid_converted)
+    #label_train_converted = np.asarray([label_map[l] for l in label_train])
+    #label_valid_converted = np.asarray([label_map[l] for l in label_valid])
+
+
     model.summary()
-    history = model.fit([im_data_train, tx_data_train], [label_train, label_train],
-                        validation_data=[[im_data_valid, tx_data_valid], [label_valid, label_valid]],
+    history = model.fit([im_data_train, tx_data_train], [label_train, label_train, label_train_converted],
+                        validation_data=[[im_data_valid, tx_data_valid], [label_valid, label_valid, label_valid_converted]],
                         batch_size=batch_size, nb_epoch=epochs, shuffle=True,
                         verbose=1, callbacks=callbacks)
 

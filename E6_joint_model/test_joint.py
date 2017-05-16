@@ -104,8 +104,8 @@ def test_joint_map(img_features, txt_features, class_list_doc2vec, joint_model,
 
     #C = cdist(txts_embedded, imgs_embedded, 'cos')
     #C = 1-C
-    C = -cdist(txts_embedded, imgs_embedded, 'euclidean')
-    #C = (np.sqrt(C.shape[0])-C)/np.sqrt(C.shape[0])
+    C = cdist(txts_embedded, imgs_embedded, 'cos')
+    C = (np.sqrt(C.shape[0])-C)/np.sqrt(C.shape[0])
 
     for i, dv in enumerate(txts_embedded):
         scores = []
