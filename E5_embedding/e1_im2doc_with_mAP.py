@@ -25,14 +25,14 @@ def main(args):
     im2docvec_wvalid_map()
 
 def im2docvec_wvalid_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
-                         text_features=cfg_emb.TEXT_FEATURES_TRAIN_400,
-                         class_list=cfg_emb.CLASS_LIST_TRAIN,
+                         text_features=cfg_emb.TEXT_FEATURES_400,
+                         class_list=cfg_emb.CLASS_LIST_400,
 
                          visual_features_valid=cfg_emb.VISUAL_FEATURES_VALID,
 
                          visual_features_zs_test=cfg_emb.VISUAL_FEATURES_TEST,
-                         text_features_zs_test=cfg_emb.GET_TEXT_FEATURES_TEST_100(),
-                         class_list_test=cfg_emb.CLASS_LIST_TEST):
+                         text_features_zs_test=cfg_emb.GET_TEXT_FEATURES_100(),
+                         class_list_test=cfg_emb.CLASS_LIST_100):
     import numpy as np
 
     print("Loading visual features..")

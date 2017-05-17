@@ -14,12 +14,12 @@ DOCS_FILE_500 = "docvec_500_train_on_500.npy"
 
 VISUAL_FEATURES_TRAIN = cfg_emb.VISUAL_FEATURES_TRAIN
 VISUAL_FEATURES_VALID = cfg_emb.VISUAL_FEATURES_VALID
-CLASS_LIST_D2V_for_similars=cfg_emb.CLASS_LIST_TRAIN
-CLASS_LIST_D2V_for_map=cfg_emb.CLASS_LIST_TRAIN
+CLASS_LIST_D2V_for_similars=cfg_emb.CLASS_LIST_400
+CLASS_LIST_D2V_for_map=cfg_emb.CLASS_LIST_400
 
 ZERO_SHOT_VISUAL_FEATURES = cfg_emb.VISUAL_FEATURES_TEST
-ZERO_SHOT_CLASS_LIST_for_map = cfg_emb.CLASS_LIST_TEST
-ZERO_SHOT_CLASS_LIST_all = cfg_emb.CLASS_LIST
+ZERO_SHOT_CLASS_LIST_for_map = cfg_emb.CLASS_LIST_100
+ZERO_SHOT_CLASS_LIST_all = cfg_emb.CLASS_LIST_500
 
 
 
@@ -34,7 +34,7 @@ def main(args):
 def test_embedding_on_train(map=True, top_similar_output=None):
     if isinstance(top_similar_output, int):
         test_embedding_top_similars(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
-                                    class_list_doc2vec=cfg_emb.CLASS_LIST_TRAIN,
+                                    class_list_doc2vec=cfg_emb.CLASS_LIST_400,
                                     docs_vectors_npy=DOCS_FILE_400,
                                     im2doc_model_name=IM2DOC_MODEL,
                                     im2doc_model_ext=None, im2doc_weights_ext=None,
@@ -42,7 +42,7 @@ def test_embedding_on_train(map=True, top_similar_output=None):
                                     top_similars=top_similar_output)
     if map:
         test_embedding_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
-                           class_list_doc2vec=cfg_emb.CLASS_LIST_TRAIN,
+                           class_list_doc2vec=cfg_emb.CLASS_LIST_400,
                            docs_vectors_npy=DOCS_FILE_400,
                            im2doc_model=IM2DOC_MODEL,
                            im2doc_model_ext=None, im2doc_weights_ext=None,

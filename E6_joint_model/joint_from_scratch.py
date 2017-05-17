@@ -2,10 +2,8 @@ import numpy as np
 import codecs
 import os
 
-
 os.environ['KERAS_BACKEND'] = "tensorflow"
 #os.environ["CUDA_VISIBLE_DEVICES"]="1"
-
 
 from config import cfg
 from keras.optimizers import Adadelta, sgd
@@ -85,11 +83,11 @@ def main():
 
 
     joint_space_dim = 200
-    batch_size = 32
-    epochs = 40
+    batch_size = 64
+    epochs = 80
     optimizer_str = 'Adadelta' # 'sgd'
     optimizer = Adadelta #sgd
-    lr = 10
+    lr = 40
 
 
     print("Generating model..")
@@ -104,9 +102,9 @@ def main():
                        n_text_classes=len(class_list_400))
 
     model = JE.model(optimizer=optimizer(lr=lr),
-                     activation='sigmoid',
-                     #tx_hidden_layers=[256], tx_hidden_activation=['softmax'],
-                     #im_hidden_layers=[512], im_hidden_activation=['tanh'],
+                     activation='softmax',
+                     tx_hidden_layers=[256], tx_hidden_activation=['relu'],
+                     im_hidden_layers=[512], im_hidden_activation=['tanh'],
                      )
 
     # earlystop = EarlyStopping(monitor=MONITOR, min_delta=0.0005, patience=9)
@@ -136,7 +134,7 @@ def main():
 
     # callbacks = [reduceLR, bestpoint, checkpoint, mAP_val, mAP_zs] #, earlystop, ]
     callbacks = [mAP_tr, mAP_val, mAP_zs]  # , mAP_val,  mAP_zs] #, earlystop, ]
-
+    # TODO: use validation-set for early stopping and LR-decay
     # label_train = np.zeros([len(im_data_train), 1])
     # label_valid = np.zeros([len(im_data_valid), 1])
 

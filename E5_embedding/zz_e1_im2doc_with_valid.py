@@ -22,8 +22,8 @@ MONITOR = 'loss'
 def main(args):
     im2docvec_wvalid()
 
-def im2docvec_wvalid(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN_400,
-                     visual_features_valid=cfg_emb.VISUAL_FEATURES_VALID, class_list=cfg_emb.CLASS_LIST_TRAIN):
+def im2docvec_wvalid(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_400,
+                     visual_features_valid=cfg_emb.VISUAL_FEATURES_VALID, class_list=cfg_emb.CLASS_LIST_400):
     import numpy as np
 
     print("Loading visual features..")

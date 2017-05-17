@@ -1,7 +1,8 @@
 from keras.engine import Input, Model, merge, Merge
+from keras.initializations import glorot_normal
 from keras.layers import Dense, LSTM, K, Activation
-from keras.metrics import mean_squared_error, cosine_proximity
-from keras.models import Sequential
+from keras.metrics import mean_squared_error, cosine_proximity, categorical_crossentropy
+from keras.models import Sequential, load_model
 import numpy as np
 
 
@@ -44,10 +45,23 @@ class JointEmbedder():
         self.output_dim = out_dim
         self.n_text_classes = n_text_classes
 
+    @classmethod
+    def load_model(self, model_path, weight_path=None):
+        contrastive_loss_2 = get_contrastive_loss(K.variable(np.asarray([[0]])))
+        model = load_model(filepath=model_path,  custom_objects={'contrastive_loss_2': contrastive_loss_2})
+        model.load_weights(weight_path)
+        return model
 
-    def model(self, optimizer, activation=None, im_hidden_layers=None, tx_hidden_layers=None,
+    def model(self,
+              optimizer,
+              activation=None,
+              im_hidden_layers=None, tx_hidden_layers=None,
               im_hidden_activation=None, tx_hidden_activation=None,
-              tx_tx_factr=1, tx_im_factr=1, submodel=None):
+              contrastive_loss_weight=1,
+              logistic_loss_weight=1,
+              contrastive_loss_weight_inverted=0,
+              submodel=None,
+              init='glorot_normal'): #glorot_uniform
         '''
         
         :param optimizer: 
@@ -72,7 +86,7 @@ class JointEmbedder():
         im_input = previous_tensor = Input(shape=(self.im_input_dim,), name='im_input')
         if im_hidden_layers is not None:
             for i, hidden_units in enumerate(im_hidden_layers):
-                previous_tensor = Dense(output_dim=hidden_units, name='im_hidden_' + str(i))(previous_tensor)
+                previous_tensor = Dense(output_dim=hidden_units, name='im_hidden_' + str(i), init=init)(previous_tensor)
                 if im_hidden_activation is not None:
                     previous_tensor = Activation(activation=im_hidden_activation[i])(previous_tensor)
         im_emb = Dense(self.output_dim, name='im_embedding')(previous_tensor)
@@ -82,12 +96,16 @@ class JointEmbedder():
         tx_input = previous_tensor = Input(shape=(self.tx_input_dim,), name='tx_input')
         if tx_hidden_layers is not None:
             for i, hidden_units in enumerate(tx_hidden_layers):
-                previous_tensor = Dense(output_dim=hidden_units, name='tx_hidden_' + str(i))(previous_tensor)
+                previous_tensor = Dense(output_dim=hidden_units, name='tx_hidden_' + str(i), init=init)(previous_tensor)
                 if tx_hidden_activation is not None:
                     previous_tensor = Activation(activation=tx_hidden_activation[i])(previous_tensor)
-        tx_emb = Dense(self.output_dim, name='tx_embedding')(previous_tensor)
+        tx_emb = Dense(self.output_dim, name='tx_embedding', init=init)(previous_tensor)
         tx_emb = Activation(activation=activation)(tx_emb)
+
+        # Text classification (logistic) leg
         tx_classification = Dense(self.n_text_classes, activation='softmax')(tx_emb) # or (previous_tensor) ??
+
+
         #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode=lambda x: x[0] - x[1], output_shape=lambda x: x[0], name='subtract')
         #im_emb_sub_tx_emb = Merge(mode=euclideanSqDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
         #im_emb_sub_tx_emb = Merge(mode=euclideanDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
@@ -95,7 +113,6 @@ class JointEmbedder():
 
         #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode='sum')
         #im_emb_sub_tx_emb = im_emb - tx_emb
-
 
         if submodel is not None:
             if submodel == "img":
@@ -109,12 +126,62 @@ class JointEmbedder():
         else:
             model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, tx_classification])
             model.compile(optimizer=optimizer,
-                          loss=[ get_contrastive_loss(tx_emb),
-                                 get_contrastive_loss(im_emb), #avg_batch_mse_loss
-                                 'categorical_crossentropy'
-                          ],
-                          loss_weights=[1, 0, 1])
+                          loss=[ get_contrastive_loss(tx_emb), get_contrastive_loss(im_emb), 'categorical_crossentropy'],
+                          loss_weights=[contrastive_loss_weight, contrastive_loss_weight_inverted, logistic_loss_weight])
         return model
+
+
+
+
+
+
+
+
+
+def get_contrastive_loss(text_outputs, margin=1):
+    def contrastive_loss_2(labels, im_outputs):
+        distances = K.sqrt(K.sum(K.square(im_outputs - text_outputs), axis=-1))
+
+        first_text = text_outputs[0:1, :]
+        last_texts = text_outputs[1:, :]
+        shifted_texts = K.concatenate([last_texts, first_text], axis=0)
+
+        shifted_distances = K.sqrt(K.sum(K.square(im_outputs - shifted_texts), axis=-1))
+
+        #loss = K.mean((distances + K.maximum(margin-shifted_distances, 0)))
+        loss = K.mean((K.square(distances) + K.square(K.maximum(margin-shifted_distances, 0))))
+        #loss = K.mean(distances - shifted_distances)
+
+        return loss
+    return contrastive_loss_2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def cos_distance(y_true, y_pred):
     y_true = K.l2_normalize(y_true, axis=-1)
@@ -142,6 +209,36 @@ def euclideanDistance(inputs):
 def fake_loss(y_true, y_pred):
     import numpy as np
     return K.variable(np.array([0]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def contrastive_loss_cos(labels, dists):  #cos merge return cosine similarity (1 when similars).
 
@@ -181,26 +278,7 @@ def contrastive_loss_cos(labels, dists):  #cos merge return cosine similarity (1
 
     return K.mean(sum)
 
-
-def get_contrastive_loss(text_outputs, margin=1):
-    def contrastive_loss_2(labels, im_outputs):
-        distances = K.sqrt(K.sum(K.square(im_outputs - text_outputs), axis=-1))
-
-        first_text = text_outputs[0:1, :]
-        last_texts = text_outputs[1:, :]
-        shifted_texts = K.concatenate([last_texts, first_text], axis=0)
-
-        shifted_distances = K.sqrt(K.sum(K.square(im_outputs - shifted_texts), axis=-1))
-
-        #loss = K.mean((distances + K.maximum(margin-shifted_distances, 0)))
-        loss = K.mean((K.square(distances) + K.square(K.maximum(margin-shifted_distances, 0))))
-        #loss = K.mean(distances - shifted_distances)
-
-        return loss
-    return contrastive_loss_2
-
-
-def contrastive_loss(labels, dists):
+def contrastive_loss_old(labels, dists):
 
     label_first = labels[0:1, :]
     other_labels = labels[1:, :]

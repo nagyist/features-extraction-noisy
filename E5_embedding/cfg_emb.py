@@ -31,33 +31,67 @@ if not os.path.isdir(IM2DOC_PREDICTION_FOLDER):
     os.mkdir(IM2DOC_PREDICTION_FOLDER)
 
 
-CLASS_LIST = "class_keep_from_pruning.txt"
-CLASS_LIST_TEST = "class_keep_from_pruning-test.txt"
-CLASS_LIST_TRAIN = "class_keep_from_pruning-train.txt"
+CLASS_LIST_500 = "class_keep_from_pruning.txt"
+CLASS_LIST_400 = "class_keep_from_pruning-train.txt"
+CLASS_LIST_100 = "class_keep_from_pruning-test.txt"
 
-CLASS_NAME_LIST = "class_names_keep_from_pruning.txt"
-CLASS_NAME_LIST_TEST = "class_names_keep_from_pruning-test.txt"
-CLASS_NAME_LIST_TRAIN = "class_names_keep_from_pruning-train.txt"
+
+CLASS_NAME_LIST_500 = "class_names_keep_from_pruning.txt"
+CLASS_NAME_LIST_400 = "class_names_keep_from_pruning-train.txt"
+CLASS_NAME_LIST_100 = "class_names_keep_from_pruning-test.txt"
+
+
+
 
 # TEXT_FEATURES_TRAIN_400 = "docvec_400_train_on_400.npy"
 # TEXT_FEATURES_TOTAL_500 = "docvec_500_train_on_500.npy"
-TEXT_FEATURES_TRAIN_400 = "docvec_400_train_on_wiki.npy"
-TEXT_FEATURES_TOTAL_500 = "docvec_500_train_on_wiki.npy"
-_TEXT_FEATURES_TEST_100 = None
+TEXT_FEATURES_500 = "docvec_500_train_on_wiki.npy"
+TEXT_FEATURES_400 = "docvec_400_train_on_wiki.npy"
+TEXT_FEATURES_100 = None
 
-def GET_TEXT_FEATURES_TEST_100():
-    import numpy as np
+
+
+__class_list = None
+
+def get_class_list():
     import cfg_emb
-    if cfg_emb._TEXT_FEATURES_TEST_100 is None:
-        docs_vectors_500 = np.load(TEXT_FEATURES_TOTAL_500)
-        docs_vectors_100_zero_shot = []
-        class_list_all = load_class_list(CLASS_LIST)
-        class_list_for_map = load_class_list(CLASS_LIST_TEST)
-        for i, cls in enumerate(class_list_all):
-            if cls in class_list_for_map:
-                docs_vectors_100_zero_shot.append(docs_vectors_500[i])
-        cfg_emb._TEXT_FEATURES_TEST_100 = np.asarray(docs_vectors_100_zero_shot)
-    return cfg_emb._TEXT_FEATURES_TEST_100
+    if cfg_emb.__class_list is None:
+        cfg_emb.__class_list = file(CLASS_LIST_500, 'r').read().split('\n')
+        # cfg_emb.__class_list.sort()
+    return copy.deepcopy(cfg_emb.__class_list)
+
+
+
+
+
+def load_class_list(path,  encoding='utf-8', use_numpy=False, int_cast=False):
+    ret = None
+    if path is not None:
+        ret = codecs.open(path, 'r', encoding=encoding).read().split('\n')
+        if use_numpy:
+            ret = np.asarray(ret, dtype='int32')
+        elif int_cast:
+            ret = map(int, ret)
+    return ret
+
+def save_class_list(class_list, path, encoding='utf-8'):
+    # type: (list, basestring) -> None
+    f = codecs.open(path, 'w', encoding=encoding)
+    for cls in class_list:
+        f.write(unicode(cls) + '\n')
+    f.seek(-1, os.SEEK_END)
+    f.truncate()
+    f.close()
+import numpy as np
+docs_vectors_500 = np.load(TEXT_FEATURES_500)
+docs_vectors_100_zero_shot = []
+class_list_all = load_class_list(CLASS_LIST_500)
+class_list_for_map = load_class_list(CLASS_LIST_100)
+for i, cls in enumerate(class_list_all):
+    if cls in class_list_for_map:
+        docs_vectors_100_zero_shot.append(docs_vectors_500[i])
+TEXT_FEATURES_100 = np.asarray(docs_vectors_100_zero_shot)
+
 
 
 # TEXT_FEATURES_TEST = "doc2vec_dbpedia_vectors-test.npy"
@@ -108,28 +142,3 @@ VISUAL_FEATURES_TEST = VISUAL_FEATURES + '__test.h5'
 VISUAL_FEATURES += '.h5'
 
 
-
-__class_list = None
-
-def get_class_list():
-    import cfg_emb
-    if cfg_emb.__class_list is None:
-        cfg_emb.__class_list = file(CLASS_LIST, 'r').read().split('\n')
-        # cfg_emb.__class_list.sort()
-    return copy.deepcopy(cfg_emb.__class_list)
-
-
-def load_class_list(path,  encoding='utf-8'):
-    if path is not None:
-        return codecs.open(path, 'r', encoding=encoding).read().split('\n')
-    else:
-        return None
-
-def save_class_list(class_list, path, encoding='utf-8'):
-    # type: (list, basestring) -> None
-    f = codecs.open(path, 'w', encoding=encoding)
-    for cls in class_list:
-        f.write(unicode(cls) + '\n')
-    f.seek(-1, os.SEEK_END)
-    f.truncate()
-    f.close()

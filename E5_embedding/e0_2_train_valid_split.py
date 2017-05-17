@@ -7,7 +7,7 @@ import sys
 from theano.gradient import np
 
 from E5_embedding import cfg_emb
-from E5_embedding.cfg_emb import VISUAL_FEATURES, CLASS_LIST, get_class_list, TEXT_FEATURES_TRAIN_400
+from E5_embedding.cfg_emb import VISUAL_FEATURES, CLASS_LIST_500, get_class_list, TEXT_FEATURES_400
 from config import cfg
 
 from imdataset import ImageDataset
@@ -18,7 +18,7 @@ METRIC = ['accuracy']
 BATCH = 32
 
 
-def split_train_valid_test(visual_features=VISUAL_FEATURES, text_features=TEXT_FEATURES_TRAIN_400, n_test_classes=100):
+def split_train_valid_test(visual_features=VISUAL_FEATURES, text_features=TEXT_FEATURES_400, n_test_classes=100):
 
 
     visual_features = ImageDataset().load_hdf5(visual_features)
@@ -26,8 +26,8 @@ def split_train_valid_test(visual_features=VISUAL_FEATURES, text_features=TEXT_F
 
 
 
-    class_list = cfg_emb.load_class_list(cfg_emb.CLASS_LIST)
-    class_name_list = cfg_emb.load_class_list(cfg_emb.CLASS_NAME_LIST)
+    class_list = cfg_emb.load_class_list(cfg_emb.CLASS_LIST_500)
+    class_name_list = cfg_emb.load_class_list(cfg_emb.CLASS_NAME_LIST_500)
 
     class_list = np.asarray(class_list, dtype=np.int32)
     class_name_list = np.asarray(class_name_list)
@@ -66,11 +66,11 @@ def split_train_valid_test(visual_features=VISUAL_FEATURES, text_features=TEXT_F
 
 
 
-    cfg_emb.save_class_list(class_list_test, cfg_emb.CLASS_LIST_TEST)
-    cfg_emb.save_class_list(class_list_train, cfg_emb.CLASS_LIST_TRAIN)
+    cfg_emb.save_class_list(class_list_test, cfg_emb.CLASS_LIST_100)
+    cfg_emb.save_class_list(class_list_train, cfg_emb.CLASS_LIST_400)
 
-    cfg_emb.save_class_list(class_name_list_test, cfg_emb.CLASS_NAME_LIST_TEST)
-    cfg_emb.save_class_list(class_name_list_train, cfg_emb.CLASS_NAME_LIST_TRAIN)
+    cfg_emb.save_class_list(class_name_list_test, cfg_emb.CLASS_NAME_LIST_100)
+    cfg_emb.save_class_list(class_name_list_train, cfg_emb.CLASS_NAME_LIST_400)
 
     np.save(cfg_emb.TEXT_FEATURES_TEST, text_features_test)
     np.save(cfg_emb.TEXT_FEATURES_TRAIN, text_features_train)

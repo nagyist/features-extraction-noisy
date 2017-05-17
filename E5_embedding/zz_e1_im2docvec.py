@@ -20,7 +20,7 @@ from imdataset import ImageDataset
 def main(args):
     im2doc()
 
-def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_TRAIN_400, class_list=cfg_emb.CLASS_LIST_TRAIN):
+def im2doc(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN, text_features=cfg_emb.TEXT_FEATURES_400, class_list=cfg_emb.CLASS_LIST_400):
     import numpy as np
 
     print("Loading visual features..")
