@@ -6,6 +6,9 @@ from keras.models import Sequential, load_model
 import numpy as np
 
 
+
+from keras.metrics import cosine_proximity
+
 def get_sub_model(joint_model, submodel):
     # type: (Model, basestring) -> Model
     im_input = joint_model.input[0]
@@ -47,15 +50,15 @@ class JointEmbedder():
 
     @classmethod
     def load_model(self, model_path, weight_path=None):
-        contrastive_loss_2 = get_contrastive_loss(K.variable(np.asarray([[0]])))
-        contrastive_loss_on_distance = get_contrastive_loss_on_distance(K.variable(np.asarray([[0]])))
+        contrastive_loss = get_contrastive_loss(K.variable(np.asarray([[0]])))
+
         model = load_model(filepath=model_path,
-                           custom_objects={'contrastive_loss_2': contrastive_loss_2,
-                                           'contrastive_loss_on_distance': contrastive_loss_on_distance}
-
-
-                           )
-        model.load_weights(weight_path)
+                           custom_objects={ 'contrastive_loss' : contrastive_loss,
+                                            'my_cosine_proximity' : my_cosine_distance,
+                                            'contrastive_loss_over_distance': contrastive_loss_over_distance,
+                                            'fake_loss': fake_loss} )
+        if weight_path is not None:
+            model.load_weights(weight_path)
         return model
 
     def model(self,
@@ -119,8 +122,11 @@ class JointEmbedder():
         #im_emb_sub_tx_emb = Merge(mode='cos')([im_emb, tx_emb])
         #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode='sum')
         #im_emb_sub_tx_emb = im_emb - tx_emb
-        distance = Merge(mode=my_distance, output_shape=lambda x: (x[0][0], 1))([im_emb, tx_emb])
-        shifted_distance = Merge(mode=my_distance_shifted,  output_shape=lambda x: (x[0][0], 1))([im_emb, tx_emb])
+
+
+        #distance = Merge(mode=my_distance, output_shape=lambda x: (x[0][0], 1))([im_emb, tx_emb])
+        #distance = Merge(mode=my_cosine_distance, output_shape=lambda x: (x[0][0], 1))([im_emb, tx_emb])
+
         if submodel is not None:
             if submodel == "img":
                 model = Model(input=im_input, output=im_emb)
@@ -131,13 +137,15 @@ class JointEmbedder():
             else:
                 model = None
         else:
-            model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, distance, tx_classification])
-            model.compile(optimizer=optimizer,
-                          #loss=[ get_contrastive_loss(tx_emb), get_contrastive_loss(im_emb), 'categorical_crossentropy'],
-                          # loss_weights=[contrastive_loss_weight, contrastive_loss_weight_inverted, logistic_loss_weight])
+            #model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, distance, tx_classification])
+            model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, tx_classification])
 
-                          loss=[fake_loss, fake_loss, get_contrastive_loss_on_distance(shifted_distance), 'categorical_crossentropy'],
-                          loss_weights=[0, 0, contrastive_loss_weight, logistic_loss_weight])
+            model.compile(optimizer=optimizer,
+                          loss=[get_contrastive_loss(tx_emb), get_contrastive_loss(im_emb), 'categorical_crossentropy'],
+                          loss_weights=[contrastive_loss_weight, contrastive_loss_weight_inverted, logistic_loss_weight])
+
+                          #loss=[fake_loss, fake_loss, contrastive_loss_over_distance, 'categorical_crossentropy'],
+                          #loss_weights=[0, 0, contrastive_loss_weight, logistic_loss_weight])
         return model
 
 
@@ -146,66 +154,60 @@ class JointEmbedder():
 
 
 
+
+def my_cosine_distance(tensors):
+    if (len(tensors) != 2):
+        raise 'oops'
+    a = K.l2_normalize(tensors[0], axis=-1)
+    b = K.l2_normalize(tensors[1], axis=-1)
+    return 1-K.mean(a * b)
+
+
 def my_distance(tensors):
     if (len(tensors) != 2):
         raise 'oops'
+
     dist = K.sqrt(K.sum(K.square(tensors[0] - tensors[1]), axis=-1))
+    #dist = K.sqrt(K.sum(K.square(K.l2_normalize(tensors[0]) - K.l2_normalize(tensors[1])), axis=-1))
     return dist
 
-def my_distance_shifted(tensors):
-    first_row = tensors[0][0:1, :]
-    last_rows = tensors[0][1:, :]
-    shifted_a = K.concatenate([first_row, last_rows], axis=0)
-    return my_distance([shifted_a, tensors[1]])
+def contrastive_loss_over_distance(labels, distances):
+    '''
+    :param labels: 1D tensor containing 0 or 1 for each example
+    :param distances: 
+    :return: 
+    '''
+    margin=1
+    # loss = K.mean((distances + K.maximum(margin-shifted_distances, 0)))
+    loss = K.mean(labels*K.square(distances) + (1-labels) * K.square(K.maximum(margin - distances, 0)))
+    # loss = K.mean(distances - shifted_distances)
+    return loss
 
 
-def get_contrastive_loss_on_distance(distances_b, margin=1):
-    def contrastive_loss_on_distance(labels, distances_a):
-        # loss = K.mean((distances + K.maximum(margin-shifted_distances, 0)))
-        loss = K.mean((K.square(distances_a) + K.square(K.maximum(margin - distances_b, 0))))
-        # loss = K.mean(distances - shifted_distances)
-        return loss
-    return contrastive_loss_on_distance
 
 
-def get_contrastive_loss(text_outputs, margin=1):
-    def contrastive_loss_2(labels, im_outputs):
-        distances = K.sqrt(K.sum(K.square(im_outputs - text_outputs), axis=-1))
 
-        first_text = text_outputs[0:1, :]
-        last_texts = text_outputs[1:, :]
+
+
+
+
+
+def get_contrastive_loss(other_output, margin=1):
+    def contrastive_loss(labels, output):
+        distances = K.sqrt(K.sum(K.square(output - other_output), axis=-1))
+
+        first_text = other_output[0:1, :]
+        last_texts = other_output[1:, :]
         shifted_texts = K.concatenate([last_texts, first_text], axis=0)
 
-        shifted_distances = K.sqrt(K.sum(K.square(im_outputs - shifted_texts), axis=-1))
+        shifted_distances = K.sqrt(K.sum(K.square(output - shifted_texts), axis=-1))
 
         #loss = K.mean((distances + K.maximum(margin-shifted_distances, 0)))
         loss = K.mean((K.square(distances) + K.square(K.maximum(margin-shifted_distances, 0))))
         #loss = K.mean(distances - shifted_distances)
 
         return loss
-    return contrastive_loss_2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return contrastive_loss
 
 
 

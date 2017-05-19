@@ -4,7 +4,7 @@ import os
 from keras.engine import Model
 from keras.models import load_model
 
-from E6_joint_model.test_joint import retrive_image_map, retrive_text_map, recall_top_k
+from test_joint import retrive_image_map, retrive_text_map, recall_top_k
 
 os.environ['KERAS_BACKEND'] = "tensorflow"
 #os.environ["CUDA_VISIBLE_DEVICES"]="1"
@@ -128,36 +128,45 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
     print("Loading model..")
 
-    path = 'im2doc_embedding/jointmodel_opt-adadelta_lr-100_bs-64-clamoroso?/jointmodel_opt-adadelta_lr-100_bs-64'
-    path = 'im2doc_embedding/jointmodel_opt-adadelta_lr-100_bs-64/jointmodel_opt-adadelta_lr-100_bs-64'
-
-
+    #path = 'im2doc_embedding/jointmodel_opt-adadelta_lr-100_bs-64-clamoroso?/jointmodel_opt-adadelta_lr-100_bs-64'
+    name = "jointmodel"
+    path = 'im2doc_embedding/{}/{}'.format(name, name)
     model_path = path + '.model.best.h5'
-    weight_path = path + '.weights.49.h5'
+    #weight_path = path + '.weights.09.h5'
+    weight_path = None
 
     model = JointEmbedder.load_model(model_path=model_path, weight_path=weight_path)
-    top_k = 10
+    top_k = [1, 3, 5, 10]
 
     print("\nTest traning: ")
     map = retrive_text_map(visual_features, text_features, class_list, joint_model=model)
-    recall = recall_top_k(visual_features, text_features, class_list, joint_model=model,top_k=top_k)
+    mapi = retrive_image_map(visual_features, text_features, class_list, joint_model=model)
     print("mAP = " + str(map))
-    print("recall@{} = {}".format(top_k, recall))
+    print("mAPi = " + str(mapi))
+    for k in top_k:
+        recall = recall_top_k(visual_features, text_features, class_list, joint_model=model,
+                              top_k=k, verbose=False, progressbar=False)
+        print("recall@{} = {}".format(k, recall))
 
     print("\nTest validation: ")
     map = retrive_text_map(visual_features_valid, text_features, class_list, joint_model=model)
-    recall = recall_top_k(visual_features_valid, text_features, class_list, joint_model=model,top_k=top_k)
+    mapi = retrive_image_map(visual_features_valid, text_features, class_list, joint_model=model)
     print("mAP = " + str(map))
-    print("recall@{} = {}".format(top_k, recall))
+    print("mAPi = " + str(mapi))
+    for k in top_k:
+        recall = recall_top_k(visual_features_valid, text_features, class_list, joint_model=model ,
+                              top_k=k, verbose=False, progressbar=False)
+        print("recall@{} = {}".format(k, recall))
 
     print("\nTest zero shot test: ")
     #map = test_joint_map(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model)
     map = retrive_text_map(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model)
-    recall = recall_top_k(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model,
-                       top_k=top_k)
     print("mAP = " + str(map))
-    print("recall@{} = {}".format(top_k, recall))
-
+    print("mAPi = " + str(mapi))
+    for k in top_k:
+        recall = recall_top_k(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model,
+                              top_k=k, verbose=False, progressbar=False)
+        print("recall@{} = {}".format(k, recall))
     #
     # print("\n\n***********************************************\n\n")
     # for i in range(0,50):

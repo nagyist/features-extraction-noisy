@@ -1,0 +1,45 @@
+Devo fare embedding delle features testuali e delle features visuali in un terzo spazio ad N dimensioni (e.g. 128).
+Per fare ciò utilizzo un FC layer che mi proietta le features testuali nello spazio N-dimensionale, ed un altro FC
+che mi proietta le features visuali nello spazio N-dimensionale:
+
+
+|   fc
+| ------------->  | = t \
+|  300 -> 128            \
+                          >- LOSS = ||iot||_2  (norma 2 del dot product i*t)
+|                        /
+|   fc                  /
+| ------------->  | = i
+|  2K -> 128
+|
+Per fare ciò con keras, dobbiamo fare un nuovo layer che unisca i due layer e che mi dia come risultato il dot product:
+
+|   fc
+| ------------->  | = t \
+|  300 -> 128            \
+                          >- | ỹ = i o t
+|                        /
+|   fc                  /
+| ------------->  | = i
+|  2K -> 128
+|
+
+
+A questo punto come target (label) assegno y=0 ad ogni coppia di input (i, t), definisco la loss come:
+
+    LOSS = (ỹ - y)²
+
+In modo che, minimizzando la loss, ottengo che ỹ --> y=0, cioè che il prodotto scalare tra i e t tenda ad annullarsi,
+ovvero che i cada vicino a t nel nuovo spazio N-dimensionale.
+
+
+
+
+NB: usare: scipy.spatial.distance.cdist  per calcolare la distanza tra vettori facilmente, memorizzando i vettori in due matrici:
+cdist(A, B) con:
+    A=[a1|a2|..|an]   B=[b1|b2|...|bm]  with len(ai) == len(bj) for each i in 1...n and j in 1...m,
+
+    such that C = [c1|c2|...|cm]  with ci=[ci1, ... , cin]'
+
+    and C[i, j] == dist(ai, bj)
+

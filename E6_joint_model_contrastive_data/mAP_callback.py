@@ -1,5 +1,5 @@
 import keras
-from E6_joint_model.test_joint import retrive_image_map, recall_top_k
+from test_joint import retrive_image_map, recall_top_k, retrive_text_map
 
 
 class ModelMAP(keras.callbacks.Callback):
@@ -118,7 +118,7 @@ class ModelMAP(keras.callbacks.Callback):
 
         if self.text_retrival_map:
             print("\nComputing text retrival mAP on {}...".format(data_and_moment))
-            mAP = retrive_image_map(img_features=self._visual_feat_vecs,
+            mAP = retrive_text_map(img_features=self._visual_feat_vecs,
                                     txt_features=self._docs_feat_vecs,
                                     class_list_doc2vec=self._class_list,
                                     joint_model=self.model,

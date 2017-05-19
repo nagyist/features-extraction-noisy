@@ -173,6 +173,55 @@ def main():
 
 
 
+
+
+def create_contrastive_dataset(im_data_train, tx_data_train, label_train, class_list):
+    im_contr_data_train = []
+    tx_contr_data_train = []
+    label_contr_train = []
+    label_logistic_train = []
+    size = len(class_list)
+
+    class_list_reverse = {lbl: index for index, lbl in enumerate(class_list)}
+    for im, label in zip(im_data_train, label_train):
+        contr_label = label
+        while contr_label == label:
+            contr_label = random.choice(class_list)
+
+        label_index = class_list_reverse[label]
+        contr_label_index = class_list_reverse[contr_label]
+
+        # Correct example:
+        tx = tx_data_train[label_index]
+        im_contr_data_train.append(im)
+        tx_contr_data_train.append(tx)
+        label_contr_train.append(1)
+
+        label_logistic_ok = np.zeros([size])
+        label_logistic_ok[label_index] = 1
+        label_logistic_train.append(label_logistic_ok)
+
+
+        # Bad example:
+        tx_bad = tx_data_train[contr_label_index]
+        im_contr_data_train.append(im)
+        tx_contr_data_train.append(tx_bad)
+        label_contr_train.append(0)
+
+        label_logistic_bad = np.zeros([size])
+        label_logistic_bad[contr_label_index] = 1
+        label_logistic_train.append(label_logistic_bad)
+
+
+    return np.asarray(im_contr_data_train), np.asarray(tx_contr_data_train), np.asarray(label_contr_train), \
+           np.asarray(label_logistic_train)
+
+
+
+
+
+
+
 def load_class_list(path,  encoding='utf-8', use_numpy=False, int_cast=False):
     ret = None
     if path is not None:

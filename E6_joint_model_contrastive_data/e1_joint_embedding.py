@@ -1,6 +1,8 @@
 import os
 # floatX=float32,device=gpu1,lib.cnmem=1,
 # os.environ['THEANO_FLAGS'] = "exception_verbosity=high, optimizer=None"
+import random
+
 os.environ['KERAS_BACKEND'] = "tensorflow"
 #os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
@@ -17,12 +19,11 @@ from theano.gof import optimizer
 
 import sys
 
-from keras.optimizers import Adadelta
+from keras.optimizers import Adadelta, Adam
 
 from E5_embedding import cfg_emb
 from mAP_callback import ModelMAP
-from E6_joint_model import JointEmbedding
-from E6_joint_model.JointEmbedding import JointEmbedder
+from JointEmbedding import JointEmbedder
 from imdataset import ImageDataset
 import numpy as np
 
@@ -67,60 +68,50 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
 
     im_data_train = []
-    tx_data_train = []
+    tx_data_train_im_aligned = []  # 1 text for each image (align: img_lbl_x <-> txt_lbl_x <-> lbl_x )
+    tx_data_train = []  # 1 text for each class
     label_train = []
     if visual_features_valid is not None:
         im_data_valid = []
-        tx_data_valid = []
+        tx_data_valid_im_aligned = []
         label_valid = []
+
 
     for lbl, docv in zip(cycle_clslst_txfeat[0], cycle_clslst_txfeat[1]):
         lbl = int(lbl)
         norm_docv = docv/np.linalg.norm(docv)  # l2 normalization
+        tx_data_train.append(norm_docv)
 
         visual_features_with_label = visual_features.sub_dataset_with_label(lbl)
         for visual_feat in visual_features_with_label.data:
+            visual_feat = visual_feat / np.linalg.norm(visual_feat)  # l2 normalization
             im_data_train.append(visual_feat)
-            tx_data_train.append(norm_docv)
+            tx_data_train_im_aligned.append(norm_docv)
             label_train.append(lbl)
 
         if visual_features_valid is not None:
             visual_features_valid_with_label = visual_features_valid.sub_dataset_with_label(lbl)
             for visual_feat in visual_features_valid_with_label.data:
+                visual_feat = visual_feat / np.linalg.norm(visual_feat)  # l2 normalization
                 im_data_valid.append(visual_feat)
-                tx_data_valid.append(norm_docv)
+                tx_data_valid_im_aligned.append(norm_docv)
                 label_valid.append(lbl)
 
+
     # Image data conversion
-    im_data_train = np.asarray(im_data_train)
-    im_data_valid = np.asarray(im_data_valid)
-    while len(im_data_train.shape) > 2:
-        if im_data_train.shape[-1] == 1:
-            im_data_train = np.squeeze(im_data_train, axis=(-1,))
-    while len(im_data_valid.shape) > 2:
-        if im_data_valid.shape[-1] == 1:
-            im_data_valid = np.squeeze(im_data_valid, axis=(-1,))
+    im_data_train = list_to_ndarray(im_data_train)
+    im_data_valid = list_to_ndarray(im_data_valid)
 
     # Text data conversion
-    tx_data_train = np.asarray(tx_data_train)
-    tx_data_valid = np.asarray(tx_data_valid)
-    while len(tx_data_train.shape) > 2:
-        if tx_data_train.shape[-1] == 1:
-            tx_data_train = np.squeeze(tx_data_train, axis=(-1,))
-    while len(tx_data_valid.shape) > 2:
-        if tx_data_valid.shape[-1] == 1:
-            tx_data_valid = np.squeeze(tx_data_valid, axis=(-1,))
+    tx_data_train = list_to_ndarray(tx_data_train)
+    tx_data_train_im_aligned = list_to_ndarray(tx_data_train_im_aligned)
+    tx_data_valid_im_aligned = list_to_ndarray(tx_data_valid_im_aligned)
+
 
     # Label conversion
-    label_train = np.asarray(label_train)
-    label_valid = np.asarray(label_valid)
+    label_train = list_to_ndarray(label_train)
+    label_valid = list_to_ndarray(label_valid)
 
-    while len(label_train.shape) > 2:
-        if label_train.shape[-1] == 1:
-            label_train = np.squeeze(label_train, axis=(-1,))
-    while len(label_valid.shape) > 2:
-        if label_valid.shape[-1] == 1:
-            label_valid = np.squeeze(label_valid, axis=(-1,))
 
     print("Generating model..")
 
@@ -131,8 +122,8 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
             self.lr = 10
             self.bs = 64
             self.epochs = 50
-            self.opt = Adadelta
-            self.opt_str= 'adadelta'
+            self.opt = Adam
+            self.opt_str= 'adam'
             self.joint_space_dim = 200
             self.tx_activation = 'softmax'
             self.im_activation = 'tanh'
@@ -185,19 +176,22 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
     configs = []
     c = Config()
     c.lr = 10
+    c.opt = Adadelta
+    c.opt_str = 'adadelta'
     c.bs = 64
-    c.epochs = 10
+    c.epochs = 30
     c.joint_space_dim = 200
     c.tx_activation = 'sigmoid'
     c.im_activation = 'sigmoid'
-    c.contrastive_loss_weight = 3
-    c.contrastive_loss_weight_inverted = 3
-    c.logistic_loss_weight = 1
-    c.weight_init = 'glorot_uniform' # 'glorot_normal'
-    # c.tx_hidden_layers = [250]
-    # c.tx_hidden_activation = ['relu']
-    # c.im_hidden_layers = [500]
-    # c.im_hidden_activation = ['tanh']
+    c.contrastive_loss_weight = 1
+    c.contrastive_loss_weight_inverted = 1
+    c.logistic_loss_weight = 0
+    c.weight_init = 'glorot_normal'
+    #c.weight_init = 'glorot_uniform' # 'glorot_normal'
+    #c.tx_hidden_layers = [200]
+    #c.tx_hidden_activation = ['relu']
+    #c.im_hidden_layers = [800]
+    #c.im_hidden_activation = ['relu']
     # train_mAP-fit-end: 0.501253132832
     # valid_mAP-fit-end: 0.501253132832
     # test_mAP-fit-end: 0.505
@@ -212,7 +206,9 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                     print "optim:   " + str(c.opt_str)
                     print "lr:      " + str(c.lr)
 
-                    fname = "jointmodel_opt-{}_lr-{}_bs-{}".format(c.opt_str, c.lr, c.bs)
+                    #fname = "jointmodel_opt-{}_lr-{}_bs-{}".format(c.opt_str, c.lr, c.bs)
+                    fname = "jointmodel"
+
                     # for i, hu in enumerate(hid):
                     #     fname += "_hl-" + str(hu)
                     folder = os.path.join(cfg_emb.IM2DOC_MODEL_FOLDER, fname)
@@ -291,10 +287,48 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                     # label_train_converted = np.asarray([label_map[l] for l in label_train])
                     # label_valid_converted = np.asarray([label_map[l] for l in label_valid])
 
-                    history = model.fit([im_data_train, tx_data_train], [label_train, label_train, label_train_converted, label_train_converted],
-                                        validation_data=[[im_data_valid, tx_data_valid], [label_valid, label_valid, label_valid_converted, label_valid_converted]],
-                                        batch_size=c.bs, nb_epoch=c.epochs, shuffle=True,
-                                        verbose=1, callbacks=callbacks)
+
+
+                    # Creating contrastive training set:
+                    im_contr_data_valid, tx_contr_data_valid, label_contr_valid, label_logistic_valid = \
+                        create_contrastive_dataset(im_data_valid, tx_data_train, label_valid, class_list)
+
+
+                    # # for ep in range(0, c.epochs):
+                    #
+                    # # Creating contrastive training set:
+                    # im_contr_data_train, tx_contr_data_train, label_contr_train, label_logistic_train = \
+                    #     create_contrastive_dataset(im_data_train, tx_data_train, label_train, class_list)
+                    #
+                    #
+                    # history = model.fit([im_contr_data_train, tx_contr_data_train],
+                    #                     [label_contr_train, label_contr_train, label_contr_train, label_logistic_train],
+                    #                     validation_data=[[im_contr_data_valid, tx_contr_data_valid],
+                    #                                      [label_contr_valid, label_contr_valid, label_contr_valid, label_logistic_valid]],
+                    #                     batch_size=c.bs, nb_epoch=c.epochs, shuffle=True,
+                    #                     verbose=1, callbacks=callbacks)
+
+                    for ep in range(0, c.epochs):
+                        bestpoint = ModelCheckpoint(fname + '.model.best.h5', monitor=MONITOR, save_best_only=True)
+                        checkpoint = ModelCheckpoint(fname + '.weights.{epoch:02d}.h5' % {'epoch': c.epochs}, monitor=MONITOR,
+                                                     save_best_only=False, save_weights_only=True)
+                        callbacks = [checkpoint, bestpoint]  # , earlystop, ]
+                        if ep == c.epochs-1:
+                            callbacks = [mAP_tr, mAP_val, mAP_zs, checkpoint, bestpoint]  # , earlystop, ]
+                        # Creating contrastive training set:
+                        print("Epoch: " + str(ep))
+                        im_contr_data_train, tx_contr_data_train, label_contr_train, label_logistic_train = \
+                            create_contrastive_dataset(im_data_train, tx_data_train, label_train, class_list)
+
+                        history = model.fit([im_contr_data_train, tx_contr_data_train],
+                                            [label_contr_train, label_contr_train, label_logistic_train],
+                                            validation_data=[[im_contr_data_valid, tx_contr_data_valid],
+                                                             [label_contr_valid, label_contr_valid,
+                                                              label_logistic_valid]],
+                                            batch_size=c.bs, nb_epoch=1, shuffle=True,
+                                            verbose=1, callbacks=callbacks)
+
+
 
                     loss_csv = file(fname + '.loss.csv', 'w')
                     hist = history.history
@@ -320,6 +354,60 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                     #         loss_csv.write('{}, {}, {}\n'.format(batch, str(val_mAP), str(zs_mAP)))
 
 
+
+
+def create_contrastive_dataset(im_data_train, tx_data_train, label_train, class_list):
+    im_contr_data_train = []
+    tx_contr_data_train = []
+    label_contr_train = []
+    label_logistic_train = []
+    size = len(class_list)
+
+    class_list_reverse = {lbl: index for index, lbl in enumerate(class_list)}
+    for im, label in zip(im_data_train, label_train):
+        contr_label = label
+        while contr_label == label:
+            contr_label = random.choice(class_list)
+
+        label_index = class_list_reverse[label]
+        contr_label_index = class_list_reverse[contr_label]
+
+        # Correct example:
+        tx = tx_data_train[label_index]
+        im_contr_data_train.append(im)
+        tx_contr_data_train.append(tx)
+        label_contr_train.append(1)
+
+        label_logistic_ok = np.zeros([size])
+        label_logistic_ok[label_index] = 1
+        label_logistic_train.append(label_logistic_ok)
+
+
+        # Bad example:
+        tx_bad = tx_data_train[contr_label_index]
+        im_contr_data_train.append(im)
+        tx_contr_data_train.append(tx_bad)
+        label_contr_train.append(0)
+
+        label_logistic_bad = np.zeros([size])
+        label_logistic_bad[contr_label_index] = 1
+        label_logistic_train.append(label_logistic_bad)
+
+
+    return np.asarray(im_contr_data_train), np.asarray(tx_contr_data_train), np.asarray(label_contr_train), \
+           np.asarray(label_logistic_train)
+
+
+
+def list_to_ndarray(list, remove_final_empty_dims=True, min_dims=2):
+    data = np.asarray(list)
+    if remove_final_empty_dims:
+        while len(data.shape) > min_dims:
+            if data.shape[-1] == 1:
+                data = np.squeeze(data, axis=(-1,))
+            else:
+                break
+    return data
 
 
 if __name__ == "__main__":
