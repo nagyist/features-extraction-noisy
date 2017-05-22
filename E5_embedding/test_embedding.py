@@ -109,9 +109,9 @@ def test_embedding_top_similars(visual_features, docs_vectors_npy, class_list_do
 
 
 
-def test_embedding_map(visual_features, docs_vectors_npy, class_list_doc2vec, im2doc_model,
-                       im2doc_model_ext=None, im2doc_weights_ext=None, load_precomputed_imdocs=None,
-                       verbose=False, progressbar=True):
+def test_embedding_tx_mAP(visual_features, docs_vectors_npy, class_list_doc2vec, im2doc_model,
+                          im2doc_model_ext=None, im2doc_weights_ext=None, load_precomputed_imdocs=None,
+                          verbose=False, progressbar=True):
     def printv(str):
         if verbose:
             print(str)
@@ -198,6 +198,96 @@ def test_embedding_map(visual_features, docs_vectors_npy, class_list_doc2vec, im
     return mAP
 
 
+
+
+
+
+
+def test_embedding_im_mAP(visual_features, docs_vectors_npy, class_list_doc2vec, im2doc_model,
+                          im2doc_model_ext=None, im2doc_weights_ext=None, load_precomputed_imdocs=None,
+                          verbose=False, progressbar=True):
+    def printv(str):
+        if verbose:
+            print(str)
+
+    if im2doc_model_ext is None:
+        im2doc_model_ext = DEFAULT_IM2DOC_MODEL_EXT
+    if load_precomputed_imdocs is None:
+        load_precomputed_imdocs = False
+
+    printv("Loading visual features..")
+    if not isinstance(visual_features, ImageDataset):
+        visual_features = ImageDataset().load_hdf5(visual_features)
+
+    printv("Loading im2doc model..")
+    if not isinstance(im2doc_model, Model):
+        im2doc_model_name = im2doc_model
+        model_file = os.path.join(cfg_emb.IM2DOC_MODEL_FOLDER,
+                                  os.path.join(im2doc_model_name, im2doc_model_name + im2doc_model_ext))
+        im2doc_model = load_model(model_file, custom_objects={'cos_distance': cos_distance})
+    else:
+        im2doc_model_name = None
+
+    if im2doc_weights_ext is not None:
+        printv("Loading im2doc weights..")
+        weight_file = os.path.join(cfg_emb.IM2DOC_MODEL_FOLDER,
+                                   os.path.join(im2doc_model, im2doc_model + im2doc_weights_ext))
+        im2doc_model.load_weights(weight_file)
+
+
+
+    if im2doc_model_name is not None:
+        imdocs_path = os.path.join(cfg_emb.IM2DOC_PREDICTION_FOLDER, im2doc_prediction_fname(im2doc_model_name))
+    else:
+        imdocs_path = "precomputed_imdocs.temp"
+
+    if load_precomputed_imdocs and os.path.exists(imdocs_path):
+        printv("Pre computed docs from images found (im2doc embedding)... loading...")
+        output_doc_vectors = np.load(imdocs_path)
+    else:
+        printv("Predict docs from images (im2doc embedding)..")
+        im_data = visual_features.data
+        while len(im_data.shape) > 2:
+            if im_data.shape[-1] == 1:
+                im_data = np.squeeze(im_data, axis=(-1,))
+        output_doc_vectors = im2doc_model.predict(im_data, verbose=verbose)
+        np.save(imdocs_path, output_doc_vectors)
+
+    printv("Loading doc2vec vectors...")
+    if not isinstance(docs_vectors_npy, np.ndarray):
+        docs_vectors_npy = np.load(docs_vectors_npy)
+
+    if not isinstance(class_list_doc2vec, list):
+        class_list_doc2vec = cfg_emb.load_class_list(class_list_doc2vec)
+
+    # mAP test (optimized with cdist)
+    if progressbar:
+        import sys
+        bar = pyprind.ProgBar(len(visual_features.labels), stream = sys.stdout)
+    av_prec = []
+    from scipy.spatial.distance import cdist
+    C = cdist(output_doc_vectors, docs_vectors_npy, 'cosine')
+    C = 1-C
+
+    for i, im_label in enumerate(visual_features.labels):
+        scores = []
+        targets = []
+        if progressbar:
+            bar.update()
+        for j, dv in enumerate(docs_vectors_npy):
+            lbl = int(class_list_doc2vec[j])
+            target = not bool(im_label - lbl)
+            score = C[i, j]
+            scores.append(score)
+            targets.append(target)
+        from sklearn.metrics import average_precision_score
+        AP = average_precision_score(targets, scores)
+        av_prec.append(AP)
+        printv("Class {} - AP = {}".format(lbl, AP))
+
+    mAP = np.mean(np.asarray(av_prec))
+    printv("\t\tmAP = {}".format(mAP))
+    return mAP
 
 # # mAP test, old method:
 # if progressbar:

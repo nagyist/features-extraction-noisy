@@ -2,11 +2,9 @@ import sys
 from E5_embedding import cfg_emb
 import numpy as np
 
-from test_embedding import test_embedding_map, test_embedding_top_similars
+from test_embedding import test_embedding_tx_mAP, test_embedding_top_similars, test_embedding_im_mAP
 
-
-
-IM2DOC_MODEL = 'im2docvec_opt-Adadelta_lr-10_bs-32_hl-2000_hl-1000'
+IM2DOC_MODEL = 'im2docvec_opt-Adadelta_lr-10_bs-32_hl-1000'
 
 DOCS_FILE_400 = "docvec_400_train_on_400.npy"
 DOCS_FILE_500 = "docvec_500_train_on_500.npy"
@@ -25,13 +23,13 @@ ZERO_SHOT_CLASS_LIST_all = cfg_emb.CLASS_LIST_500
 
 
 def main(args):
-    test_embedding_on_valid()
+    test_embedding_on_valid(im_map=True, tx_map=True)
 
 
 
 
 
-def test_embedding_on_train(map=True, top_similar_output=None):
+def test_embedding_on_train(im_map=True, tx_map=True, top_similar_output=None):
     if isinstance(top_similar_output, int):
         test_embedding_top_similars(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
                                     class_list_doc2vec=cfg_emb.CLASS_LIST_400,
@@ -40,17 +38,26 @@ def test_embedding_on_train(map=True, top_similar_output=None):
                                     im2doc_model_ext=None, im2doc_weights_ext=None,
                                     load_precomputed_imdocs=False,
                                     top_similars=top_similar_output)
-    if map:
-        test_embedding_map(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
-                           class_list_doc2vec=cfg_emb.CLASS_LIST_400,
-                           docs_vectors_npy=DOCS_FILE_400,
-                           im2doc_model=IM2DOC_MODEL,
-                           im2doc_model_ext=None, im2doc_weights_ext=None,
-                           load_precomputed_imdocs=True)
+    if im_map:
+        map = test_embedding_im_mAP(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
+                              class_list_doc2vec=cfg_emb.CLASS_LIST_400,
+                              docs_vectors_npy=DOCS_FILE_400,
+                              im2doc_model=IM2DOC_MODEL,
+                              im2doc_model_ext=None, im2doc_weights_ext=None,
+                              load_precomputed_imdocs=True)
+        print("im_map = {}".format(map))
+    if tx_map:
+        map = test_embedding_tx_mAP(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
+                              class_list_doc2vec=cfg_emb.CLASS_LIST_400,
+                              docs_vectors_npy=DOCS_FILE_400,
+                              im2doc_model=IM2DOC_MODEL,
+                              im2doc_model_ext=None, im2doc_weights_ext=None,
+                              load_precomputed_imdocs=True)
+        print("tx_map = {}".format(map))
 
 
 
-def test_embedding_on_valid(map=True, top_similar_output=None):
+def test_embedding_on_valid(im_map=True, tx_map=True, top_similar_output=None):
     if isinstance(top_similar_output, int):
         test_embedding_top_similars(visual_features=VISUAL_FEATURES_VALID,
                                     docs_vectors_npy=DOCS_FILE_400,
@@ -59,18 +66,26 @@ def test_embedding_on_valid(map=True, top_similar_output=None):
                                     im2doc_model_ext=None, im2doc_weights_ext=None,
                                     load_precomputed_imdocs=False,
                                     top_similars=top_similar_output)
-    if map:
-        test_embedding_map(visual_features=VISUAL_FEATURES_VALID,
-                           docs_vectors_npy=DOCS_FILE_400,
-                           class_list_doc2vec=CLASS_LIST_D2V_for_map,
-                           im2doc_model=IM2DOC_MODEL,
-                           im2doc_model_ext=None, im2doc_weights_ext=None,
-                           load_precomputed_imdocs=True)
+    if im_map:
+        test_embedding_im_mAP(visual_features=VISUAL_FEATURES_VALID,
+                              docs_vectors_npy=DOCS_FILE_400,
+                              class_list_doc2vec=CLASS_LIST_D2V_for_map,
+                              im2doc_model=IM2DOC_MODEL,
+                              im2doc_model_ext=None, im2doc_weights_ext=None,
+                              load_precomputed_imdocs=True)
+    if tx_map:
+        test_embedding_tx_mAP(visual_features=VISUAL_FEATURES_VALID,
+                              docs_vectors_npy=DOCS_FILE_400,
+                              class_list_doc2vec=CLASS_LIST_D2V_for_map,
+                              im2doc_model=IM2DOC_MODEL,
+                              im2doc_model_ext=None, im2doc_weights_ext=None,
+                              load_precomputed_imdocs=True)
 
 
 
 
-def test_embedding_zero_shot(map=True, top_similar_output=None):
+
+def test_embedding_zero_shot(tx_map=True, im_map=True, top_similar_output=None):
     docs_vectors_500 = np.load(DOCS_FILE_500)
     docs_vectors_100_zero_shot = []
     class_list_all = cfg_emb.load_class_list(ZERO_SHOT_CLASS_LIST_all)
@@ -89,13 +104,20 @@ def test_embedding_zero_shot(map=True, top_similar_output=None):
         #                             im2doc_model_ext=IM2DOC_MODEL_EXT, im2doc_weights_ext=None,
         #                             load_precomputed_imdocs=False,
         #                             top_similars=top_similar_output)
-    if map:
-        test_embedding_map(visual_features=ZERO_SHOT_VISUAL_FEATURES,
-                           docs_vectors_npy=docs_vectors_100_zero_shot,
-                           class_list_doc2vec=ZERO_SHOT_CLASS_LIST_for_map,
-                           im2doc_model=IM2DOC_MODEL,
-                           im2doc_model_ext=None, im2doc_weights_ext=None,
-                           load_precomputed_imdocs=True)
+    if tx_map:
+        test_embedding_tx_mAP(visual_features=ZERO_SHOT_VISUAL_FEATURES,
+                              docs_vectors_npy=docs_vectors_100_zero_shot,
+                              class_list_doc2vec=ZERO_SHOT_CLASS_LIST_for_map,
+                              im2doc_model=IM2DOC_MODEL,
+                              im2doc_model_ext=None, im2doc_weights_ext=None,
+                              load_precomputed_imdocs=True)
+    if im_map:
+        test_embedding_im_mAP(visual_features=ZERO_SHOT_VISUAL_FEATURES,
+                              docs_vectors_npy=docs_vectors_100_zero_shot,
+                              class_list_doc2vec=ZERO_SHOT_CLASS_LIST_for_map,
+                              im2doc_model=IM2DOC_MODEL,
+                              im2doc_model_ext=None, im2doc_weights_ext=None,
+                              load_precomputed_imdocs=True)
 
 
 

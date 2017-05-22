@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 import keras
 from test_joint import retrive_image_map, recall_top_k, retrive_text_map
 
@@ -99,10 +101,14 @@ class ModelMAP(keras.callbacks.Callback):
             self.batch_end_history.append(hist_step)
 
 
+    def call_manual(self, model=None):
+        if model is not None:
+            self.set_model(model)
+        return self._compute_map(self.data_name + ' manual execution')
 
     def _compute_map(self, data_and_moment):
 
-        hist_step = {}
+        hist_step = OrderedDict()
         if self.image_retrival_map:
             print("\nComputing image retrival mAP on {}...".format(data_and_moment))
             mAP = retrive_image_map(img_features=self._visual_feat_vecs,

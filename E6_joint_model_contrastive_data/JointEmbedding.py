@@ -66,7 +66,6 @@ class JointEmbedder():
               tx_activation=None,
               im_activation=None,
               im_hidden_layers=None, tx_hidden_layers=None,
-              im_hidden_activation=None, tx_hidden_activation=None,
               contrastive_loss_weight=1,
               logistic_loss_weight=1,
               contrastive_loss_weight_inverted=1,
@@ -75,13 +74,10 @@ class JointEmbedder():
         '''
         
         :param optimizer: 
-        :param hidden_activation: activation for both text and image last dense layers
-        :param im_hidden_layers: a list of numbers, each one of them is the number of hidden unit for a new hidden layer
-        :param tx_hidden_layers: a list of numbers, each one of them is the number of hidden unit for a new hidden layer
-        :param im_hidden_activation: a list of activation functions, one for each image hidden layer, None to disable
-        :param tx_hidden_activation: a list of activation functions, one for each text hidden layer, None to disable
-        :param tx_tx_factr: weight for the loss text vs text
-        :param tx_im_factr: weight for the loss image vs text
+        :param im_hidden_layers: a list of numbers/str, for each number a dense layer will be created, for each string 
+                                 an activation layer will be created.
+        :param tx_hidden_layers: a list of numbers/str, for each number a dense layer will be created, for each string 
+                                 an activation layer will be created.
         :param submodel: None to get the whole model, with 3 outputs: text, image, and (text-image) embedding output. 
                              'txt' to get only the text leg submodel, with only the text-embedding output. 
                              'img' to get only the image leg submodel, with only the image-embedding output.
@@ -95,20 +91,22 @@ class JointEmbedder():
         # Image network leg:
         im_input = previous_tensor = Input(shape=(self.im_input_dim,), name='im_input')
         if im_hidden_layers is not None:
-            for i, hidden_units in enumerate(im_hidden_layers):
-                previous_tensor = Dense(output_dim=hidden_units, name='im_hidden_' + str(i), init=init)(previous_tensor)
-                if im_hidden_activation is not None:
-                    previous_tensor = Activation(activation=im_hidden_activation[i])(previous_tensor)
+            for i, hid in enumerate(im_hidden_layers):
+                if isinstance(hid, int):
+                    previous_tensor = Dense(output_dim=hid, name='im_hidden_' + str(i), init=init)(previous_tensor)
+                elif isinstance(hid, basestring):
+                    previous_tensor = Activation(activation=hid)(previous_tensor)
         im_emb = Dense(self.output_dim, name='im_embedding')(previous_tensor)
         im_emb = Activation(activation=im_activation)(im_emb)
 
         # Text network leg:
         tx_input = previous_tensor = Input(shape=(self.tx_input_dim,), name='tx_input')
         if tx_hidden_layers is not None:
-            for i, hidden_units in enumerate(tx_hidden_layers):
-                previous_tensor = Dense(output_dim=hidden_units, name='tx_hidden_' + str(i), init=init)(previous_tensor)
-                if tx_hidden_activation is not None:
-                    previous_tensor = Activation(activation=tx_hidden_activation[i])(previous_tensor)
+            for i, hid in enumerate(tx_hidden_layers):
+                if isinstance(hid, int):
+                    previous_tensor = Dense(output_dim=hid, name='tx_hidden_' + str(i), init=init)(previous_tensor)
+                elif isinstance(hid, basestring):
+                    previous_tensor = Activation(activation=hid)(previous_tensor)
         tx_emb = Dense(self.output_dim, name='tx_embedding', init=init)(previous_tensor)
         tx_emb = Activation(activation=tx_activation)(tx_emb)
 

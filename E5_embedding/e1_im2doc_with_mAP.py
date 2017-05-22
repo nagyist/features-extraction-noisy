@@ -10,7 +10,7 @@ from keras.models import Sequential
 from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop
 
 from E5_embedding import cfg_emb
-from E5_embedding.test_embedding import test_embedding_map
+from E5_embedding.test_embedding import test_embedding_tx_mAP
 from config import cfg, common
 from imdataset import ImageDataset
 from mAP_callback import ModelMAP
