@@ -4,7 +4,7 @@ import os
 from keras.engine import Model
 from keras.models import load_model
 
-from E6_joint_model.test_joint import retrive_image_map, retrive_text_map, recall_top_k
+from E6_joint_model.test_joint import retrieve_image_map, retrive_text_map, recall_top_k
 
 os.environ['KERAS_BACKEND'] = "tensorflow"
 #os.environ["CUDA_VISIBLE_DEVICES"]="1"
@@ -139,20 +139,20 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
     top_k = 10
 
     print("\nTest traning: ")
-    map = retrive_text_map(visual_features, text_features, class_list, joint_model=model)
+    map = retrieve_text_map(visual_features, text_features, class_list, joint_model=model)
     recall = recall_top_k(visual_features, text_features, class_list, joint_model=model,top_k=top_k)
     print("mAP = " + str(map))
     print("recall@{} = {}".format(top_k, recall))
 
     print("\nTest validation: ")
-    map = retrive_text_map(visual_features_valid, text_features, class_list, joint_model=model)
+    map = retrieve_text_map(visual_features_valid, text_features, class_list, joint_model=model)
     recall = recall_top_k(visual_features_valid, text_features, class_list, joint_model=model,top_k=top_k)
     print("mAP = " + str(map))
     print("recall@{} = {}".format(top_k, recall))
 
     print("\nTest zero shot test: ")
     #map = test_joint_map(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model)
-    map = retrive_text_map(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model)
+    map = retrieve_text_map(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model)
     recall = recall_top_k(visual_features_zs_test, text_features_zs_test, class_list_test, joint_model=model,
                        top_k=top_k)
     print("mAP = " + str(map))

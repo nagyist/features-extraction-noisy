@@ -30,8 +30,56 @@ from ExecutionConfig import Config
 
 
 
+def config_gen_ACTIVATIONS():
+    # type: () -> (list[Config], basestring)
+    im_acts = ['relu', 'sigmoid', 'softmax', 'tanh']
+    tx_acts = ['relu', 'sigmoid', 'softmax', 'softmax',]
+    sp_dims = [ 200 ]
+    im_hids = [ None, [512, 'tanh'], [512, 'relu'], [512, 'relu'] ]
+    tx_hids = [ None, [200, 'tanh'], [200, 'relu'], [200, 'tanh'] ]
+    log_ws = [0, 1]
+    # 32 CONFIGURATIONS!
 
-def config_gen_A():
+    configs = []
+    for tx_act, im_act in zip(tx_acts, im_acts):
+        for sp_dim in sp_dims:
+            for im_hid, tx_hid in zip(im_hids, tx_hids):
+                for log_w in log_ws:
+
+                    c = Config(lr=1, opt=Adadelta, bs=32, epochs=150,
+                               sp_dim=sp_dim, tx_act=tx_act, im_act=im_act,
+                               im_hid=im_hid, tx_hid=tx_hid,
+                               contr_w=1, contr_inv_w=1, log_w_tx=log_w, w_init='glorot_normal')
+                    configs.append(c)
+
+    return configs, 'confgen-ACTIVATIONS'
+
+
+def config_gen_DIMS():
+    # type: () -> (list[Config], basestring)
+    im_acts = ['sigmoid']
+    tx_acts = ['sigmoid']
+    sp_dims = [ 50, 100, 200, 400, 800 ]
+    im_hids = [ None, [512, 'tanh'], [512, 'relu'], [512, 'relu'] ]
+    tx_hids = [ None, [200, 'tanh'], [200, 'relu'], [200, 'tanh'] ]
+    log_ws = [0, 1]
+    # 50 CONFIGURATIONS!
+
+    configs = []
+    for tx_act, im_act in zip(tx_acts, im_acts):
+        for sp_dim in sp_dims:
+            for im_hid, tx_hid in zip(im_hids, tx_hids):
+                for log_w in log_ws:
+
+                    c = Config(lr=1, opt=Adadelta, bs=32, epochs=150,
+                               sp_dim=sp_dim, tx_act=tx_act, im_act=im_act,
+                               im_hid=im_hid, tx_hid=tx_hid,
+                               contr_w=1, contr_inv_w=1, log_w_tx=log_w, w_init='glorot_normal')
+                    configs.append(c)
+
+    return configs, 'confgen-DIMS'
+
+def config_gen_DIMS():
     # type: () -> (list[Config], basestring)
     im_acts = ['relu', 'sigmoid', 'softmax', 'tanh']
     tx_acts = ['relu', 'sigmoid', 'softmax', 'softmax',]
@@ -52,7 +100,7 @@ def config_gen_A():
                                contr_w=1, contr_inv_w=1, log_w_tx=log_w, w_init='glorot_normal')
                     configs.append(c)
 
-    return configs, 'confgen-A'
+    return configs, 'confgen-DIMS'
 
 
 
@@ -63,9 +111,13 @@ def config_gen_TEST():
     im_acts = ['sigmoid']
     tx_acts = ['sigmoid']
     sp_dims = [200]
-    im_hids = [None, [512, 'tanh']]
-    tx_hids = [None, [200, 'tanh']]
-    log_ws = [0, 1]
+    # im_hids = [None, [512, 'tanh']]
+    # tx_hids = [None, [200, 'tanh']]
+    im_hids = [None]
+    tx_hids = [None]
+
+    # log_ws = [0, 1]
+    log_ws = [0]
 
     configs = []
     for tx_act, im_act in zip(tx_acts, im_acts):
@@ -79,7 +131,7 @@ def config_gen_TEST():
                                contr_w=1, contr_inv_w=1, log_w_tx=log_w, w_init='glorot_normal')
                     configs.append(c)
 
-    return configs, 'confgen-TEST'
+    return configs, 'TEST'
 
 
 

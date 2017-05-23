@@ -1,5 +1,5 @@
 import keras
-from E6_joint_model.test_joint import retrive_image_map, recall_top_k
+from E6_joint_model.test_joint import retrieve_image_map, recall_top_k
 
 
 class ModelMAP(keras.callbacks.Callback):
@@ -12,8 +12,8 @@ class ModelMAP(keras.callbacks.Callback):
                  exe_epoch_end_period=0,
                  exe_batch_begin_period=0,
                  exe_batch_end_period=0,
-                 text_retrival_map=True,
-                 image_retrival_map=False,
+                 text_retrieval_map=True,
+                 image_retrieval_map=False,
                  recall_at_k=[]
                  ):
         '''
@@ -60,8 +60,8 @@ class ModelMAP(keras.callbacks.Callback):
             self.recall_at_k = [recall_at_k]
         else:
             self.recall_at_k = recall_at_k
-        self.text_retrival_map = text_retrival_map
-        self.image_retrival_map = image_retrival_map
+        self.text_retrieval_map = text_retrieval_map
+        self.image_retrieval_map = image_retrieval_map
         self._batch_counter = 0
 
 
@@ -103,9 +103,9 @@ class ModelMAP(keras.callbacks.Callback):
     def _compute_map(self, data_and_moment):
 
         hist_step = {}
-        if self.image_retrival_map:
-            print("\nComputing image retrival mAP on {}...".format(data_and_moment))
-            mAP = retrive_image_map(img_features=self._visual_feat_vecs,
+        if self.image_retrieval_map:
+            print("\nComputing image retrieval mAP on {}...".format(data_and_moment))
+            mAP = retrieve_image_map(img_features=self._visual_feat_vecs,
                                     txt_features=self._docs_feat_vecs,
                                     class_list_doc2vec=self._class_list,
                                     joint_model=self.model,
@@ -113,12 +113,12 @@ class ModelMAP(keras.callbacks.Callback):
                                     joint_model_weights_ext=self._model_weights_ext,
                                     #verbose=True, progressbar=False)
                                     verbose=False, progressbar=True)
-            hist_step['map-im-retrival'] = mAP
-            print("Image retrival mAP on {}: {}".format(data_and_moment, mAP))
+            hist_step['map-im-retrieval'] = mAP
+            print("Image retrieval mAP on {}: {}".format(data_and_moment, mAP))
 
-        if self.text_retrival_map:
-            print("\nComputing text retrival mAP on {}...".format(data_and_moment))
-            mAP = retrive_image_map(img_features=self._visual_feat_vecs,
+        if self.text_retrieval_map:
+            print("\nComputing text retrieval mAP on {}...".format(data_and_moment))
+            mAP = retrieve_image_map(img_features=self._visual_feat_vecs,
                                     txt_features=self._docs_feat_vecs,
                                     class_list_doc2vec=self._class_list,
                                     joint_model=self.model,
@@ -126,8 +126,8 @@ class ModelMAP(keras.callbacks.Callback):
                                     joint_model_weights_ext=self._model_weights_ext,
                                     #verbose=True, progressbar=False)
                                     verbose=False, progressbar=True)
-            hist_step['map-tx-retrival'] = mAP
-            print("Text retrival mAP on {}: {}".format(data_and_moment, mAP))
+            hist_step['map-tx-retrieval'] = mAP
+            print("Text retrieval mAP on {}: {}".format(data_and_moment, mAP))
 
         for k in self.recall_at_k:
 

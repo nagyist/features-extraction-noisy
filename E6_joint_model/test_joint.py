@@ -25,7 +25,7 @@ def load_class_list(class_list_doc2vec):
     return load_class_list(class_list_doc2vec) # TODO
 
 
-def retrive_image_map(img_features, txt_features, class_list_doc2vec, joint_model,
+def retrieve_image_map(img_features, txt_features, class_list_doc2vec, joint_model,
                       joint_model_ext=None, joint_model_weights_ext=None, load_precomputed_embedded_feat=None,
                       verbose=False, progressbar=True):
     def printv(str):
@@ -133,7 +133,7 @@ def retrive_image_map(img_features, txt_features, class_list_doc2vec, joint_mode
 
 
 
-def retrive_text_map(img_features, txt_features, class_list_doc2vec,
+def retrieve_text_map(img_features, txt_features, class_list_doc2vec,
                      joint_model,joint_model_ext=None, joint_model_weights_ext=None,
                      load_precomputed_embedded_feat=None, verbose=False, progressbar=True):
     def printv(str):

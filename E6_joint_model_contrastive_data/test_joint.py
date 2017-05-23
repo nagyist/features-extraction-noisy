@@ -108,9 +108,9 @@ def get_embedded_vectors(img_features, txt_features, joint_model,
 
 
 
-def retrive_image_map(img_features, txt_features, class_list_doc2vec, joint_model,
-                      joint_model_ext=None, joint_model_weights_ext=None, load_precomputed_embedded_feat=None,
-                      verbose=False, progressbar=True):
+def retrieve_image_map(img_features, txt_features, class_list_doc2vec, joint_model,
+                       joint_model_ext=None, joint_model_weights_ext=None, load_precomputed_embedded_feat=None,
+                       verbose=False, progressbar=True):
     def printv(str):
         if verbose: print(str)
 
@@ -152,7 +152,7 @@ def retrive_image_map(img_features, txt_features, class_list_doc2vec, joint_mode
 
 
 
-def retrive_text_map(img_features, txt_features, class_list_doc2vec,
+def retrieve_text_map(img_features, txt_features, class_list_doc2vec,
                      joint_model,joint_model_ext=None, joint_model_weights_ext=None,
                      load_precomputed_embedded_feat=None, verbose=False, progressbar=True):
     def printv(str):

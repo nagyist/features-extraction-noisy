@@ -12,7 +12,7 @@ os.environ['KERAS_BACKEND'] = "tensorflow"
 
 import random
 from ExecutionConfig import Config
-from config_generator import config_gen_A, config_gen_TEST
+from config_generator import config_gen_TEST, config_gen_ACTIVATIONS, config_gen_DIMS
 from keras.callbacks import ModelCheckpoint
 from E5_embedding import cfg_emb
 from mAP_callback import ModelMAP
@@ -41,20 +41,21 @@ if not os.path.isdir(JOINT_PREDICTION_FOLDER):
 
 
 def main():
-    joint_embedding_train()
+    #joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=1)
+    joint_embedding_train(config_gen_function=config_gen_ACTIVATIONS)
+    joint_embedding_train(config_gen_function=config_gen_DIMS)
 
 
+def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=None):
 
-
-
-def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
-                          text_features=cfg_emb.TEXT_FEATURES_400,
-                          class_list=cfg_emb.CLASS_LIST_400,
-                          visual_features_valid=cfg_emb.VISUAL_FEATURES_VALID,
-                          visual_features_zs_test=cfg_emb.VISUAL_FEATURES_TEST,
-                          text_features_zs_test=cfg_emb.TEXT_FEATURES_100,
-                          class_list_test=cfg_emb.CLASS_LIST_100):
-    import numpy as np
+    visual_features = cfg_emb.VISUAL_FEATURES_TRAIN
+    text_features = cfg_emb.TEXT_FEATURES_400
+    class_list = cfg_emb.CLASS_LIST_400
+    visual_features_valid = cfg_emb.VISUAL_FEATURES_VALID
+    visual_features_zs_test = cfg_emb.VISUAL_FEATURES_TEST
+    text_features_zs_test = cfg_emb.TEXT_FEATURES_100
+    class_list_test = cfg_emb.CLASS_LIST_100
+    recall_at_k = [1, 3, 5, 10]
 
     print("Loading visual features..")
     visual_features = ImageDataset().load_hdf5(visual_features)
@@ -133,10 +134,13 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
     print("Generating model..")
 
 
-    #configs, gen_name = config_gen_A()
-    configs, gen_name = config_gen_TEST()
-    print("Executing training over config generator: " + gen_name)
+    configs, config_gen_name = config_gen_function()
 
+    print("Executing training over config generator: " + config_gen_name)
+    folder_gen_name = "jointmodel_confgen-" + config_gen_name
+    folder_gen_path = os.path.join(JOINT_MODEL_FOLDER, folder_gen_name)
+    if not os.path.isdir(folder_gen_path):
+        os.mkdir(folder_gen_path)
 
     class ModelScore:
         def __init__(self, train_set_score=None, valid_set_score=None,  test_set_score=None):
@@ -167,13 +171,13 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
         pprint(c)
 
 
-        fname = "jointmodel__" + gen_name + "__" + str(config_counter)
-        folder = os.path.join(JOINT_MODEL_FOLDER, fname)
-        fname = os.path.join(folder, fname)
-        if not os.path.isdir(folder):
-            os.mkdir(folder)
+        fname = folder_gen_name + "__" + str(config_counter)
+        folder_path = os.path.join(folder_gen_path, fname)
+        fpath = os.path.join(folder_path, fname)
+        if not os.path.isdir(folder_path):
+            os.mkdir(folder_path)
 
-        c.saveJSON(fname + '.config.json')
+        c.saveJSON(fpath + '.config.json')
 
         JE = JointEmbedder(im_dim=im_data_train.shape[-1], tx_dim=tx_data_train.shape[-1], out_dim=c.sp_dim, n_text_classes=len(class_list))
 
@@ -213,9 +217,9 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
 
 
-        init_model_fname = fname + '.model.init.random.h5'
-        best_valid_fname = fname + '.model.best.val_loss.h5'
-        best_train_fname = fname + '.model.best.loss.h5'
+        init_model_fname = fpath + '.model.init.random.h5'
+        best_valid_fname = fpath + '.model.best.val_loss.h5'
+        best_train_fname = fpath + '.model.best.loss.h5'
         model.save(init_model_fname)
 
         # Creating contrastive training set:
@@ -232,7 +236,7 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
         for ep in range(0, c.epochs):
             print("Epoch: {}/{}".format(ep, c.epochs-1))
 
-            checpoint_path = fname + ".weights.{:03d}.h5".format(ep)
+            checpoint_path = fpath + ".weights.{:03d}.h5".format(ep)
             checkpoint = ModelCheckpoint(checpoint_path, monitor='val_loss', save_best_only=False, save_weights_only=True)
 
             x_im, x_tx, y_cont, y_log = get_contr_data(im_data_train, tx_data_train, label_train, class_list)
@@ -260,7 +264,7 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
 
 
-        loss_csv = file(fname + ".loss.csv", 'w')
+        loss_csv = file(fpath + ".loss.csv", 'w')
         loss_csv.write('Learning curves (loss),Epoch, Loss, Val Loss\n')
 
         if EVAL_INIT_MODEL_LOSS:
@@ -282,16 +286,19 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
         if EVAL_MAP:
             map_call_tr = ModelMAP(visual_features=visual_features, docs_vectors=text_features, class_list=class_list,
-                              data_name='TrainSet',
-                              text_retrival_map=True, image_retrival_map=True, recall_at_k=[1, 3, 5, 10])
+                                   data_name='TrainSet',
+                                   text_retrieval_map=True, image_retrieval_map=True, recall_at_k=recall_at_k,
+                                   debug_value=debug_map_val)
 
             map_call_val = ModelMAP(visual_features=visual_features_valid, docs_vectors=text_features, class_list=class_list,
-                               data_name='ValidSet',
-                               text_retrival_map=True, image_retrival_map=True, recall_at_k=[1, 3, 5, 10])
+                                    data_name='ValidSet',
+                                    text_retrieval_map=True, image_retrieval_map=True, recall_at_k=recall_at_k,
+                                    debug_value=debug_map_val)
 
             map_call_zs = ModelMAP(visual_features=visual_features_zs_test, docs_vectors=text_features_zs_test, class_list=class_list_test,
-                              data_name='TestSetZS',
-                              text_retrival_map=True, image_retrival_map=True, recall_at_k=[1, 3, 5, 10])
+                                   data_name='TestSetZS',
+                                   text_retrieval_map=True, image_retrieval_map=True, recall_at_k=recall_at_k,
+                                   debug_value=debug_map_val)
 
             # Map on best loss model
             best_train_model = JointEmbedder.load_model(best_train_fname)
@@ -330,11 +337,11 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
 
                 score_init = ModelScore(map_tr_init, map_val_init, map_zs_init)
 
-            configScore = ConfigScore(name=str(config_counter))
-            configScore.scores_best_train = score_best_train
-            configScore.scores_best_valid = score_best_valid
-            configScore.scores_init = score_init
-            config_scores.append(configScore)
+            cs = ConfigScore(name=str(config_counter))
+            cs.scores_best_train = score_best_train
+            cs.scores_best_valid = score_best_valid
+            cs.scores_init = score_init
+            config_scores.append(cs)
 
 
             loss_csv.write("\n\n\n\n")
@@ -386,23 +393,68 @@ def joint_embedding_train(visual_features=cfg_emb.VISUAL_FEATURES_TRAIN,
         loss_csv.close()
 
 
-    for configScore in config_scores:
-        index = configScore.name
-        configScore.scores_best_train.test_set['KEY']
-        # TODO: make a single csv for each KEY in:   configScore.scores_best_train.test_set['KEY']
-        # TODO: where KEY is 'map-tx-..' 'map-im-..' 'recall@K'...
-        # Each CSV have to show in each row a different configuration, in each column a different combination of:
-        #   <model_used_to_compute_scores, dataset_used_to_compute_scores>
-        # for example: <best_train, test_set> , <best_vaild, train_set>..
-        #
-        #
-        # Final result should be like:
-        #
-        # CFG   best_train@tr_set   best_valid@tr_set   init@tr_set     |   best_train@valid_set    best_valid@valid_set    init@valid_set      |    best_train@test_set        best_valid@test_set     init@test_set
-        #  0        0.244               0.xxx               ...
-        #  1        0.xxx               0.xxx               ...
-        #  2        0.xx                0.xxx               ...
-        #  3        0.xxx               0.xxx               ...
+
+    if EVAL_MAP:
+
+        assert cs.scores_best_train.test_set.keys() == \
+               cs.scores_best_train.train_set.keys() == \
+               cs.scores_best_train.valid_set.keys() == \
+               cs.scores_best_valid.test_set.keys() == \
+               cs.scores_best_valid.train_set.keys() == \
+               cs.scores_best_valid.valid_set.keys()
+
+        if EVAL_INIT_MODEL_MAP:
+            assert cs.scores_best_train.test_set.keys() == \
+                   cs.scores_init.test_set.keys() == \
+                   cs.scores_init.train_set.keys() == \
+                   cs.scores_init.valid_set.keys()
+
+        keys = cs.scores_best_train.test_set.keys()
+        for key in keys:
+
+            stats_csv = file(os.path.join(folder_gen_path, folder_gen_name+".{}.csv".format(key)), 'w')
+            stats_csv.write('Stats for {}\n\n'.format(key))
+
+            init_model_comma = ', ' if EVAL_INIT_MODEL_MAP else ''
+            stats_csv.write(', test over training set, , , , test over validation set, , , , test over test set, , ,, \n')
+
+            stats_csv.write('Model Weights:, '
+                            'best tr loss, best val loss, init/random, , '
+                            'best tr loss, best val loss, init/random, , '
+                            'best tr loss, best val loss, init/random, , \n')
+            stats_csv.write('Config index/name, \n')
+
+            for cs in config_scores:
+                index = cs.name
+                stats_csv.write('{}, {}, {}, {}, , {}, {}, {}, , {}, {}, {},\n'
+                                .format(cs.name,
+                                        cs.scores_best_train.train_set[key],
+                                        cs.scores_best_valid.train_set[key],
+                                        str(cs.scores_init.train_set[key]) if EVAL_INIT_MODEL_MAP else '',
+
+                                        cs.scores_best_train.valid_set[key],
+                                        cs.scores_best_valid.valid_set[key],
+                                        str(cs.scores_init.valid_set[key]) if EVAL_INIT_MODEL_MAP else '',
+
+                                        cs.scores_best_train.test_set[key],
+                                        cs.scores_best_valid.test_set[key],
+                                        str(cs.scores_init.test_set[key]) if EVAL_INIT_MODEL_MAP else ''
+                                        ))
+
+                # TODO: make a single csv for each KEY in:   configScore.scores_best_train.test_set['KEY']
+                # TODO: where KEY is 'map-tx-..' 'map-im-..' 'recall@K'...
+                # Each CSV have to show in each row a different configuration, in each column a different combination of:
+                #   <model_used_to_compute_scores, dataset_used_to_compute_scores>
+                # for example: <best_train, test_set> , <best_vaild, train_set>..
+                #
+                #
+                # Final result should be like:
+                #
+                # CFG   best_train@tr_set   best_valid@tr_set   init@tr_set     |   best_train@valid_set    best_valid@valid_set    init@valid_set      |    best_train@test_set        best_valid@test_set     init@test_set
+                #  0        0.244               0.xxx               ...
+                #  1        0.xxx               0.xxx               ...
+                #  2        0.xx                0.xxx               ...
+                #  3        0.xxx               0.xxx               ...
 
 
 
