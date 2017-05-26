@@ -20,10 +20,11 @@ class Config:
 
 
     def __init__(self,
-                 lr=10,
+                 lr=1,
                  bs=32,
                  epochs=50,
                  opt=Adadelta,
+                 opt_kwargs=None,
                  sp_dim=200,
                  tx_act='softmax',
                  im_act='tanh',
@@ -33,11 +34,23 @@ class Config:
                  contr_inv_w=1,
                  log_w_tx=1,
                  log_w_im=0,
-                 w_init='glorot_uniform'):
+                 contr_margin=1,
+                 w_init='glorot_uniform',
+                 callbacks=None
+                 ):
         self.lr = lr
         self.bs = bs
         self.epochs = epochs
         self.opt = opt
+        self.opt_kwargs=opt_kwargs
+        if self.opt_kwargs is None:
+            self.opt_kwargs = {}
+        if lr is not None:
+            self.opt_kwargs['lr'] = lr
+
+        self.callbacks = callbacks
+        if self.callbacks is None:
+            self.callbacks = []
         self.sp_dim= sp_dim
         self.tx_act = tx_act
         self.im_act = im_act
@@ -48,6 +61,8 @@ class Config:
         self.log_w_tx = log_w_tx
         self.log_w_im = log_w_im
         self.w_init=w_init
+        self.contr_margin = contr_margin
+        #self.opt.lr=lr
 
     def toJSON(self, human_readable=True):
         jsonpickle.set_preferred_backend(Config.__pickle_backend)
@@ -58,5 +73,6 @@ class Config:
 
     def saveJSON(self, file_path):
         f = file(file_path, 'w')
-        f.write(self.toJSON())
+        js = self.toJSON()
+        f.write(js)
         f.close()

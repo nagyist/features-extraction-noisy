@@ -4,7 +4,7 @@ import os
 from keras.engine import Model
 from keras.models import load_model
 
-from E6_joint_model.test_joint import retrieve_image_map, retrive_text_map, recall_top_k
+from zzE6_joint_model.test_joint import retrieve_image_map, retrive_text_map, recall_top_k
 
 os.environ['KERAS_BACKEND'] = "tensorflow"
 #os.environ["CUDA_VISIBLE_DEVICES"]="1"

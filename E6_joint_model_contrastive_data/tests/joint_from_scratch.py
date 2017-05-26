@@ -7,8 +7,8 @@ os.environ['KERAS_BACKEND'] = "tensorflow"
 
 from config import cfg
 from keras.optimizers import Adadelta, sgd
-from E6_joint_model.JointEmbedding import JointEmbedder
-from E6_joint_model.mAP_callback import ModelMAP
+from zzE6_joint_model.JointEmbedding import JointEmbedder
+from zzE6_joint_model.mAP_callback import ModelMAP
 from imdataset import ImageDataset
 
 

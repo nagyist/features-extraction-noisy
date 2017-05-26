@@ -77,7 +77,7 @@ def cos_distance_test():
     d = 1+cosine_proximity(t1, t2)
     d = K.eval(d)
     print 'Cos distance: ' + str(d)
-cos_distance_test()
+#cos_distance_test()
 
 
 
@@ -92,13 +92,79 @@ def my_distance(tensors):
 
 
 def distance_test():
-    # t1 = K.variable(np.array([[1, 0], [1, 0]]))
-    # t2 = K.variable(np.array([[0, 1], [0, 0]]))
+    t1 = K.variable(np.array([[1, 0], [1, 0]]))
+    t2 = K.variable(np.array([[0, 1], [0, 0]]))
 
-    t1 = K.variable(np.array([1, 0]))
-    t2 = K.variable(np.array([0, 1]))
+    #t1 = K.variable(np.array([1, 0]))
+    #t2 = K.variable(np.array([0, 1]))
 
     d = my_distance([t1, t2])
     d = K.eval(d)
     print 'distance: ' + str(d)
 #distance_test()
+
+
+
+
+def test_contrastive_loss_over_distances():
+    t1 = K.variable(np.array([[0.1, 0.2, 0.9, 0.8], [0.9, 0.95, 0.2, 0.4]]))
+    t2 = K.variable(np.array([[0.12, 0.21, 0.89, 0.78], [0.12, 0.21, 0.89, 0.78]]))
+
+    d = my_distance([t1, t2])
+    print 'distance: ' + str(K.eval(d))
+
+    labels = np.array([0, 0])
+    labels_2 = np.array([1, 1])
+    labels_3 = np.array([1, 0])
+    labels_4 = np.array([0, 1])
+
+    #loss = contrastive_loss_over_distance(labels, d)
+    #loss2 = contrastive_loss_over_distance(labels_2, d)
+    loss3 = contrastive_loss_over_distance(labels_3, d)
+    loss4 = contrastive_loss_over_distance(labels_4, d)
+
+#    print "loss: " + str(K.eval(loss))
+ #   print "loss2: " + str(K.eval(loss2))
+    print "loss3: " + str(K.eval(loss3))
+    print "loss4: " + str(K.eval(loss4))
+
+
+
+
+def contrastive_loss_over_distance(labels, distances):
+    '''
+    :param labels: 1D tensor containing 0 or 1 for each example
+    :param distances: 
+    :return: 
+    '''
+    margin=1
+    # loss = K.mean((distances + K.maximum(margin-shifted_distances, 0)))
+    print(K.eval(distances))
+    right = margin - distances
+    print(K.eval(right))
+    right = K.maximum(right, 0)
+    print(K.eval(right))
+    right = K.square(right)
+    print(K.eval(right))
+
+    print ""
+
+    print(K.eval(distances))
+    left = distances
+    print(K.eval(left))
+    left = K.square(left)
+    print(K.eval(left))
+
+    left = labels*left
+    print(K.eval(left))
+    right = (1-labels)*right
+    print(K.eval(right))
+
+    loss = K.mean(left + right)
+    print(K.eval(loss))
+
+
+    # loss = K.mean(distances - shifted_distances)
+    return loss
+
+test_contrastive_loss_over_distances()

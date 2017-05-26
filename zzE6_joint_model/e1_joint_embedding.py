@@ -21,8 +21,8 @@ from keras.optimizers import Adadelta
 
 from E5_embedding import cfg_emb
 from mAP_callback import ModelMAP
-from E6_joint_model import JointEmbedding
-from E6_joint_model.JointEmbedding import JointEmbedder
+from zzE6_joint_model import JointEmbedding
+from zzE6_joint_model.JointEmbedding import JointEmbedder
 from imdataset import ImageDataset
 import numpy as np
 

@@ -1,7 +1,7 @@
 import keras
 from test_embedding import test_embedding_tx_mAP, test_embedding_im_mAP
 
-from E6_joint_model.test_joint import retrieve_image_map
+from zzE6_joint_model.test_joint import retrieve_image_map
 
 
 class ModelMAP(keras.callbacks.Callback):

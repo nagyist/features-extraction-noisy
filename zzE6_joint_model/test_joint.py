@@ -7,7 +7,7 @@ from keras.models import load_model
 from keras.layers import K
 import numpy as np
 
-from E6_joint_model.JointEmbedding import get_sub_model
+from zzE6_joint_model.JointEmbedding import get_sub_model
 from imdataset import ImageDataset
 
 DEFAULT_JOINT_MODEL_EXT = '.model.best.h5'

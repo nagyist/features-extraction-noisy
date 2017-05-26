@@ -1,6 +1,6 @@
 from keras.engine import Input, Model, merge, Merge
 from keras.initializations import glorot_normal
-from keras.layers import Dense, LSTM, K, Activation
+from keras.layers import Dense, LSTM, K, Activation, Lambda
 from keras.metrics import mean_squared_error, cosine_proximity, categorical_crossentropy
 from keras.models import Sequential, load_model
 import numpy as np
@@ -28,7 +28,7 @@ def get_sub_model(joint_model, submodel):
             model = None
     return model
 
-class JointEmbedder():
+class JointEmbedderTriplet():
 
     # Model Idea:
     #
@@ -61,6 +61,7 @@ class JointEmbedder():
                                             'my_cosine_proximity' : my_cosine_distance,
                                             'contrastive_loss_over_distance': contrastive_loss_over_distance,
                                             'contrastive_loss_contr_data':  contrastive_loss_contr_data,
+                                            'triplet_loss': get_triplet_loss(K.variable(np.asarray([[0]]))),
                                             'fake_loss': fake_loss} )
         if weight_path is not None:
             model.load_weights(weight_path)
@@ -70,15 +71,12 @@ class JointEmbedder():
               optimizer,
               tx_activation=None,
               im_activation=None,
-              im_hidden_layers=None, tx_hidden_layers=None,
-              contrastive_loss_weight=1,
-              logistic_loss_weight=1,
-              contrastive_loss_weight_inverted=1,
-              submodel=None,
+              im_hidden_layers=None,
+              tx_hidden_layers=None,
               init='glorot_normal',
-              contrastive_loss_margin=1,
-              use_triplet=False,
-              triplet_mode='tii'): #glorot_uniform
+              triplet_loss_margins=1,
+              triplet_loss_weights=1,
+              configs=['tii']): #configs: < anchor, positive, negative >
         '''
         
         :param optimizer: 
@@ -91,79 +89,86 @@ class JointEmbedder():
                              'img' to get only the image leg submodel, with only the image-embedding output.
         :return: 
         '''
-
-        if submodel is not None and submodel not in ['txt', 'img']:
-            ValueError('Value for submodel parameter not legal: ' + str(submodel) + '.'
-                       '\nValue for submodel parameter must be "txt" or "img" or None.')
+        # tii config!
+        legal_configs = ['tii', 'tit', 'itt', 'iti', 'i-t', 't-i']
+        # nb: i-t == iit where the anchor and the positive example are the same: ||i-i|| - ||i-t|| = -||i-t||
+        # to do 'ii2t', 'ii2i', 'tt2i' 'tt2t'
+        if not isinstance(triplet_loss_margins, list):
+            lst = []
+            for config in configs:
+                lst.append(triplet_loss_margins)
+            triplet_loss_margins = lst
+        if not isinstance(triplet_loss_weights, list):
+            lst = []
+            for config in configs:
+                lst.append(triplet_loss_weights)
+            triplet_loss_weights = lst
 
         # Image network leg:
-        im_input = previous_tensor = Input(shape=(self.im_input_dim,), name='im_input')
+        previous_layer = first_im_layer = Lambda(function=lambda x: x)
         if im_hidden_layers is not None:
             for i, hid in enumerate(im_hidden_layers):
                 if isinstance(hid, int):
-                    previous_tensor = Dense(output_dim=hid, name='im_hidden_' + str(i), init=init)(previous_tensor)
+                    previous_layer = Dense(output_dim=hid, name='im_hidden_' + str(i), init=init)(previous_layer)
                 elif isinstance(hid, basestring):
-                    previous_tensor = Activation(activation=hid)(previous_tensor)
-        im_emb = Dense(self.output_dim, name='im_embedding')(previous_tensor)
+                    previous_layer = Activation(activation=hid)(previous_layer)
+        im_emb = Dense(self.output_dim, name='im_embedding')(previous_layer)
         im_emb = Activation(activation=im_activation)(im_emb)
 
         # Text network leg:
-        tx_input = previous_tensor = Input(shape=(self.tx_input_dim,), name='tx_input')
+        previous_layer = first_tx_layer = Input(shape=(self.tx_input_dim,), name='tx_input')
         if tx_hidden_layers is not None:
             for i, hid in enumerate(tx_hidden_layers):
                 if isinstance(hid, int):
-                    previous_tensor = Dense(output_dim=hid, name='tx_hidden_' + str(i), init=init)(previous_tensor)
+                    previous_layer = Dense(output_dim=hid, name='tx_hidden_' + str(i), init=init)(previous_layer)
                 elif isinstance(hid, basestring):
-                    previous_tensor = Activation(activation=hid)(previous_tensor)
-        tx_emb = Dense(self.output_dim, name='tx_embedding', init=init)(previous_tensor)
+                    previous_layer = Activation(activation=hid)(previous_layer)
+        tx_emb = Dense(self.output_dim, name='tx_embedding', init=init)(previous_layer)
         tx_emb = Activation(activation=tx_activation)(tx_emb)
 
-        # Text classification (logistic) leg
-        tx_classification = Dense(self.n_text_classes, activation='softmax')(tx_emb) # or (previous_tensor) ??
+        im_pos_input = Input(shape=(self.im_input_dim,), name='im_pos_input')
+        im_pos_input_2 = Input(shape=(self.im_input_dim,), name='im2_pos_input')
+        im_neg_input = Input(shape=(self.im_input_dim,), name='im_neg_input')
+        tx_pos_input = Input(shape=(self.tx_input_dim,), name='tx_pos_input')
+        tx_neg_input = Input(shape=(self.tx_input_dim,), name='tx_neg_input')
+        im_pos_encoded = first_im_layer(im_pos_input)
+        im_neg_encoded = first_im_layer(im_neg_input)
+        tx_pos_encoded = first_tx_layer(tx_pos_input)
+        tx_neg_encoded = first_tx_layer(tx_neg_input)
+
+        merges = {}
+        for config in configs:
+            if config[0] == 't':
+                anchor = tx_pos_encoded
+            elif config[0] == 'i':
+                anchor = im_pos_encoded
+
+            if config[1] == 't':
+                pos = tx_pos_encoded
+            elif config[1] == 'i':
+                pos = im_pos_encoded
+            elif config[1] == '-':
+                pos = anchor
+
+            if config[2] == 't':
+                neg = tx_neg_encoded
+            elif config[2] == 'i':
+                neg = im_neg_encoded
+
+            merge = Merge(mode=triplet_distance, output_shape=lambda x: (x[0][0], 1))([anchor, pos, neg])
+            merges[config] = merge
 
 
-        #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode=lambda x: x[0] - x[1], output_shape=lambda x: x[0], name='subtract')
-        #im_emb_sub_tx_emb = Merge(mode='cos')([im_emb, tx_emb])
-        #im_emb_sub_tx_emb = merge([im_emb, tx_emb], mode='sum')
-        #im_emb_sub_tx_emb = im_emb - tx_emb
+        outputs = [im_emb, tx_emb]
+        losses = [fake_loss, fake_loss]
+        loss_weights = [0, 0]
+        for i, m in enumerate(merges.values()):
+            outputs.append(m)
+            losses.append(get_triplet_loss(triplet_loss_margins[i]))
+            loss_weights.append(triplet_loss_weights[i])
 
-        #im_emb_sub_tx_emb = Merge(mode=euclideanSqDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
-        #im_emb_sub_tx_emb = Merge(mode=euclideanDistance, output_shape=lambda x: (x[0][0], 1), name='distance')([im_emb, tx_emb])
-
-        distance = Merge(mode=my_distance, output_shape=lambda x: (x[0][0], 1))([im_emb, tx_emb])
-        #distance = Merge(mode=my_cosine_distance, output_shape=lambda x: (x[0][0], 1))([im_emb, tx_emb])
-
-        if submodel is not None:
-            if submodel == "img":
-                model = Model(input=im_input, output=im_emb)
-                model.compile(optimizer=optimizer, loss=fake_loss)
-            elif submodel == "txt":
-                model = Model(input=tx_input, output=tx_emb)
-                model.compile(optimizer=optimizer, loss=fake_loss)
-            else:
-                model = None
-        else:
-
-
-            if use_triplet:
-                if triplet_mode == 'tii':
-                    model = Model(input=[tx_input, im_input, im_input], output=[im_emb, tx_emb, distance, tx_classification])
-                    # model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, tx_classification])
-
-            else:
-                model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, distance, tx_classification])
-                # model = Model(input=[im_input, tx_input], output=[im_emb, tx_emb, tx_classification])
-                if self.use_merge_distance:
-                    model.compile(optimizer=optimizer,
-                                  loss=[fake_loss, fake_loss, get_contrastive_loss_over_distance(contrastive_loss_margin), 'categorical_crossentropy'],
-                                  loss_weights=[0, 0, contrastive_loss_weight, logistic_loss_weight])
-                else:
-                    model.compile(optimizer=optimizer,
-                                  loss=[
-                                      get_contrastive_loss_contr_data(tx_emb), get_contrastive_loss_contr_data(im_emb),
-                                      #get_contrastive_loss_im(tx_emb), get_contrastive_loss_tx(im_emb),
-                                      fake_loss, 'categorical_crossentropy'],
-                                  loss_weights=[contrastive_loss_weight/2, contrastive_loss_weight_inverted/2, 0, logistic_loss_weight])
+        model = Model(input=[im_pos_input, im_neg_input, tx_pos_input, tx_neg_input], output=outputs)
+        model.compile(optimizer=optimizer, loss=losses, loss_weights=loss_weights)
 
         return model
 
@@ -178,6 +183,22 @@ def my_cosine_distance(tensors):
 
 def my_distance_shape(list_tensor_shape):
     return list_tensor_shape[0][0]
+
+
+def triplet_distance(tensors):
+    if (len(tensors) != 3):
+        raise 'oops'
+    anchor = tensors[0]
+    pos = tensors[1]
+    neg = tensors[2]
+    dist_p = K.sqrt(K.sum(K.square(anchor-pos), axis=-1))
+    dist_n = K.sqrt(K.sum(K.square(anchor-neg), axis = -1))
+    return dist_p-dist_n
+
+def get_triplet_loss(margin=1):
+    def triplet_loss(y_true, y_pred):
+        return K.max(0, margin + y_pred)
+    return triplet_loss
 
 def my_distance(tensors):
     if (len(tensors) != 2):

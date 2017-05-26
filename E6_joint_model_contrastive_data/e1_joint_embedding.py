@@ -1,18 +1,22 @@
 import os
 from pprint import pprint
+
+from email_sender import send_email_notification
+
 os.environ['KERAS_BACKEND'] = "tensorflow"
-#os.environ["CUDA_VISIBLE_DEVICES"]="1"
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 # FORCE TENSORFLOW BACKEND HERE!! WITH THEANO THIS EXPERIMENT WON'T RUN!!
 # NB: The problem of low performance of tensorflow backend with theano ordering is true only for convolutional layers!
 #     We don't have to worry about that here.
 
-# floatX=float32,device=gpu1,lib.cnmem=1,
-# os.environ['THEANO_FLAGS'] = "exception_verbosity=high, optimizer=None"
+# os.environ['KERAS_BACKEND'] = "theano"
+# os.environ['THEANO_FLAGS'] = "floatX=float32,device=gpu1,lib.cnmem=0"
+#  exception_verbosity=high, optimizer=None
 
 import random
 from ExecutionConfig import Config
-from config_generator import config_gen_TEST, config_gen_ACTIVATIONS, config_gen_DIMS
+from config_generator import config_gen_TEST, config_gen_ACTIVATIONS, config_gen_DIMS, config_gen_HL, config_gen_MARGIN
 from keras.callbacks import ModelCheckpoint
 from E5_embedding import cfg_emb
 from mAP_callback import ModelMAP
@@ -21,9 +25,18 @@ from imdataset import ImageDataset
 import numpy as np
 
 
+TRIPLET_EXP=True
+
+# TRIPLET LOSS EXPERIMENT:
+
+
+
+# CONTRASTIVE LOSS EXPERIMENT:
+USE_MERGE_DISTANCE=True
+DISABLE_CONTRASTIVE=False
 EVAL_MAP=True
 EVAL_INIT_MODEL_LOSS=True
-EVAL_INIT_MODEL_MAP=True
+EVAL_INIT_MODEL_MAP=False
 JOINT_PREDICTION_FOLDER = 'joint_prediction'
 JOINT_MODEL_FOLDER = "joint_model"
 
@@ -42,8 +55,33 @@ if not os.path.isdir(JOINT_PREDICTION_FOLDER):
 
 def main():
     #joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=1)
-    joint_embedding_train(config_gen_function=config_gen_ACTIVATIONS)
-    joint_embedding_train(config_gen_function=config_gen_DIMS)
+    #joint_embedding_train(config_gen_function=config_gen_TEST)
+    #joint_embedding_train(config_gen_function=config_gen_HL)
+
+    joint_embedding_train(config_gen_function=config_gen_MARGIN)
+    #joint_embedding_train(config_gen_function=config_gen_TEST)
+
+
+    # try:
+    #     joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=1)
+    #     send_email_notification(subject="Notification: config_gen_TEST", body="Training of config_gen_TEST finished!")
+    #
+    # except Exception as e:
+    #     send_email_notification(subject="Notification: config_gen_TEST exception", body="Training of config_gen_TEST excepiton..")
+    #     pass
+
+    # try:
+    #     joint_embedding_train(config_gen_function=config_gen_ACTIVATIONS)
+    #     send_email_notification(subject="Notification: config_gen_ACTIVATIONS", body="Training of config_gen_ACTIVATIONS finished!")
+    # except Exception as e:
+    #     send_email_notification(subject="Notification: config_gen_ACTIVATIONS exception", body="Training of config_gen_ACTIVATIONS excepiton..")
+    #
+    # try:
+    #     joint_embedding_train(config_gen_function=config_gen_DIMS)
+    #     send_email_notification(subject="Notification: config_gen_DIMS", body="Training of config_gen_DIMS finished!")
+    # except Exception as e:
+    #     send_email_notification(subject="Notification: config_gen_DIMS exception", body="Training of config_gen_DIMS excepiton..")
+
 
 
 def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=None):
@@ -179,17 +217,20 @@ def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=Non
 
         c.saveJSON(fpath + '.config.json')
 
-        JE = JointEmbedder(im_dim=im_data_train.shape[-1], tx_dim=tx_data_train.shape[-1], out_dim=c.sp_dim, n_text_classes=len(class_list))
+        JE = JointEmbedder(im_dim=im_data_train.shape[-1], tx_dim=tx_data_train.shape[-1], out_dim=c.sp_dim,
+                           n_text_classes=len(class_list), use_merge_distance=USE_MERGE_DISTANCE)
 
-        model = JE.model(optimizer=c.opt(lr=c.lr),
+        optimizer=c.opt(**c.opt_kwargs)
+        model = JE.model(optimizer=optimizer,
                          tx_activation=c.tx_act,
                          im_activation=c.im_act,
                          tx_hidden_layers=c.tx_hid,
                          im_hidden_layers=c.im_hid,
                          contrastive_loss_weight=c.contr_w,
-                         logistic_loss_weight=c.log_w_im,
+                         logistic_loss_weight=c.log_w_tx,
                          contrastive_loss_weight_inverted=c.contr_inv_w,
-                         init=c.w_init)
+                         init=c.w_init,
+                         contrastive_loss_margin=c.contr_margin)
 
         model.summary()
 
@@ -199,23 +240,6 @@ def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=Non
             label_map[label] = index
         size = len(class_list)
 
-        # label_train_converted = []
-        # for l in label_train:
-        #     new_l = np.zeros([size])
-        #     new_l[label_map[l]] = 1
-        #     label_train_converted.append(new_l)
-        # label_train_converted = np.asarray(label_train_converted)
-        # label_valid_converted = []
-        # for l in label_valid:
-        #     new_l = np.zeros([size])
-        #     new_l[label_map[l]] = 1
-        #     label_valid_converted.append(new_l)
-        # label_valid_converted = np.asarray(label_valid_converted)
-        # label_train_converted = np.asarray([label_map[l] for l in label_train])
-        # label_valid_converted = np.asarray([label_map[l] for l in label_valid])
-
-
-
 
         init_model_fname = fpath + '.model.init.random.h5'
         best_valid_fname = fpath + '.model.best.val_loss.h5'
@@ -223,9 +247,12 @@ def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=Non
         model.save(init_model_fname)
 
         # Creating contrastive training set:
-        val_x_im, val_x_tx, val_y_contr, val_y_log = get_contr_data(im_data_val, tx_data_train, label_val, class_list)
+        val_x_im, val_x_tx, val_y_contr, val_y_log = get_contr_data_batch(im_data_val, tx_data_train, label_val, class_list,
+                                                                          no_contrastive=DISABLE_CONTRASTIVE,
+                                                                          shuffle=True,
+                                                                          bs=c.bs)
         val_X = [val_x_im, val_x_tx]
-        val_Y = [val_y_contr, val_y_contr, val_y_log]
+        val_Y = [val_y_contr, val_y_contr, val_y_contr, val_y_log]
 
         best_loss = best_val_loss = float('inf')
         best_loss_epoch = -1
@@ -239,11 +266,35 @@ def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=Non
             checpoint_path = fpath + ".weights.{:03d}.h5".format(ep)
             checkpoint = ModelCheckpoint(checpoint_path, monitor='val_loss', save_best_only=False, save_weights_only=True)
 
-            x_im, x_tx, y_cont, y_log = get_contr_data(im_data_train, tx_data_train, label_train, class_list)
+            x_im, x_tx, y_cont, y_log = get_contr_data_batch(im_data_train, tx_data_train, label_train, class_list,
+                                                             no_contrastive=DISABLE_CONTRASTIVE,
+                                                             shuffle=True,
+                                                             bs=c.bs)
             X = [x_im, x_tx]
-            Y = [y_cont, y_cont, y_log]
+            Y = [y_cont, y_cont, y_cont, y_log]
+            calls = c.callbacks
+            calls.append(checkpoint)
+            hs = model.fit(X, Y, c.bs, nb_epoch=1, validation_data=[val_X, val_Y], shuffle=False, callbacks=calls)
+            # FIT !!! TRAINING
 
-            hs = model.fit(X, Y, c.bs, nb_epoch=1, validation_data=[val_X, val_Y],shuffle=True, callbacks=[checkpoint])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             hist = hs.history
             val_loss = hist['val_loss'][0]
@@ -263,14 +314,13 @@ def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=Non
 
 
 
-
         loss_csv = file(fpath + ".loss.csv", 'w')
         loss_csv.write('Learning curves (loss),Epoch, Loss, Val Loss\n')
 
         if EVAL_INIT_MODEL_LOSS:
             x_im, x_tx, y_cont, y_log = get_contr_data(im_data_train, tx_data_train, label_train, class_list)
             X = [x_im, x_tx]
-            Y = [y_cont, y_cont, y_log]
+            Y = [y_cont, y_cont, y_cont, y_log]
             init_loss = model.evaluate(X, Y, batch_size=c.bs)[0]
             init_val_loss = model.evaluate(val_X, val_Y, batch_size=c.bs)[0]
             loss_csv.write(', {}, {}, {}\n'.format(-1, init_loss, init_val_loss))
@@ -459,21 +509,177 @@ def joint_embedding_train(config_gen_function=config_gen_TEST, debug_map_val=Non
 
 
 
-def get_contr_data(im_data_train, tx_data_train, label_train, class_list):
+
+
+def get_triplet_data_batch(im_data_train, tx_data_train, label_train, class_list, mode='itt', vector_labels=True, return_3_vects=True):
+    modes=['itt', 'tii', 'tit', 'iti']
+    if mode not in modes:
+        raise ValueError("Mode must be one of these: " + str(modes))
+
+    size = len(class_list)
+
     im_contr_data_train = []
     tx_contr_data_train = []
     label_contr_train = []
     label_logistic_train = []
+    class_list_reverse = {lbl: index for index, lbl in enumerate(class_list)}
+
+    triplets = []
+    labels_pos = []
+    labels_neg = []
+
+
+    for pos_im, pos_label in zip(im_data_train, label_train):
+        label_index = class_list_reverse[pos_label]
+
+        # Positive example:
+        pos_tx = tx_data_train[label_index]
+        im_contr_data_train.append(pos_im)
+
+        # Negative example:
+        if(mode[2] == 't'):
+            neg_label = pos_label
+            while neg_label == pos_label:
+                neg_label = random.choice(class_list)
+            neg_label_index = class_list_reverse[neg_label]
+            neg_tx = tx_data_train[neg_label_index]
+
+            if mode == 'itt':
+                triplets.append([pos_im, pos_tx, neg_tx])
+            elif mode == 'tit':
+                triplets.append([pos_tx, pos_im, neg_tx])
+
+
+        elif(mode[2] == 'i'):
+            neg_label = pos_label
+            while neg_label == pos_label:
+                neg_im_index = random.randrange(len(im_data_train))
+                neg_im = im_data_train[neg_im_index]
+                neg_label = label_train[neg_im_index]
+            neg_label_index = class_list_reverse[neg_label]
+
+            if mode == 'tii':
+                triplets.append([pos_tx, pos_im, neg_im])
+            elif mode == 'iti':
+                triplets.append([pos_im, pos_tx, neg_im])
+
+        if vector_labels:
+            pos_labe_index =  class_list_reverse[pos_label]
+            pos_label = np.zeros([size])
+            pos_label[pos_labe_index] = 1
+            neg_label = np.zeros([size])
+            neg_label[neg_label_index] = 1
+
+        labels_pos.append(pos_label)
+        labels_neg.append(neg_label)
+
+    if return_3_vects:
+        triplets = np.asarray(triplets)
+        return triplets[:][0], triplets[:][1], triplets[:][2], np.asarray(labels_pos), np.asarray(labels_neg)
+    else:
+        return np.asarray(triplets), np.asarray(labels_pos), np.asarray(labels_neg)
+
+
+def get_contr_data_batch(im_data_train, tx_data_train, label_train, class_list, no_contrastive=False, bs=32, shuffle=True):
+
+    if shuffle:
+        assert len(im_data_train) == len(label_train)
+        p = np.random.permutation(len(im_data_train))
+        im_data_train = im_data_train[p]
+        label_train = label_train[p]
+
+    def gen_contr_batch(ims, labels):
+        size = len(class_list)
+        class_list_reverse = {lbl: index for index, lbl in enumerate(class_list)}
+
+        im_contr_data_batch = []
+        tx_contr_data_batch = []
+        label_contr_batch = []
+        label_logistic_batch = []
+
+        # Correct example generation:
+        for im, label in zip(ims, labels):
+            label_index = class_list_reverse[label]
+            tx = tx_data_train[label_index]
+            im_contr_data_batch.append(im)
+            tx_contr_data_batch.append(tx)
+            label_contr_batch.append(1)
+
+            label_logistic_ok = np.zeros([size])
+            label_logistic_ok[label_index] = 1
+            label_logistic_batch.append(label_logistic_ok)
+
+        if no_contrastive == False:
+            # Contrastive example generation:
+            for im, label in zip(ims, labels):
+                contr_label = label
+                while contr_label == label:
+                    contr_label = random.choice(class_list)
+
+                contr_label_index = class_list_reverse[contr_label]
+                # Bad example:
+                tx_bad = tx_data_train[contr_label_index]
+                im_contr_data_batch.append(im)
+                tx_contr_data_batch.append(tx_bad)
+                label_contr_batch.append(0)
+
+                label_logistic_bad = np.zeros([size])
+                label_logistic_bad[contr_label_index] = 1
+                label_logistic_batch.append(label_logistic_bad)
+
+        return im_contr_data_batch, tx_contr_data_batch, label_contr_batch, label_logistic_batch
+
+
+    ims_ret = []
+    txs_ret = []
+    lbls_ret = []
+    lbls_log_ret = []
+
+
+    index = 0
+    batch_ims = []
+    batch_labels = []
+
+
+    for im, lbl in zip(im_data_train, label_train):
+        if index == bs:
+            c_ims, c_txs, c_lbls, c_lbls_log = gen_contr_batch(batch_ims, batch_labels)
+            ims_ret += c_ims
+            txs_ret += c_txs
+            lbls_ret += c_lbls
+            lbls_log_ret += c_lbls_log
+
+            batch_ims = []
+            batch_labels = []
+            index = 0
+
+        batch_ims.append(im)
+        batch_labels.append(lbl)
+        index += 1
+
+    c_ims, c_txs, c_lbls, c_lbls_log = gen_contr_batch(batch_ims, batch_labels)
+    ims_ret += c_ims
+    txs_ret += c_txs
+    lbls_ret += c_lbls
+    lbls_log_ret += c_lbls_log
+
+    return np.asarray(ims_ret), np.asarray(txs_ret), np.asarray(lbls_ret), np.asarray(lbls_log_ret),
+
+
+
+
+def get_contr_data(im_data_train, tx_data_train, label_train, class_list, no_contrastive=False):
+
     size = len(class_list)
 
+    im_contr_data_train = []
+    tx_contr_data_train = []
+    label_contr_train = []
+    label_logistic_train = []
     class_list_reverse = {lbl: index for index, lbl in enumerate(class_list)}
-    for im, label in zip(im_data_train, label_train):
-        contr_label = label
-        while contr_label == label:
-            contr_label = random.choice(class_list)
 
+    for im, label in zip(im_data_train, label_train):
         label_index = class_list_reverse[label]
-        contr_label_index = class_list_reverse[contr_label]
 
         # Correct example:
         tx = tx_data_train[label_index]
@@ -485,16 +691,21 @@ def get_contr_data(im_data_train, tx_data_train, label_train, class_list):
         label_logistic_ok[label_index] = 1
         label_logistic_train.append(label_logistic_ok)
 
+        if no_contrastive == False:
+            contr_label = label
+            while contr_label == label:
+                contr_label = random.choice(class_list)
 
-        # Bad example:
-        tx_bad = tx_data_train[contr_label_index]
-        im_contr_data_train.append(im)
-        tx_contr_data_train.append(tx_bad)
-        label_contr_train.append(0)
+            contr_label_index = class_list_reverse[contr_label]
+            # Bad example:
+            tx_bad = tx_data_train[contr_label_index]
+            im_contr_data_train.append(im)
+            tx_contr_data_train.append(tx_bad)
+            label_contr_train.append(0)
 
-        label_logistic_bad = np.zeros([size])
-        label_logistic_bad[contr_label_index] = 1
-        label_logistic_train.append(label_logistic_bad)
+            label_logistic_bad = np.zeros([size])
+            label_logistic_bad[contr_label_index] = 1
+            label_logistic_train.append(label_logistic_bad)
 
 
     return np.asarray(im_contr_data_train), np.asarray(tx_contr_data_train), np.asarray(label_contr_train), \

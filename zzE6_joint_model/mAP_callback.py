@@ -1,5 +1,5 @@
 import keras
-from E6_joint_model.test_joint import retrieve_image_map, recall_top_k
+from zzE6_joint_model.test_joint import retrieve_image_map, recall_top_k
 
 
 class ModelMAP(keras.callbacks.Callback):
